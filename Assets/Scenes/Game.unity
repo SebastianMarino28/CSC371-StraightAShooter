@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -189,25 +189,21 @@ MonoBehaviour:
   - {fileID: 637660359374288463, guid: 197a07a682c4a6a4ab823bf4b3d8e85c, type: 3}
   - {fileID: 7898330491777577551, guid: 66db942855b50bf43adf7dbce9cec529, type: 3}
   - {fileID: 5470755547064580173, guid: 5c9008a55af4e26469860cc07f26a042, type: 3}
-  - {fileID: 9133770538544932543, guid: c7d6e644a320da849bf172a4a001ef69, type: 3}
   topRooms:
   - {fileID: 8973212684185699347, guid: 54e532333ae114d41a316c606693e390, type: 3}
   - {fileID: 5096726041645110550, guid: 63a677ed02ffe8e4aaf6cfccf86cc8ef, type: 3}
   - {fileID: 7898330491777577551, guid: 66db942855b50bf43adf7dbce9cec529, type: 3}
   - {fileID: 329915111977999569, guid: 97ae1e832ec44e34d88aa3b9b15546c7, type: 3}
-  - {fileID: 8973212684185699347, guid: 54e532333ae114d41a316c606693e390, type: 3}
   leftRooms:
   - {fileID: 6838786075435331883, guid: e2cb17478a37784498b56977564ac3fa, type: 3}
   - {fileID: 329915111977999569, guid: 97ae1e832ec44e34d88aa3b9b15546c7, type: 3}
   - {fileID: 8901810183692381923, guid: 0ad7b7fcc0617d2419981e6dd1f8d73f, type: 3}
   - {fileID: 637660359374288463, guid: 197a07a682c4a6a4ab823bf4b3d8e85c, type: 3}
-  - {fileID: 6838786075435331883, guid: e2cb17478a37784498b56977564ac3fa, type: 3}
   rightRooms:
   - {fileID: 1229541716422315698, guid: fa3b2fd936651684fa23c82042d5a63f, type: 3}
   - {fileID: 5470755547064580173, guid: 5c9008a55af4e26469860cc07f26a042, type: 3}
   - {fileID: 8901810183692381923, guid: 0ad7b7fcc0617d2419981e6dd1f8d73f, type: 3}
   - {fileID: 5096726041645110550, guid: 63a677ed02ffe8e4aaf6cfccf86cc8ef, type: 3}
-  - {fileID: 1229541716422315698, guid: fa3b2fd936651684fa23c82042d5a63f, type: 3}
   walls: {fileID: 1138345258895449283, guid: 6e0a8c7aba19eac4bb5024879865ef00, type: 3}
 --- !u!4 &46672760
 Transform:
@@ -3063,6 +3059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1746637895}
+  centerPoint: {fileID: 1194606311}
   bullet: {fileID: 5126086187398976382, guid: 4f1a05df2a8aa4f4d8b68f2dda736c48, type: 3}
   bulletSound: {fileID: 0}
   bulletSpeed: 20
@@ -3830,7 +3827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 517170505160054678, guid: 25bb23c8ec676c345afbb541781906b0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2119443368857824238, guid: 25bb23c8ec676c345afbb541781906b0, type: 3}
       propertyPath: m_Mesh
