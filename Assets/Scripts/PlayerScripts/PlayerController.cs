@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public int speed;
     public float rollTime;
+    public float rollSpeed;
     private Vector3 mousePosition;
     private Rigidbody rb;
     private float movementX;
@@ -57,11 +58,16 @@ public class PlayerController : MonoBehaviour
         if (movement.magnitude > 0)
         {
             animator.SetBool("isMoving", true);
+            isMoving = true;
         }
         else
         {
             animator.SetBool("isMoving", false);
+            isMoving = false;
         }
+
+        //rolling movement
+
     }
 
     void OnMove(InputValue movementValue)
@@ -74,7 +80,7 @@ public class PlayerController : MonoBehaviour
 
     void OnFire(InputValue fireValue)
     {
-        if (Time.timeScale > 0 && fireValue.isPressed)
+        if (Time.timeScale > 0 && fireValue.isPressed && !isRolling)
         {
             isFiring = true;
         }
@@ -87,10 +93,18 @@ public class PlayerController : MonoBehaviour
 
     void OnRoll(InputValue rollValue)
     {
-        Debug.Log("rollin");
         if (Time.timeScale > 0 && !isRolling)
         {
+            //set rolling state
             StartCoroutine(RollCoroutine());
+
+            //calculate rolling locomotion
+            Vector3 rollDirection;
+            if (isMoving)
+            {
+                rollDirection = new Vector3(movementX, 0, movementZ).normalized;
+                // HERE - find a way to move player in direction of movement, or player facing if stationary
+            }
         }
     }
 
