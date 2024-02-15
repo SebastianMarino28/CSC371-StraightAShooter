@@ -1,5 +1,8 @@
+using JetBrains.Annotations;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public WeaponHandler wh;
 
     public int speed;
+    public float rollTime;
     private Vector3 mousePosition;
     private Rigidbody rb;
     private float movementX;
@@ -17,6 +21,7 @@ public class PlayerController : MonoBehaviour
     // animation state
     private Animator animator;
     private bool isMoving = false;
+    private bool isRolling = false;
 
 
     // Start is called before the first frame update
@@ -78,6 +83,24 @@ public class PlayerController : MonoBehaviour
             isFiring = false;
         }
         
+    }
+
+    void OnRoll(InputValue rollValue)
+    {
+        Debug.Log("rollin");
+        if (Time.timeScale > 0 && !isRolling)
+        {
+            StartCoroutine(RollCoroutine());
+        }
+    }
+
+    IEnumerator RollCoroutine()
+    {
+        isRolling = true;
+        animator.SetBool("isRolling", true);
+        yield return new WaitForSeconds(rollTime);
+        animator.SetBool("isRolling", false);
+        isRolling = false;
     }
 
     void OnCollisionEnter(Collision other) {
