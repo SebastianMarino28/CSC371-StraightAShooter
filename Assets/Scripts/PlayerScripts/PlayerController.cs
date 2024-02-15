@@ -14,11 +14,16 @@ public class PlayerController : MonoBehaviour
     private float movementZ;
     private bool isFiring;
 
+    // animation state
+    private Animator animator;
+    private bool isMoving = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();   
+        rb = GetComponent<Rigidbody>();  
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -42,6 +47,16 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementZ);
         rb.velocity = speed * Time.fixedDeltaTime * movement;
+
+        //set movement state for animation
+        if (movement.magnitude > 0)
+        {
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
     }
 
     void OnMove(InputValue movementValue)
