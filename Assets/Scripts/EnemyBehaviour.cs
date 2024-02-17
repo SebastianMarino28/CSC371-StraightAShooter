@@ -7,7 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float healthAmount = 10f;
     public Image healthBar;
     public WeaponHandler weaponHandler;
-
+    public WeaponHandler.ProjectileType projectileType;
     private GameObject target;
     public string targetTag;
     private Rigidbody rb;
@@ -33,7 +33,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         // try to shoot
         if (Vector3.Distance(target.transform.position, transform.position) <=  minDistance)
-            weaponHandler.FireWeapon(WeaponHandler.ProjectileType.bullet);
+            weaponHandler.FireWeapon(projectileType);
     }
 
     void OnCollisionEnter(Collision other) {

@@ -10,17 +10,26 @@ public class WeaponHandler : MonoBehaviour
     public AudioSource bulletSound;
     public int bulletSpeed;
     public float bulletCooldown;
-    private bool canFireBullet;
 
+    [Header("Burst")]
+    public GameObject burst;
+    public AudioSource burstSound;
+    public int burstSpeed;
+    public float burstCooldown;
+    public int numBurstProjectiles;
+    private bool canFireBullet;
+    private bool canFireBurst;
     public enum ProjectileType
     {
-        bullet
+        bullet,
+        burst
     }
 
     // Start is called before the first frame update
     void Start()
     {
         canFireBullet = true;
+        canFireBurst = true;
     }
 
     // Update is called once per frame
@@ -51,6 +60,43 @@ public class WeaponHandler : MonoBehaviour
             canFireBullet = false;
             StartCoroutine(ResetCooldown(ptype));
         }
+
+        if (ptype == ProjectileType.burst && canFireBurst)
+        {
+            if (burstSound != null)
+            {
+                Instantiate(burstSound);
+            }
+
+            float[] directions = GetBurstDirections(numBurstProjectiles);
+
+            Vector3 projectileDirection;
+            Rigidbody rb;
+            for (int i = 0; i < numBurstProjectiles; i++)
+            {
+                projectileDirection = new Vector3(0f, directions[i], 0f);
+                
+                GameObject projectile = Instantiate(burst, firePoint.transform.position, Quaternion.Euler(projectileDirection));
+                rb = projectile.GetComponent<Rigidbody>();
+                rb.velocity = projectile.transform.forward * burstSpeed;
+            }
+            canFireBurst = false;
+            StartCoroutine(ResetCooldown(ptype));
+
+        }
+    }
+
+    public float[] GetBurstDirections(int numProjectiles)
+    {   
+        float angleStep = 360f / numProjectiles;
+        float[] directions = new float[numProjectiles];
+
+        for (int i = 0; i < numProjectiles; i++)
+        {
+            directions[i] = angleStep*i;
+        }
+
+        return directions;
     }
 
     IEnumerator ResetCooldown(ProjectileType ptype)
@@ -59,6 +105,12 @@ public class WeaponHandler : MonoBehaviour
         {
             yield return new WaitForSeconds(bulletCooldown);
             canFireBullet = true;
+        }
+
+        if (ptype == ProjectileType.burst)
+        {
+            yield return new WaitForSeconds(burstCooldown);
+            canFireBurst = true;
         }
     }
 }
