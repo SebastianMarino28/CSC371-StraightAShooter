@@ -2920,7 +2920,6 @@ GameObject:
   - component: {fileID: 1665019275}
   - component: {fileID: 1665019276}
   - component: {fileID: 1665019277}
-  - component: {fileID: 1665019278}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -3052,6 +3051,10 @@ MonoBehaviour:
     m_Bits: 243
   wh: {fileID: 1665019276}
   speed: 400
+  rollDistance: 275
+  rollInvincibilityDelay: 0.2
+  rollInvinicilityDuration: 0.25
+  rollCooldown: 1.5
 --- !u!114 &1665019276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3090,18 +3093,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1665019278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665019268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d763f086ca01e274881fc3cf7d53d6a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1716057876
 GameObject:
   m_ObjectHideFlags: 0

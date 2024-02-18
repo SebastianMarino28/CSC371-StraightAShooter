@@ -10,9 +10,14 @@ public class PlayerController : MonoBehaviour
     public LayerMask layerMask;
     public WeaponHandler wh;
 
+    [Header("Movement Attributes")]
     public int speed;
-    public float rollTime;
-    public float rollSpeed;
+    public float rollDistance;
+    public float rollInvincibilityDelay;
+    public float rollInvinicilityDuration;
+    public float rollCooldown;
+
+    //movement vars
     private Vector3 mousePosition;
     private Rigidbody rb;
     private float movementX;
@@ -24,15 +29,21 @@ public class PlayerController : MonoBehaviour
     private bool isMoving = false;
     private bool isRolling = false;
 
+    // roll vars
+    private const float rollTime = 0.6f; // this number comes from the animation time (1.2s) conducted at double speed (1.2s / 2 = 0.6s)
+    private float rollSpeed;
+    private float rollStartTime;
+    private float rollCooldownRemaining = 0;
+    private Vector3 rollDirection;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();  
         animator = GetComponent<Animator>();
+        rollSpeed = rollDistance / rollTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
         mousePosition = new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, 0);
@@ -47,15 +58,49 @@ public class PlayerController : MonoBehaviour
         {
             wh.FireWeapon(WeaponHandler.ProjectileType.bullet);
         }
+
+        rollCooldownRemaining -= Time.deltaTime;
     }
 
      void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementZ);
-        rb.velocity = speed * Time.fixedDeltaTime * movement;
+
+        if(!isRolling)
+        {
+            rb.velocity = speed * Time.fixedDeltaTime * movement;
+        }
+
+        if(isRolling)
+        {
+            float elapsedTime = Time.time - rollStartTime;
+
+            if(elapsedTime < rollTime)
+            {
+                rb.velocity = rollDirection * rollSpeed * Time.fixedDeltaTime;
+            }
+            // roll complete
+            else
+            {
+                animator.SetBool("isRolling", false);
+                isRolling = false;
+                rb.velocity = Vector3.zero;
+
+                //start roll cooldown timer
+                rollCooldownRemaining = rollCooldown;
+            }           
+        }
+    }
+
+    void OnMove(InputValue movementValue)
+    {
+        Vector2 movementVector = movementValue.Get<Vector2>();
+
+        movementX = movementVector.x;
+        movementZ = movementVector.y;
 
         //set movement state for animation
-        if (movement.magnitude > 0)
+        if (movementVector.magnitude > 0)
         {
             animator.SetBool("isMoving", true);
             isMoving = true;
@@ -65,17 +110,6 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isMoving", false);
             isMoving = false;
         }
-
-        //rolling movement
-
-    }
-
-    void OnMove(InputValue movementValue)
-    {
-        Vector2 movementVector = movementValue.Get<Vector2>();
-
-        movementX = movementVector.x;
-        movementZ = movementVector.y;
     }
 
     void OnFire(InputValue fireValue)
@@ -91,37 +125,31 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void OnRoll(InputValue rollValue)
-    {
-        if (Time.timeScale > 0 && !isRolling)
-        {
-            //set rolling state
-            StartCoroutine(RollCoroutine());
-
-            //calculate rolling locomotion
-            Vector3 rollDirection;
-            if (isMoving)
-            {
-                rollDirection = new Vector3(movementX, 0, movementZ).normalized;
-                // HERE - find a way to move player in direction of movement, or player facing if stationary
-            }
-        }
-    }
-
-    IEnumerator RollCoroutine()
-    {
-        isRolling = true;
-        animator.SetBool("isRolling", true);
-        yield return new WaitForSeconds(rollTime);
-        animator.SetBool("isRolling", false);
-        isRolling = false;
-    }
-
     void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Projectile")) {
             Destroy(other.gameObject);
             // deal damage to player
             
+        }
+    }
+
+    void OnRoll(InputValue rollValue)
+    {
+        if (Time.timeScale > 0 && !isRolling && rollCooldownRemaining  <= 0)
+        {
+            isRolling = true;
+            animator.SetBool("isRolling", true);
+
+            rollStartTime = Time.time;
+            //roll in moving direction if moving, or in facing direction (towards cursor) if stationary
+            if (isMoving)
+            {
+                rollDirection = new Vector3(movementX, 0, movementZ).normalized;
+            }
+            else
+            {
+                rollDirection = transform.forward;
+            }
         }
     }
 }
