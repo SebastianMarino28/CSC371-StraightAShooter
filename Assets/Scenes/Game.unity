@@ -2915,6 +2915,7 @@ GameObject:
   - component: {fileID: 1665019274}
   - component: {fileID: 1665019275}
   - component: {fileID: 1665019276}
+  - component: {fileID: 1665019277}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -3046,6 +3047,10 @@ MonoBehaviour:
     m_Bits: 243
   wh: {fileID: 1665019276}
   speed: 400
+  rollDistance: 275
+  rollInvincibilityDelay: 0.2
+  rollInvinicilityDuration: 0.25
+  rollCooldown: 1.5
 --- !u!114 &1665019276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3064,6 +3069,27 @@ MonoBehaviour:
   bulletSound: {fileID: 0}
   bulletSpeed: 20
   bulletCooldown: 0.8
+--- !u!95 &1665019277
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665019268}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 389ca3d9c9d4e4f43b89f75ba8cb2335, type: 3}
+  m_Controller: {fileID: 9100000, guid: 69ce5dd747afb75488c00ed0f554f1d6, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1716057876
 GameObject:
   m_ObjectHideFlags: 0

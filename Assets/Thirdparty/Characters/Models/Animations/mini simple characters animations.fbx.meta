@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Mini Simple Characters Armature|Idle
+      name: Player Idle
       takeName: Mini Simple Tribal Armature|Idle
       internalID: 4377859179230231196
       firstFrame: 0
@@ -62,7 +62,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Mini Simple Characters Armature|Jump
+      name: Player Jump
       takeName: Mini Simple Tribal Armature|Jump
       internalID: -4980162530228075440
       firstFrame: 0
@@ -91,7 +91,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Mini Simple Characters Armature|Loose
+      name: Player Loose
       takeName: Mini Simple Tribal Armature|Loose
       internalID: 1656708315764177654
       firstFrame: 0
@@ -120,7 +120,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Mini Simple Characters Armature|Run
+      name: Player Run
       takeName: Mini Simple Tribal Armature|Run
       internalID: -6217389266773117732
       firstFrame: 0
@@ -149,7 +149,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Mini Simple Characters Armature|TPose
+      name: Play TPose
       takeName: Mini Simple Tribal Armature|TPose
       internalID: 5248203685024377522
       firstFrame: 0
@@ -178,7 +178,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Mini Simple Characters Armature|Walk
+      name: Player Walk
       takeName: Mini Simple Tribal Armature|Walk
       internalID: 2075726249656104597
       firstFrame: 0
