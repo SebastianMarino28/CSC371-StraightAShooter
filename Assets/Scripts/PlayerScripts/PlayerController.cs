@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -35,6 +36,12 @@ public class PlayerController : MonoBehaviour
     private float rollStartTime;
     private float rollCooldownRemaining = 0;
     private Vector3 rollDirection;
+    
+    // health vars
+    private UnityEngine.UI.Image healthBar;
+    public float curHealth;
+    public float maxHealth;
+    private float baseProjectileDamage;
 
 
     void Start()
@@ -42,6 +49,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();  
         animator = GetComponent<Animator>();
         rollSpeed = rollDistance / rollTime;
+        curHealth = 50f;
+        maxHealth = 50f;
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<UnityEngine.UI.Image>();
+        baseProjectileDamage = 5f;
     }
 
     void Update()
@@ -128,7 +139,7 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Projectile")) {
             Destroy(other.gameObject);
-            // deal damage to player
+            TakeDamage(baseProjectileDamage);
             
         }
     }
@@ -150,6 +161,17 @@ public class PlayerController : MonoBehaviour
             {
                 rollDirection = transform.forward;
             }
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if(curHealth > 0) {
+            curHealth -= damage;
+            healthBar.fillAmount = curHealth / maxHealth;
+        }
+        else {      // game over here
+            Debug.Log("You Lose!");
         }
     }
 }
