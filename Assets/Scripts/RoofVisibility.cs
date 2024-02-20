@@ -3,6 +3,7 @@ using UnityEngine;
 public class RoofVisibility : MonoBehaviour
 {
     private MeshRenderer visibility;
+
     void Start()
     {
         visibility = GetComponent<MeshRenderer>();
