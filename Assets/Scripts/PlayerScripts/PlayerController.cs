@@ -1,5 +1,3 @@
-using JetBrains.Annotations;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -51,7 +49,7 @@ public class PlayerController : MonoBehaviour
         rollSpeed = rollDistance / rollTime;
         curHealth = 50f;
         maxHealth = 50f;
-        //healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<UnityEngine.UI.Image>();
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<UnityEngine.UI.Image>();
         baseProjectileDamage = 5f;
     }
 
@@ -136,8 +134,16 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision other) {
+    /*void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Projectile")) {
+            Destroy(other.gameObject);
+            TakeDamage(baseProjectileDamage);
+            
+        }
+    }*/
+
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("Projectile") && !isRolling) {
             Destroy(other.gameObject);
             TakeDamage(baseProjectileDamage);
             
@@ -150,6 +156,7 @@ public class PlayerController : MonoBehaviour
         {
             isRolling = true;
             animator.SetBool("isRolling", true);
+            Debug.Log("ROLLING!");
 
             rollStartTime = Time.time;
             //roll in moving direction if moving, or in facing direction (towards cursor) if stationary

@@ -8,4 +8,12 @@ public class ProjectileHandler : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Projectile"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
 }

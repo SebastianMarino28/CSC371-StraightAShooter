@@ -167,7 +167,7 @@ public class RoomSpawner : MonoBehaviour
             if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false) {
                 // spawn walls blocking off any openings
                 //Instantiate(templates.walls, transform.position, templates.walls.transform.rotation);
-                GameObject prefab = (GameObject)Resources.Load("Prefabs/Walls");
+                GameObject prefab = (GameObject)Resources.Load("Prefabs/All Blocked Doors");
                 Instantiate(prefab, transform.position, prefab.transform.rotation);
                 Destroy(gameObject);
             }
