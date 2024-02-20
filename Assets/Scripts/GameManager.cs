@@ -12,8 +12,24 @@ public class GameManager : MonoBehaviour
         if (instance == null) { instance = this; }
     }
 
-    private void Update()
+    void Update()
     {
-        //timerText.text = "Time: " + Mathf.Floor(Time.timeSinceLevelLoad);
+        float elapsedTime = Time.timeSinceLevelLoad;
+        string formattedTime = FormatTime(elapsedTime);
+        timerText.text = formattedTime;
+    }
+
+    //used chatGPT for this function
+    string FormatTime(float timeInSeconds)
+    {
+        int minutes = Mathf.FloorToInt(timeInSeconds / 60f);
+        int seconds = Mathf.FloorToInt(timeInSeconds % 60f);
+        int milliseconds = Mathf.FloorToInt((timeInSeconds * 1000f) % 1000f);
+
+        // Ensure milliseconds are limited to two digits
+        milliseconds %= 100;
+
+        string formattedTime = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
+        return formattedTime;
     }
 }
