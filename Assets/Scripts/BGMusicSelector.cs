@@ -7,8 +7,12 @@ public class BGMusicSelector : MonoBehaviour
     public AudioSource bgm1;
     public AudioSource bgm2;
 
-    public int selector = 0;
+    private int selector;
 
+    private void Start()
+    {
+        selector = Random.Range(0, 2);
+    }
     void Update()
     {
         if(!bgm1.isPlaying && !bgm2.isPlaying)
