@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public Camera mainCamera;
     public LayerMask layerMask;
     public WeaponHandler wh;
+    public GameObject upgradeScreen;
 
     [Header("Movement Attributes")]
     public int speed;
@@ -148,6 +149,11 @@ public class PlayerController : MonoBehaviour
             TakeDamage(baseProjectileDamage);
             
         }
+        if (other.gameObject.CompareTag("Upgrade")) {
+            Destroy(other.gameObject);
+            upgradeScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     void OnRoll(InputValue rollValue)
@@ -180,5 +186,43 @@ public class PlayerController : MonoBehaviour
         else {      // game over here
             Debug.Log("You Lose!");
         }
+    }
+
+    public void IncreaseMaxHealth()
+    {
+        // implement max health increase
+
+        upgradeScreen.SetActive(false);
+        Time.timeScale = 1;
+    }
+    public void IncreaseSpeed()
+    {
+        // implement speed increase
+        
+        upgradeScreen.SetActive(false);
+        Time.timeScale = 1;
+    }
+    public void IncreaseDamage()
+    {
+        // implement damage increase
+
+        upgradeScreen.SetActive(false);
+        Time.timeScale = 1;
+    }
+    public void Heal(float healAmount)
+    {
+        if (curHealth < maxHealth)
+        {
+            curHealth += healAmount;
+        }
+        if (curHealth > maxHealth)
+        {
+            curHealth = maxHealth;
+        }
+
+        healthBar.fillAmount = curHealth / maxHealth;
+
+        upgradeScreen.SetActive(false);
+        Time.timeScale = 1;
     }
 }

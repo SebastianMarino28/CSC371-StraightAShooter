@@ -8,6 +8,9 @@ public class RoomHandler : MonoBehaviour
     public List<GameObject> enemiesPool = new List<GameObject>();
     private List<GameObject> enemies = new List<GameObject>();
     private bool entered = false;
+    private bool upgradeSpawned = false;
+    public GameObject upgrade;
+    
 
     [Header("Doors and Blockers")]
     public GameObject rightDoor;
@@ -82,6 +85,13 @@ public class RoomHandler : MonoBehaviour
             }
         }
         ToggleDoors(false);
+
+        if (!upgradeSpawned)
+        {
+            GameObject newUpgrade = Instantiate(upgrade);
+            newUpgrade.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+            upgradeSpawned = true;
+        }
     }
 
     public void Enter()

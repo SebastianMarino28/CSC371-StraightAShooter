@@ -4888,6 +4888,7 @@ MonoBehaviour:
   enemiesPool:
   - {fileID: 8607678815973297485, guid: af89017843460c04cb88e6d259265f0a, type: 3}
   - {fileID: 7852532136789000798, guid: 28931c74c189e7f4690be7b4d1b4343a, type: 3}
+  upgrade: {fileID: 3256593905201065530, guid: 64a36eaddc8bd134392a6bcaa7b99d29, type: 3}
   rightDoor: {fileID: 6956584847254205038}
   leftDoor: {fileID: 3853044389932461391}
   topDoor: {fileID: 4797022341661223044}
