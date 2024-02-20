@@ -162,7 +162,6 @@ public class PlayerController : MonoBehaviour
         {
             isRolling = true;
             animator.SetBool("isRolling", true);
-            Debug.Log("ROLLING!");
 
             rollStartTime = Time.time;
             //roll in moving direction if moving, or in facing direction (towards cursor) if stationary
@@ -198,7 +197,7 @@ public class PlayerController : MonoBehaviour
     public void IncreaseSpeed()
     {
         // implement speed increase
-        
+
         upgradeScreen.SetActive(false);
         Time.timeScale = 1;
     }
