@@ -17,21 +17,32 @@ public class RoomHandler : MonoBehaviour
     public GameObject leftBlocker;
     public GameObject topBlocker;
     public GameObject bottomBlocker;
+    public GameObject rightSpawnPoint;
+    public GameObject leftSpawnPoint;
+    public GameObject topSpawnPoint;
+    public GameObject bottomSpawnPoint;
 
 
-    public void configureRoom(bool[] doorConfiguration)
+    public void ConfigureRoom(bool[] doorConfiguration)
     {
         doors = doorConfiguration;
 
-        topDoor.SetActive(doors[0]);
+        topDoor.SetActive(false);
         topBlocker.SetActive(!doors[0]);
-        bottomDoor.SetActive(doors[1]);
+        topSpawnPoint.SetActive(doors[0]);
+
+        bottomDoor.SetActive(false);
         bottomBlocker.SetActive(!doors[1]);
-        leftDoor.SetActive(doors[2]);
+        bottomSpawnPoint.SetActive(doors[1]);
+
+        leftDoor.SetActive(false);
         leftBlocker.SetActive(!doors[2]);
-        rightDoor.SetActive(doors[3]);
+        leftSpawnPoint.SetActive(doors[2]);
+
+        rightDoor.SetActive(false);
         rightBlocker.SetActive(!doors[3]);
+        rightSpawnPoint.SetActive(doors[3]);
     }
-
-
 }
+
+

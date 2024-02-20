@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         rollSpeed = rollDistance / rollTime;
         curHealth = 50f;
         maxHealth = 50f;
-        healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<UnityEngine.UI.Image>();
+        //healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<UnityEngine.UI.Image>();
         baseProjectileDamage = 5f;
     }
 
