@@ -458,11 +458,39 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1798970230677297380, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_text
-      value: Upgrade2
+      value: Increase Speed
       objectReference: {fileID: 0}
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
       value: UpgradeButton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1665019275}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncreaseSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8983048706178607122, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2039,13 +2067,41 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1798970230677297380, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_text
-      value: 'Upgrade1
+      value: 'Increase Maximum Health
 
 '
       objectReference: {fileID: 0}
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
       value: UpgradeButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1665019275}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncreaseMaxHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8983048706178607122, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2370,11 +2426,47 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1798970230677297380, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_text
-      value: Upgrade4
+      value: Heal 20%
       objectReference: {fileID: 0}
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
       value: UpgradeButton (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039960134123117598, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1665019275}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Heal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8983048706178607122, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3714,6 +3806,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 243
   wh: {fileID: 1665019276}
+  upgradeScreen: {fileID: 1687601042}
   speed: 400
   rollDistance: 275
   rollInvincibilityDelay: 0.2
@@ -3882,11 +3975,39 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1798970230677297380, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_text
-      value: Upgrade3
+      value: Increase Damage
       objectReference: {fileID: 0}
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
       value: UpgradeButton (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1665019275}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncreaseDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8983048706178607122, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_LocalPosition.x
