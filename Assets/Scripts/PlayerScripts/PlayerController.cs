@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask layerMask;
     public WeaponHandler wh;
     public GameObject upgradeScreen;
+    public GameObject gameOverScreen;
 
     [Header("Movement Attributes")]
     public int speed;
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();  
         upgradeScreen = GameObject.FindGameObjectWithTag("UpgradeScreen");
+        gameOverScreen = GameObject.FindGameObjectWithTag("GameOverScreen");
         rollSpeed = rollDistance / rollTime;
         curHealth = 50f;
         maxHealth = 50f;
@@ -176,8 +178,11 @@ public class PlayerController : MonoBehaviour
             curHealth -= damage;
             healthBar.fillAmount = curHealth / maxHealth;
         }
-        if(curHealth == 0) {      // game over here
-            Debug.Log("You Lose!");
+        if(curHealth == 0) {
+            gameOverScreen.GetComponent<GameOverBehaviour>().isFadingIn = true;
+            Time.timeScale = 0.0000001f;
+            
+            //Debug.Log("You Lose!");
         }
     }
 

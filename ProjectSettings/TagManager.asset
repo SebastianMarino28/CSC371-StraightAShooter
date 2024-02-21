@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Upgrade
   - UpgradeScreen
+  - GameOverScreen
   layers:
   - Default
   - TransparentFX

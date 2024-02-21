@@ -16,6 +16,7 @@ public class UpgradeScreenBehaviour : MonoBehaviour
         isFadingOut = false;
         fadeTime = 1f;
         alpha = 0f;
+        GetComponent<CanvasGroup>().alpha = 0f;
         alphaStep = .0125f;
     }
 
