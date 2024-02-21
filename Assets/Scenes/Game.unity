@@ -3167,7 +3167,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1798970230677297380, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_text
-      value: Heal 20%
+      value: Heal
       objectReference: {fileID: 0}
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
@@ -4726,8 +4726,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 243
   wh: {fileID: 1665019276}
-  speed: 400
-  damage: 2
+  speed: 350
+  damage: 1
   rollDistance: 275
   rollInvincibilityDelay: 0.2
   rollInvinicilityDuration: 0.25

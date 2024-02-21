@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public float maxHealth;
     private float baseProjectileDamage;
     private float baseMeleeDamage;
+    private bool isInvincible;
 
     void Start()
     {
@@ -142,14 +144,14 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.CompareTag("Enemy") && !isRolling)
+        if (collision.collider.gameObject.CompareTag("Enemy") && !isRolling && !isInvincible)
         {
             TakeDamage(baseMeleeDamage);
         }
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Projectile") && !isRolling) {
+        if (other.gameObject.CompareTag("Projectile") && !isRolling && !isInvincible) {
             Destroy(other.gameObject);
             TakeDamage(baseProjectileDamage);
             
@@ -162,6 +164,8 @@ public class PlayerController : MonoBehaviour
         {
             isRolling = true;
             animator.SetBool("isRolling", true);
+
+            isFiring = false;  // this stops shooting if the player was holding down shoot when they try to roll
 
             rollStartTime = Time.time;
             //roll in moving direction if moving, or in facing direction (towards cursor) if stationary
@@ -181,6 +185,7 @@ public class PlayerController : MonoBehaviour
         if(curHealth > 0) {
             curHealth -= damage;
             healthBar.fillAmount = curHealth / maxHealth;
+            StartCoroutine(Invincibility());
         }
         if(curHealth <= 0) {
             gameOverScreen.GetComponent<GameOverBehaviour>().isFadingIn = true;
@@ -193,21 +198,22 @@ public class PlayerController : MonoBehaviour
     public void IncreaseMaxHealth()
     {
         // implement max health increase
-
+        maxHealth += 5;
+        healthBar.fillAmount = curHealth / maxHealth;
         upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }
     public void IncreaseSpeed()
     {
         // implement speed increase
-        
+        speed += 15;
         upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }
     public void IncreaseDamage()
     {
         // implement damage increase
-
+        damage += 1;
         upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }
@@ -226,5 +232,12 @@ public class PlayerController : MonoBehaviour
 
         upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
+    }
+
+    IEnumerator Invincibility()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(0.5f);
+        isInvincible = false;
     }
 }
