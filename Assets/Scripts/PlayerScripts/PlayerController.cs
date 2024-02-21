@@ -42,15 +42,14 @@ public class PlayerController : MonoBehaviour
     public float maxHealth;
     private float baseProjectileDamage;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();  
-        animator = GetComponent<Animator>();
+        upgradeScreen = GameObject.FindGameObjectWithTag("UpgradeScreen");
         rollSpeed = rollDistance / rollTime;
         curHealth = 50f;
         maxHealth = 50f;
-        healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<UnityEngine.UI.Image>();
+        healthBar = GameObject.Find("HealthBar").GetComponent<UnityEngine.UI.Image>();
         baseProjectileDamage = 5f;
     }
 
@@ -149,11 +148,6 @@ public class PlayerController : MonoBehaviour
             TakeDamage(baseProjectileDamage);
             
         }
-        if (other.gameObject.CompareTag("Upgrade")) {
-            Destroy(other.gameObject);
-            upgradeScreen.SetActive(true);
-            Time.timeScale = 0;
-        }
     }
 
     void OnRoll(InputValue rollValue)
@@ -182,7 +176,7 @@ public class PlayerController : MonoBehaviour
             curHealth -= damage;
             healthBar.fillAmount = curHealth / maxHealth;
         }
-        else {      // game over here
+        if(curHealth == 0) {      // game over here
             Debug.Log("You Lose!");
         }
     }
@@ -190,22 +184,23 @@ public class PlayerController : MonoBehaviour
     public void IncreaseMaxHealth()
     {
         // implement max health increase
+        // Heal()
 
-        upgradeScreen.SetActive(false);
+        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }
     public void IncreaseSpeed()
     {
         // implement speed increase
-
-        upgradeScreen.SetActive(false);
+        
+        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }
     public void IncreaseDamage()
     {
         // implement damage increase
 
-        upgradeScreen.SetActive(false);
+        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }
     public void Heal(float healAmount)
@@ -221,7 +216,7 @@ public class PlayerController : MonoBehaviour
 
         healthBar.fillAmount = curHealth / maxHealth;
 
-        upgradeScreen.SetActive(false);
+        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }
 }
