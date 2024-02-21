@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     public float curHealth;
     public float maxHealth;
     private float baseProjectileDamage;
+    private float baseMeleeDamage;
 
     void Start()
     {
@@ -53,6 +54,8 @@ public class PlayerController : MonoBehaviour
         maxHealth = 50f;
         healthBar = GameObject.Find("HealthBar").GetComponent<UnityEngine.UI.Image>();
         baseProjectileDamage = 5f;
+        baseMeleeDamage = 6f;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -136,13 +139,13 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    /*void OnCollisionEnter(Collision other) {
-        if (other.gameObject.CompareTag("Projectile")) {
-            Destroy(other.gameObject);
-            TakeDamage(baseProjectileDamage);
-            
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage(baseMeleeDamage);
         }
-    }*/
+    }
 
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Projectile") && !isRolling) {
