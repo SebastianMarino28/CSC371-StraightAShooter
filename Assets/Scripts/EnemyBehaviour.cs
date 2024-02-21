@@ -28,6 +28,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (healthAmount <= 0)
         {
+            GameManager.instance.enemiesDestroyed += 1;
             Destroy(gameObject);
         }
 
@@ -41,7 +42,7 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 weaponHandler.FireWeapon(projectileType);
             }
-            Vector3 movement = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+            Vector3 movement = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.fixedDeltaTime);
             rb.MovePosition(movement);
         }
     }

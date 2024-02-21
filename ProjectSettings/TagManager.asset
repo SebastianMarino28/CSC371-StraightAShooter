@@ -13,6 +13,8 @@ TagManager:
   - Upgrade
   - UpgradeScreen
   - GameOverScreen
+  - Boundary
+  - WinScreen
   layers:
   - Default
   - TransparentFX

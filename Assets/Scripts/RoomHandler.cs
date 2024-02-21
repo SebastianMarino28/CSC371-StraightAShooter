@@ -48,6 +48,7 @@ public class RoomHandler : MonoBehaviour
         rightSpawnPoint.SetActive(doors[3]);
 
         SpawnEnemies();
+        GameManager.instance.roomsTotal += 1;
     }
 
     public void ToggleDoors(bool closed)
@@ -88,6 +89,7 @@ public class RoomHandler : MonoBehaviour
 
         if (!upgradeSpawned)
         {
+            GameManager.instance.roomsCleared += 1;
             GameObject newUpgrade = Instantiate(upgrade);
             newUpgrade.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
             upgradeSpawned = true;

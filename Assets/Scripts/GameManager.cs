@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
-
+    public int roomsTotal = 0;
+    public int roomsCleared = 0;
+    public int enemiesDestroyed = 0;
+    private bool won;
+    private GameObject winScreen;
     public static GameManager instance;
 
     private void Awake()
@@ -18,6 +22,14 @@ public class GameManager : MonoBehaviour
         float elapsedTime = Time.timeSinceLevelLoad;
         string formattedTime = FormatTime(elapsedTime);
         timerText.text = formattedTime;
+
+        if (!won && roomsTotal > 0 && (roomsCleared == 20 || roomsTotal == roomsCleared))
+        {
+            // trigger win
+            won = true;
+            GameObject.FindGameObjectWithTag("WinScreen").GetComponent<GameOverBehaviour>().isFadingIn = true;
+            Time.timeScale = 0.0000001f;
+        }
     }
 
     //used chatGPT for this function
