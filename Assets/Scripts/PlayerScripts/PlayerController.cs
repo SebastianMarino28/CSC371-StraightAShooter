@@ -156,7 +156,6 @@ public class PlayerController : MonoBehaviour
         {
             isRolling = true;
             animator.SetBool("isRolling", true);
-            Debug.Log("ROLLING!");
 
             rollStartTime = Time.time;
             //roll in moving direction if moving, or in facing direction (towards cursor) if stationary
