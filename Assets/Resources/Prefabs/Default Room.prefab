@@ -4888,6 +4888,7 @@ MonoBehaviour:
   enemiesPool:
   - {fileID: 8607678815973297485, guid: af89017843460c04cb88e6d259265f0a, type: 3}
   - {fileID: 7852532136789000798, guid: 28931c74c189e7f4690be7b4d1b4343a, type: 3}
+  - {fileID: 3731514416077172870, guid: 92be001b5a54147bb9774429f386f038, type: 3}
   upgrade: {fileID: 3256593905201065530, guid: 64a36eaddc8bd134392a6bcaa7b99d29, type: 3}
   rightDoor: {fileID: 6956584847254205038}
   leftDoor: {fileID: 3853044389932461391}
@@ -5052,6 +5053,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7781176623783134421}
     m_Modifications:
     - target: {fileID: 5714242380774933482, guid: 9a0391f2b3926264c82b109be2a73fbf, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714242380774933482, guid: 9a0391f2b3926264c82b109be2a73fbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1
       objectReference: {fileID: 0}
@@ -5194,6 +5199,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7781176623783134421}
     m_Modifications:
     - target: {fileID: 5714242380774933482, guid: 9a0391f2b3926264c82b109be2a73fbf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714242380774933482, guid: 9a0391f2b3926264c82b109be2a73fbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9
       objectReference: {fileID: 0}
@@ -5264,6 +5273,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7781176623783134421}
     m_Modifications:
+    - target: {fileID: 5714242380774933482, guid: 9a0391f2b3926264c82b109be2a73fbf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.01
+      objectReference: {fileID: 0}
     - target: {fileID: 5714242380774933482, guid: 9a0391f2b3926264c82b109be2a73fbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -5476,6 +5489,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7781176623783134421}
     m_Modifications:
+    - target: {fileID: 5714242380774933482, guid: 9a0391f2b3926264c82b109be2a73fbf, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.01
+      objectReference: {fileID: 0}
     - target: {fileID: 5714242380774933482, guid: 9a0391f2b3926264c82b109be2a73fbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1

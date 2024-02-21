@@ -12,6 +12,7 @@ public class EnemyBehaviour : MonoBehaviour
     public string targetTag;
     private Rigidbody rb;
     public int minDistance;
+    public float speed;
 
     private Vector3 lookDirection;
     void Start()
@@ -20,23 +21,33 @@ public class EnemyBehaviour : MonoBehaviour
         target = GameObject.FindGameObjectWithTag(targetTag);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (healthAmount <= 0)
         {
             Destroy(gameObject);
         }
 
-        lookDirection = (target.transform.position - transform.position).normalized;
-
-        transform.forward = lookDirection;
+        if (speed == 0)
+        {
+            lookDirection = (target.transform.position - transform.position).normalized;
+            transform.forward = lookDirection;
+        }
 
         // try to shoot
-        if (Vector3.Distance(target.transform.position, transform.position) <=  minDistance)
-            weaponHandler.FireWeapon(projectileType);
+        if (Vector3.Distance(target.transform.position, transform.position) <= minDistance)
+        {
+            if (weaponHandler != null)
+            {
+                weaponHandler.FireWeapon(projectileType);
+            }
+            Vector3 movement = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+            rb.MovePosition(movement);
+        }
     }
 
-    void OnCollisionEnter(Collision other) {
+    void OnCollisionEnter(Collision other)
+    {
         if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
