@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public int roomsCleared = 0;
     public int enemiesDestroyed = 0;
     private bool won;
-    private GameObject winScreen;
     public static GameManager instance;
 
     private void Awake()
