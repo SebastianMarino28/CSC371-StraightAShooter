@@ -4726,9 +4726,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 243
   wh: {fileID: 1665019276}
-  upgradeScreen: {fileID: 0}
-  gameOverScreen: {fileID: 0}
   speed: 400
+  damage: 2
   rollDistance: 275
   rollInvincibilityDelay: 0.2
   rollInvinicilityDuration: 0.25
@@ -4751,8 +4750,8 @@ MonoBehaviour:
   centerPoint: {fileID: 1194606311}
   bullet: {fileID: 5126086187398976382, guid: 4f1a05df2a8aa4f4d8b68f2dda736c48, type: 3}
   bulletSound: {fileID: 0}
-  bulletSpeed: 20
-  bulletCooldown: 0.8
+  bulletSpeed: 10
+  bulletCooldown: 0.5
   burst: {fileID: 0}
   burstSound: {fileID: 0}
   burstSpeed: 0

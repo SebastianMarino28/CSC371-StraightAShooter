@@ -8,11 +8,12 @@ public class PlayerController : MonoBehaviour
     public Camera mainCamera;
     public LayerMask layerMask;
     public WeaponHandler wh;
-    public GameObject upgradeScreen;
-    public GameObject gameOverScreen;
+    private GameObject upgradeScreen;
+    private GameObject gameOverScreen;
 
     [Header("Movement Attributes")]
     public int speed;
+    public float damage;
     public float rollDistance;
     public float rollInvincibilityDelay;
     public float rollInvinicilityDuration;
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         mousePosition = new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, 0);
         Ray ray = mainCamera.ScreenPointToRay(mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask) && Time.timeScale > 0.0000001f)
         {
             Vector3 playerized = new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z);
             transform.forward = (playerized - transform.position).normalized;
@@ -128,7 +129,7 @@ public class PlayerController : MonoBehaviour
 
     void OnFire(InputValue fireValue)
     {
-        if (Time.timeScale > 0 && fireValue.isPressed && !isRolling)
+        if (Time.timeScale > 0.0000001f && fireValue.isPressed && !isRolling)
         {
             isFiring = true;
         }
@@ -141,7 +142,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.CompareTag("Enemy"))
+        if (collision.collider.gameObject.CompareTag("Enemy") && !isRolling)
         {
             TakeDamage(baseMeleeDamage);
         }
@@ -157,7 +158,7 @@ public class PlayerController : MonoBehaviour
 
     void OnRoll(InputValue rollValue)
     {
-        if (Time.timeScale > 0 && !isRolling && rollCooldownRemaining  <= 0)
+        if (Time.timeScale > 0.0000001f && !isRolling && rollCooldownRemaining  <= 0)
         {
             isRolling = true;
             animator.SetBool("isRolling", true);

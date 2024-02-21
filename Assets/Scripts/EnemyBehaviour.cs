@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,12 +14,14 @@ public class EnemyBehaviour : MonoBehaviour
     private Rigidbody rb;
     public int minDistance;
     public float speed;
+    private PlayerController playerScript;
 
     private Vector3 lookDirection;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag(targetTag);
+        playerScript = target.GetComponent<PlayerController>();
     }
 
     void FixedUpdate()
@@ -28,11 +31,8 @@ public class EnemyBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (speed == 0)
-        {
-            lookDirection = (target.transform.position - transform.position).normalized;
-            transform.forward = lookDirection;
-        }
+        lookDirection = (target.transform.position - transform.position).normalized;
+        transform.forward = lookDirection;
 
         // try to shoot
         if (Vector3.Distance(target.transform.position, transform.position) <= minDistance)
@@ -51,7 +51,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
-            TakeDamage(5);
+            TakeDamage(playerScript.damage);
         }
     }
 
