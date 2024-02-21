@@ -9,6 +9,7 @@ public class RoomSpawner : MonoBehaviour
     // 4 --> need right door
     private RoomTemplates templates;
     public GameObject room; // this will be an array of room templates later
+    private int roomCutoff = 15;
 
     private bool[] configuration; // array of size 4 to store which doors are open (0 = top, 1 = bottom, 2 = left, 3 = right)
     private int rand;
@@ -25,11 +26,20 @@ public class RoomSpawner : MonoBehaviour
         if (spawned == false) {
             GameObject prefab = (GameObject)Resources.Load("Prefabs/Default Room");
             RoomHandler newRoom = Instantiate(prefab, transform.position, transform.rotation).GetComponent<RoomHandler>();
-            rand = Random.Range(0, 7);
+            if (GameManager.instance.roomsTotal < roomCutoff)
+            {
+                rand = Random.Range(1, 7);
+            }
+            else if (GameManager.instance.roomsTotal >= roomCutoff)
+            {
+                rand = 0;
+            }
+            else
+            {
+                rand = Random.Range(0, 7);
+            }
             if (openingDirection == 1) {
                 // need to spawn a room with a bottom door
-                //rand = Random.Range(0, templates.bottomRooms.Length);
-                //Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
                 switch (rand)
                 {
                     case 0: // bottom
@@ -60,8 +70,6 @@ public class RoomSpawner : MonoBehaviour
             }
             else if (openingDirection == 2) {
                 // need to spawn a room with a top door
-                //rand = Random.Range(0, templates.topRooms.Length);
-                //Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
                 switch (rand)
                 {
                 case 0: // top
@@ -92,8 +100,6 @@ public class RoomSpawner : MonoBehaviour
             }
             else if (openingDirection == 3) {
                 // need to spawn a room with a left door
-                //rand = Random.Range(0, templates.leftRooms.Length);
-                //Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
                 switch (rand)
                 {
                 case 0: // left
@@ -124,8 +130,6 @@ public class RoomSpawner : MonoBehaviour
             }
             else if (openingDirection == 4) {
                 // need to spawn a room with a right door
-                //rand = Random.Range(0, templates.rightRooms.Length);
-                //Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
                 switch (rand)
                 {
                 case 0: // right
@@ -165,8 +169,7 @@ public class RoomSpawner : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.CompareTag("RoomSpawnPoint") && other.GetComponent<RoomSpawner>() != null) {
             if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false) {
-                // spawn walls blocking off any openings
-                //Instantiate(templates.walls, transform.position, templates.walls.transform.rotation);
+                // spawn blocked doors blocking off any openings
                 GameObject prefab = (GameObject)Resources.Load("Prefabs/All Blocked Doors");
                 Instantiate(prefab, transform.position, prefab.transform.rotation);
                 Destroy(gameObject);

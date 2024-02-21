@@ -213,7 +213,7 @@ public class PlayerController : MonoBehaviour
     public void IncreaseDamage()
     {
         // implement damage increase
-        damage += 1;
+        damage += 0.75f;
         upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }

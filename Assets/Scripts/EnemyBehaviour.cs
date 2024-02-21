@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class EnemyBehaviour : MonoBehaviour
     private Rigidbody rb;
     public int minDistance;
     public float speed;
+    private bool idling = true;
     private PlayerController playerScript;
 
     private Vector3 lookDirection;
@@ -22,6 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag(targetTag);
         playerScript = target.GetComponent<PlayerController>();
+        StartCoroutine(Idle());
     }
 
     void FixedUpdate()
@@ -36,7 +39,7 @@ public class EnemyBehaviour : MonoBehaviour
         transform.forward = lookDirection;
 
         // try to shoot
-        if (Vector3.Distance(target.transform.position, transform.position) <= minDistance)
+        if (Vector3.Distance(target.transform.position, transform.position) <= minDistance && !idling)
         {
             if (weaponHandler != null)
             {
@@ -60,5 +63,12 @@ public class EnemyBehaviour : MonoBehaviour
     {
         healthAmount -= damage;
         healthBar.fillAmount = healthAmount / maxHealth;
+    }
+
+    IEnumerator Idle()
+    {
+        idling = true;
+        yield return new WaitForSeconds(0.5f);
+        idling = false;
     }
 }

@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         string formattedTime = FormatTime(elapsedTime);
         timerText.text = formattedTime;
 
-        if (!won && roomsTotal > 0 && (roomsCleared == 20 || roomsTotal == roomsCleared))
+        if (!won && roomsTotal > 0 && roomsTotal == roomsCleared)
         {
             // trigger win
             won = true;

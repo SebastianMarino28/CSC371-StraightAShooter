@@ -1,13 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class RoomHandler : MonoBehaviour
 {
     // 4 doors: 0 = top, 1 = bottom, 2 = left, 3 = right. If true, door in that location. Else, blocker.
     private bool[] doors;
-    public List<GameObject> enemiesPool = new List<GameObject>();
+    public List<GameObject> enemiesPoolEasy = new List<GameObject>();
+    public List<GameObject> enemiesPoolMedium = new List<GameObject>();
+    public List<GameObject> enemiesPoolHard = new List<GameObject>();
     private List<GameObject> enemies = new List<GameObject>();
     private bool entered = false;
+    private bool enemiesSpawned = false;
     private bool upgradeSpawned = false;
     public GameObject upgrade;
     
@@ -47,7 +51,6 @@ public class RoomHandler : MonoBehaviour
         rightBlocker.SetActive(!doors[3]);
         rightSpawnPoint.SetActive(doors[3]);
 
-        SpawnEnemies();
         GameManager.instance.roomsTotal += 1;
     }
 
@@ -59,10 +62,11 @@ public class RoomHandler : MonoBehaviour
         if (doors[3]) { rightDoor.SetActive(closed); }
     }
 
-    public void SpawnEnemies()
+    public void SpawnEnemies(List<GameObject> enemiesPool)
     {
         if (enemiesPool.Count > 0)
         {
+            enemiesSpawned = true;
             int rand = Random.Range(0, 4);
             for (int i = 0; i <= rand; i++)
             {
@@ -78,30 +82,52 @@ public class RoomHandler : MonoBehaviour
 
     public void Update()
     {
-        for (int i = 0; i < enemies.Count; i++)
+        if (enemiesSpawned)
         {
-            if (enemies[i] != null)
+            for (int i = 0; i < enemies.Count; i++)
             {
-                return;
+                if (enemies[i] != null)
+                {
+                    return;
+                }
+            }
+            ToggleDoors(false);
+
+            if (!upgradeSpawned)
+            {
+                GameManager.instance.roomsCleared += 1;
+                GameObject newUpgrade = Instantiate(upgrade);
+                newUpgrade.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+                upgradeSpawned = true;
             }
         }
-        ToggleDoors(false);
-
-        if (!upgradeSpawned)
-        {
-            GameManager.instance.roomsCleared += 1;
-            GameObject newUpgrade = Instantiate(upgrade);
-            newUpgrade.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-            upgradeSpawned = true;
-        }
+        
     }
 
     public void Enter()
     {
         if (!entered)
         {
+            StartCoroutine(SpawnDelay());
             ToggleDoors(true);
             entered = true;
+        }
+    }
+
+    IEnumerator SpawnDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        if (GameManager.instance.roomsCleared <= GameManager.instance.roomsTotal/3)
+        {
+            SpawnEnemies(enemiesPoolEasy);
+        }
+        else if (GameManager.instance.roomsCleared > GameManager.instance.roomsTotal/3 && GameManager.instance.roomsCleared <= 2*GameManager.instance.roomsTotal/3)
+        {
+            SpawnEnemies(enemiesPoolMedium);
+        }
+        else if (GameManager.instance.roomsCleared > 2*GameManager.instance.roomsTotal/3 && GameManager.instance.roomsCleared <= GameManager.instance.roomsTotal)
+        {
+            SpawnEnemies(enemiesPoolHard);
         }
     }
 }
