@@ -181,18 +181,17 @@ public class PlayerController : MonoBehaviour
             curHealth -= damage;
             healthBar.fillAmount = curHealth / maxHealth;
         }
-        if(curHealth == 0) {
+        if(curHealth <= 0) {
             gameOverScreen.GetComponent<GameOverBehaviour>().isFadingIn = true;
             Time.timeScale = 0.0000001f;
             
-            //Debug.Log("You Lose!");
+            Debug.Log("You Lose!");
         }
     }
 
     public void IncreaseMaxHealth()
     {
         // implement max health increase
-        // Heal()
 
         upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
