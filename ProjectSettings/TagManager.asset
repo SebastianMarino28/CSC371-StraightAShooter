@@ -10,6 +10,9 @@ TagManager:
   - EndWall
   - Projectile
   - Enemy
+  - Upgrade
+  - UpgradeScreen
+  - GameOverScreen
   layers:
   - Default
   - TransparentFX

@@ -1,14 +1,15 @@
-using JetBrains.Annotations;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public Camera mainCamera;
     public LayerMask layerMask;
     public WeaponHandler wh;
+    public GameObject upgradeScreen;
+    public GameObject gameOverScreen;
 
     [Header("Movement Attributes")]
     public int speed;
@@ -35,13 +36,23 @@ public class PlayerController : MonoBehaviour
     private float rollStartTime;
     private float rollCooldownRemaining = 0;
     private Vector3 rollDirection;
-
+    
+    // health vars
+    private UnityEngine.UI.Image healthBar;
+    public float curHealth;
+    public float maxHealth;
+    private float baseProjectileDamage;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();  
-        animator = GetComponent<Animator>();
+        upgradeScreen = GameObject.FindGameObjectWithTag("UpgradeScreen");
+        gameOverScreen = GameObject.FindGameObjectWithTag("GameOverScreen");
         rollSpeed = rollDistance / rollTime;
+        curHealth = 50f;
+        maxHealth = 50f;
+        healthBar = GameObject.Find("HealthBar").GetComponent<UnityEngine.UI.Image>();
+        baseProjectileDamage = 5f;
     }
 
     void Update()
@@ -125,10 +136,18 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision other) {
+    /*void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Projectile")) {
             Destroy(other.gameObject);
-            // deal damage to player
+            TakeDamage(baseProjectileDamage);
+            
+        }
+    }*/
+
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("Projectile") && !isRolling) {
+            Destroy(other.gameObject);
+            TakeDamage(baseProjectileDamage);
             
         }
     }
@@ -151,5 +170,58 @@ public class PlayerController : MonoBehaviour
                 rollDirection = transform.forward;
             }
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if(curHealth > 0) {
+            curHealth -= damage;
+            healthBar.fillAmount = curHealth / maxHealth;
+        }
+        if(curHealth == 0) {
+            gameOverScreen.GetComponent<GameOverBehaviour>().isFadingIn = true;
+            Time.timeScale = 0.0000001f;
+            
+            //Debug.Log("You Lose!");
+        }
+    }
+
+    public void IncreaseMaxHealth()
+    {
+        // implement max health increase
+        // Heal()
+
+        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
+        Time.timeScale = 1;
+    }
+    public void IncreaseSpeed()
+    {
+        // implement speed increase
+        
+        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
+        Time.timeScale = 1;
+    }
+    public void IncreaseDamage()
+    {
+        // implement damage increase
+
+        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
+        Time.timeScale = 1;
+    }
+    public void Heal(float healAmount)
+    {
+        if (curHealth < maxHealth)
+        {
+            curHealth += healAmount;
+        }
+        if (curHealth > maxHealth)
+        {
+            curHealth = maxHealth;
+        }
+
+        healthBar.fillAmount = curHealth / maxHealth;
+
+        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
+        Time.timeScale = 1;
     }
 }
