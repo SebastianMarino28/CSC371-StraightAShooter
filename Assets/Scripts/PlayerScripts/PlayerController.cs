@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public WeaponHandler wh;
     private GameObject upgradeScreen;
     private GameObject gameOverScreen;
+    public GameObject[] upgradeButtons;
 
     [Header("Movement Attributes")]
     public int speed;
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();  
         upgradeScreen = GameObject.FindGameObjectWithTag("UpgradeScreen");
         gameOverScreen = GameObject.FindGameObjectWithTag("GameOverScreen");
+        upgradeButtons = new GameObject[4];
         rollSpeed = rollDistance / rollTime;
         curHealth = 50f;
         maxHealth = 50f;
@@ -198,27 +200,28 @@ public class PlayerController : MonoBehaviour
     public void IncreaseMaxHealth()
     {
         // implement max health increase
+        doFadeOutBehaviour();
         maxHealth += 5;
         healthBar.fillAmount = curHealth / maxHealth;
-        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }
     public void IncreaseSpeed()
     {
         // implement speed increase
+        doFadeOutBehaviour();
         speed += 15;
-        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }
     public void IncreaseDamage()
     {
         // implement damage increase
+        doFadeOutBehaviour();
         damage += 0.75f;
-        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }
     public void Heal(float healAmount)
     {
+        doFadeOutBehaviour();
         if (curHealth < maxHealth)
         {
             curHealth += healAmount;
@@ -230,8 +233,15 @@ public class PlayerController : MonoBehaviour
 
         healthBar.fillAmount = curHealth / maxHealth;
 
-        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
+    }
+
+    void doFadeOutBehaviour() {
+        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingIn = false;
+        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
+        foreach(GameObject g in upgradeButtons) {
+            g.GetComponentInChildren<UnityEngine.UI.Button>().enabled = false;
+        }
     }
 
     IEnumerator Invincibility()

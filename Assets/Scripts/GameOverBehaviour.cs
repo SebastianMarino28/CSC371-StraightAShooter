@@ -17,7 +17,7 @@ public class GameOverBehaviour : MonoBehaviour
         fadeTime = 3f;
         alpha = 0f;
         GetComponent<CanvasGroup>().alpha = 0f;
-        alphaStep = .001f;
+        alphaStep = .005f;
     }
 
     void Update()
