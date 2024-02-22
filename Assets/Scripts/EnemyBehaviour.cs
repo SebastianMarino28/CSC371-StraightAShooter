@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,35 +15,37 @@ public class EnemyBehaviour : MonoBehaviour
     private Rigidbody rb;
     public int minDistance;
     public float speed;
+    private bool idling = true;
+    private PlayerController playerScript;
 
     private Vector3 lookDirection;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag(targetTag);
+        playerScript = target.GetComponent<PlayerController>();
+        StartCoroutine(Idle());
     }
 
     void FixedUpdate()
     {
         if (healthAmount <= 0)
         {
+            GameManager.instance.enemiesDestroyed += 1;
             Destroy(gameObject);
         }
 
-        if (speed == 0)
-        {
-            lookDirection = (target.transform.position - transform.position).normalized;
-            transform.forward = lookDirection;
-        }
+        lookDirection = (target.transform.position - transform.position).normalized;
+        transform.forward = lookDirection;
 
         // try to shoot
-        if (Vector3.Distance(target.transform.position, transform.position) <= minDistance)
+        if (Vector3.Distance(target.transform.position, transform.position) <= minDistance && !idling)
         {
             if (weaponHandler != null)
             {
                 weaponHandler.FireWeapon(projectileType);
             }
-            Vector3 movement = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+            Vector3 movement = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.fixedDeltaTime);
             rb.MovePosition(movement);
         }
     }
@@ -51,7 +55,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
-            TakeDamage(5);
+            TakeDamage(playerScript.damage);
         }
     }
 
@@ -59,5 +63,12 @@ public class EnemyBehaviour : MonoBehaviour
     {
         healthAmount -= damage;
         healthBar.fillAmount = healthAmount / maxHealth;
+    }
+
+    IEnumerator Idle()
+    {
+        idling = true;
+        yield return new WaitForSeconds(0.5f);
+        idling = false;
     }
 }

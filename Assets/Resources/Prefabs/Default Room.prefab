@@ -841,6 +841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 2
   room: {fileID: 7613204281379754010}
+  roomCutoff: 25
 --- !u!65 &78812289893302561
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1845,6 +1846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 3
   room: {fileID: 7613204281379754010}
+  roomCutoff: 25
 --- !u!65 &6524942780294910617
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1941,6 +1943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 4
   room: {fileID: 7613204281379754010}
+  roomCutoff: 25
 --- !u!65 &1865628987988021612
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2945,6 +2948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 1
   room: {fileID: 7613204281379754010}
+  roomCutoff: 25
 --- !u!65 &8215834550285699036
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4885,10 +4889,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813e33cfa4f3d48c28e74de5f99b9730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesPool:
+  enemiesPoolEasy:
   - {fileID: 8607678815973297485, guid: af89017843460c04cb88e6d259265f0a, type: 3}
   - {fileID: 7852532136789000798, guid: 28931c74c189e7f4690be7b4d1b4343a, type: 3}
   - {fileID: 3731514416077172870, guid: 92be001b5a54147bb9774429f386f038, type: 3}
+  enemiesPoolMedium:
+  - {fileID: 479444273255196516, guid: 007bb090562109648a4a3fda3c9247bc, type: 3}
+  - {fileID: 8304554779994692838, guid: c64006302abd5974c976697dc6adde68, type: 3}
+  - {fileID: 8882850868557472372, guid: bb525e3a19284714aa6dc6ade69d451c, type: 3}
+  enemiesPoolHard:
+  - {fileID: 4458680785795908983, guid: ef57ba92e68c25c4498a6164b6fba508, type: 3}
+  - {fileID: 896765756978013790, guid: d6f435ef55cb2eb49b2483aae1c42936, type: 3}
+  - {fileID: 296750618256999584, guid: 004fe341ff5c9bb4a82cab6be63fe8e8, type: 3}
   upgrade: {fileID: 3256593905201065530, guid: 64a36eaddc8bd134392a6bcaa7b99d29, type: 3}
   rightDoor: {fileID: 6956584847254205038}
   leftDoor: {fileID: 3853044389932461391}
@@ -5066,7 +5078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5714242380774933482, guid: 9a0391f2b3926264c82b109be2a73fbf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11
+      value: -11.01
       objectReference: {fileID: 0}
     - target: {fileID: 5714242380774933482, guid: 9a0391f2b3926264c82b109be2a73fbf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5279,7 +5291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5714242380774933482, guid: 9a0391f2b3926264c82b109be2a73fbf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11
+      value: -11.01
       objectReference: {fileID: 0}
     - target: {fileID: 5714242380774933482, guid: 9a0391f2b3926264c82b109be2a73fbf, type: 3}
       propertyPath: m_LocalPosition.y

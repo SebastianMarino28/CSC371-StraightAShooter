@@ -155,8 +155,10 @@ MonoBehaviour:
   healthAmount: 10
   healthBar: {fileID: 8464007888956762365}
   weaponHandler: {fileID: 3014540526519328489}
+  projectileType: 0
   targetTag: Player
-  minDistance: 6
+  minDistance: 8
+  speed: 0
 --- !u!114 &3014540526519328489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,8 +175,13 @@ MonoBehaviour:
   centerPoint: {fileID: 8866883891117255705}
   bullet: {fileID: 8780001088802693424, guid: 134c5e4f7fa51a04c95b53b7db4e4155, type: 3}
   bulletSound: {fileID: 0}
-  bulletSpeed: 10
+  bulletSpeed: 8
   bulletCooldown: 2
+  burst: {fileID: 0}
+  burstSound: {fileID: 0}
+  burstSpeed: 0
+  burstCooldown: 0
+  numBurstProjectiles: 0
 --- !u!1 &8866883891117255705
 GameObject:
   m_ObjectHideFlags: 0

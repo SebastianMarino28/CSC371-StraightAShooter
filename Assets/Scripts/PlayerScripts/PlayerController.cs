@@ -2,17 +2,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     public Camera mainCamera;
     public LayerMask layerMask;
     public WeaponHandler wh;
-    public GameObject upgradeScreen;
-    public GameObject gameOverScreen;
+    private GameObject upgradeScreen;
+    private GameObject gameOverScreen;
 
     [Header("Movement Attributes")]
     public int speed;
+    public float damage;
     public float rollDistance;
     public float rollInvincibilityDelay;
     public float rollInvinicilityDuration;
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public float maxHealth;
     private float baseProjectileDamage;
     private float baseMeleeDamage;
+    private bool isInvincible;
 
     void Start()
     {
@@ -62,7 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         mousePosition = new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, 0);
         Ray ray = mainCamera.ScreenPointToRay(mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask) && Time.timeScale > 0.0000001f)
         {
             Vector3 playerized = new Vector3(raycastHit.point.x, transform.position.y, raycastHit.point.z);
             transform.forward = (playerized - transform.position).normalized;
@@ -128,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
     void OnFire(InputValue fireValue)
     {
-        if (Time.timeScale > 0 && fireValue.isPressed && !isRolling)
+        if (Time.timeScale > 0.0000001f && fireValue.isPressed && !isRolling)
         {
             isFiring = true;
         }
@@ -141,14 +144,14 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.CompareTag("Enemy"))
+        if (collision.collider.gameObject.CompareTag("Enemy") && !isRolling && !isInvincible)
         {
             TakeDamage(baseMeleeDamage);
         }
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Projectile") && !isRolling) {
+        if (other.gameObject.CompareTag("Projectile") && !isRolling && !isInvincible) {
             Destroy(other.gameObject);
             TakeDamage(baseProjectileDamage);
             
@@ -157,10 +160,12 @@ public class PlayerController : MonoBehaviour
 
     void OnRoll(InputValue rollValue)
     {
-        if (Time.timeScale > 0 && !isRolling && rollCooldownRemaining  <= 0)
+        if (Time.timeScale > 0.0000001f && !isRolling && rollCooldownRemaining  <= 0)
         {
             isRolling = true;
             animator.SetBool("isRolling", true);
+
+            isFiring = false;  // this stops shooting if the player was holding down shoot when they try to roll
 
             rollStartTime = Time.time;
             //roll in moving direction if moving, or in facing direction (towards cursor) if stationary
@@ -180,34 +185,35 @@ public class PlayerController : MonoBehaviour
         if(curHealth > 0) {
             curHealth -= damage;
             healthBar.fillAmount = curHealth / maxHealth;
+            StartCoroutine(Invincibility());
         }
-        if(curHealth == 0) {
+        if(curHealth <= 0) {
             gameOverScreen.GetComponent<GameOverBehaviour>().isFadingIn = true;
             Time.timeScale = 0.0000001f;
             
-            //Debug.Log("You Lose!");
+            Debug.Log("You Lose!");
         }
     }
 
     public void IncreaseMaxHealth()
     {
         // implement max health increase
-        // Heal()
-
+        maxHealth += 5;
+        healthBar.fillAmount = curHealth / maxHealth;
         upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }
     public void IncreaseSpeed()
     {
         // implement speed increase
-        
+        speed += 15;
         upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }
     public void IncreaseDamage()
     {
         // implement damage increase
-
+        damage += 0.75f;
         upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
     }
@@ -226,5 +232,12 @@ public class PlayerController : MonoBehaviour
 
         upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
         Time.timeScale = 1;
+    }
+
+    IEnumerator Invincibility()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(0.5f);
+        isInvincible = false;
     }
 }
