@@ -220,6 +220,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &65284393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7039960134123117598, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+  m_PrefabInstance: {fileID: 1705762150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &85050635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7039960134123117598, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+  m_PrefabInstance: {fileID: 1093014765}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &149553099
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +366,11 @@ Transform:
   - {fileID: 372791507}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &223974226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7039960134123117598, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+  m_PrefabInstance: {fileID: 1289095012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &279083313
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +717,10 @@ PrefabInstance:
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
       value: UpgradeButton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -3159,6 +3178,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgradeButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -3652,6 +3683,10 @@ PrefabInstance:
     - target: {fileID: 7039960134123117598, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -4795,6 +4830,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1577749883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7039960134123117598, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+  m_PrefabInstance: {fileID: 302515583}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1610759706
 GameObject:
   m_ObjectHideFlags: 0
@@ -5530,6 +5570,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFadingIn: 0
   isFadingOut: 0
+  buttons:
+  - {fileID: 85050635}
+  - {fileID: 1577749883}
+  - {fileID: 65284393}
+  - {fileID: 223974226}
   fadeTime: 0
 --- !u!1001 &1705762150
 PrefabInstance:
@@ -5546,6 +5591,10 @@ PrefabInstance:
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
       value: UpgradeButton (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

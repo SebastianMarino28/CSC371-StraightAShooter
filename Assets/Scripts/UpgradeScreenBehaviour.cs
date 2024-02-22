@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeScreenBehaviour : MonoBehaviour
 {   
     public Boolean isFadingIn;
     public Boolean isFadingOut;
+    public List<GameObject> buttons;
     public float fadeTime; 
     private float alpha;
     private float alphaStep;
@@ -35,6 +37,10 @@ public class UpgradeScreenBehaviour : MonoBehaviour
         if(alpha >= 1f) {
             alpha = 1f;
             isFadingIn = false;
+            for (int i = 0; i < buttons.Count; i++)
+            {
+                buttons[i].GetComponent<Button>().interactable = true;
+            }
         }
         else {
             alpha += alphaStep + fadeTime * Time.deltaTime;
@@ -50,6 +56,10 @@ public class UpgradeScreenBehaviour : MonoBehaviour
         }
         else {
             alpha -= alphaStep + fadeTime * Time.deltaTime;
+            for (int i = 0; i < buttons.Count; i++)
+            {
+                buttons[i].GetComponent<Button>().interactable = false;
+            }
         }
         GetComponent<CanvasGroup>().alpha = alpha;
     }
