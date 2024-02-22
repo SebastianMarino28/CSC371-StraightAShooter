@@ -701,7 +701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
-      value: UpgradeButton (1)
+      value: UpgradeSpeed
       objectReference: {fileID: 0}
     - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -779,6 +779,11 @@ PrefabInstance:
 --- !u!4 &302515584 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8983048706178607122, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+  m_PrefabInstance: {fileID: 302515583}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &302515585 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
   m_PrefabInstance: {fileID: 302515583}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &332698264
@@ -3157,7 +3162,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
-      value: UpgradeButton
+      value: UpgradeMaxHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -3235,6 +3244,11 @@ PrefabInstance:
 --- !u!4 &1093014766 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8983048706178607122, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+  m_PrefabInstance: {fileID: 1093014765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1093014767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
   m_PrefabInstance: {fileID: 1093014765}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1153794986
@@ -3647,7 +3661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
-      value: UpgradeButton (3)
+      value: UpgradeHeal
       objectReference: {fileID: 0}
     - target: {fileID: 7039960134123117598, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_IsActive
@@ -3733,6 +3747,11 @@ PrefabInstance:
 --- !u!4 &1289095013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8983048706178607122, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+  m_PrefabInstance: {fileID: 1289095012}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1289095014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
   m_PrefabInstance: {fileID: 1289095012}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1350878346
@@ -5343,6 +5362,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 243
   wh: {fileID: 1665019276}
+  upgradeButtons:
+  - {fileID: 1093014767}
+  - {fileID: 302515585}
+  - {fileID: 1705762152}
+  - {fileID: 1289095014}
   speed: 350
   damage: 1
   rollDistance: 275
@@ -5530,6 +5554,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFadingIn: 0
   isFadingOut: 0
+  upgradeButtons:
+  - {fileID: 1093014767}
+  - {fileID: 302515585}
+  - {fileID: 1705762152}
+  - {fileID: 1289095014}
   fadeTime: 0
 --- !u!1001 &1705762150
 PrefabInstance:
@@ -5545,7 +5574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
-      value: UpgradeButton (2)
+      value: UpgradeDamage
       objectReference: {fileID: 0}
     - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -5623,6 +5652,11 @@ PrefabInstance:
 --- !u!4 &1705762151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8983048706178607122, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
+  m_PrefabInstance: {fileID: 1705762150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1705762152 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
   m_PrefabInstance: {fileID: 1705762150}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1716057876
