@@ -1015,7 +1015,7 @@ GameObject:
   - component: {fileID: 824325722327141670}
   - component: {fileID: 5596315342737615852}
   m_Layer: 0
-  m_Name: RoomSpawnPoint
+  m_Name: RoomSpawnPoint (Top)
   m_TagString: RoomSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1048,7 +1048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93e9a5d6b4c562459128aba8b33acfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openingDirection: 1
+  openingDirection: 0
   room: {fileID: 0}
 --- !u!65 &824325722327141670
 BoxCollider:
@@ -1786,7 +1786,7 @@ GameObject:
   - component: {fileID: 900171639526119402}
   - component: {fileID: 5989273477426302675}
   m_Layer: 0
-  m_Name: RoomSpawnPoint (2)
+  m_Name: RoomSpawnPoint (Bottom)
   m_TagString: RoomSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1819,7 +1819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93e9a5d6b4c562459128aba8b33acfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openingDirection: 2
+  openingDirection: 1
   room: {fileID: 0}
 --- !u!65 &900171639526119402
 BoxCollider:
@@ -1937,7 +1937,7 @@ GameObject:
   - component: {fileID: 7501865209175869079}
   - component: {fileID: 2775328375953317526}
   m_Layer: 0
-  m_Name: RoomSpawnPoint (3)
+  m_Name: RoomSpawnPoint (Left)
   m_TagString: RoomSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1970,7 +1970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93e9a5d6b4c562459128aba8b33acfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openingDirection: 4
+  openingDirection: 2
   room: {fileID: 0}
 --- !u!65 &7501865209175869079
 BoxCollider:
@@ -3849,7 +3849,7 @@ GameObject:
   - component: {fileID: 1346690889976990908}
   - component: {fileID: 3305027515186271126}
   m_Layer: 0
-  m_Name: RoomSpawnPoint (1)
+  m_Name: RoomSpawnPoint (Right)
   m_TagString: RoomSpawnPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4851,6 +4851,10 @@ PrefabInstance:
     - target: {fileID: 517170505160054678, guid: 25bb23c8ec676c345afbb541781906b0, type: 3}
       propertyPath: m_Name
       value: Roof
+      objectReference: {fileID: 0}
+    - target: {fileID: 517170505160054678, guid: 25bb23c8ec676c345afbb541781906b0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5578966360104554354, guid: 25bb23c8ec676c345afbb541781906b0, type: 3}
       propertyPath: m_LocalPosition.x

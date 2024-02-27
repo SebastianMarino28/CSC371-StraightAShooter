@@ -839,9 +839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93e9a5d6b4c562459128aba8b33acfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openingDirection: 2
+  openingDirection: 0
   room: {fileID: 7613204281379754010}
-  roomCutoff: 25
 --- !u!65 &78812289893302561
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1844,9 +1843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93e9a5d6b4c562459128aba8b33acfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openingDirection: 3
+  openingDirection: 2
   room: {fileID: 7613204281379754010}
-  roomCutoff: 25
 --- !u!65 &6524942780294910617
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1941,9 +1939,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93e9a5d6b4c562459128aba8b33acfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openingDirection: 4
+  openingDirection: 3
   room: {fileID: 7613204281379754010}
-  roomCutoff: 25
 --- !u!65 &1865628987988021612
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2948,7 +2945,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 1
   room: {fileID: 7613204281379754010}
-  roomCutoff: 25
 --- !u!65 &8215834550285699036
 BoxCollider:
   m_ObjectHideFlags: 0
