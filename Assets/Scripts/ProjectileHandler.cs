@@ -2,10 +2,17 @@ using UnityEngine;
 
 public class ProjectileHandler : MonoBehaviour
 {
+    public AudioSource collisionSound;
+
     void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            collisionSound.Play();
         }
     }
 
@@ -14,6 +21,11 @@ public class ProjectileHandler : MonoBehaviour
         if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            collisionSound.Play();
         }
     }
 }

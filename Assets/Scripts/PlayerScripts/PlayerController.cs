@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private GameObject gameOverScreen;
 
 
-    [Header("Movement Attributes")]
+    [Header("Player Attributes")]
     public int speed;
     public float damage;
     public float rollDistance;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private bool isMoving = false;
     private bool isRolling = false;
-
+    // use isFiring for attack animation state
 
     // roll vars
     private const float rollTime = 0.6f; // this number comes from the animation time (1.2s) conducted at double speed (1.2s / 2 = 0.6s)
@@ -152,10 +152,12 @@ public class PlayerController : MonoBehaviour
         if (Time.timeScale > 0.0000001f && fireValue.isPressed && !isRolling)
         {
             isFiring = true;
+           // animator.SetBool("isAttacking", true);
         }
         else
         {
             isFiring = false;
+           // animator.SetBool("isAttacking", false);
         }
        
     }
