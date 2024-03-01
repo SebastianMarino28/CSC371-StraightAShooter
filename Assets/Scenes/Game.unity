@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -184,27 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a896b6995d74df6429cea0a895936fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bottomRooms:
-  - {fileID: 9133770538544932543, guid: c7d6e644a320da849bf172a4a001ef69, type: 3}
-  - {fileID: 637660359374288463, guid: 197a07a682c4a6a4ab823bf4b3d8e85c, type: 3}
-  - {fileID: 7898330491777577551, guid: 66db942855b50bf43adf7dbce9cec529, type: 3}
-  - {fileID: 5470755547064580173, guid: 5c9008a55af4e26469860cc07f26a042, type: 3}
-  topRooms:
-  - {fileID: 8973212684185699347, guid: 54e532333ae114d41a316c606693e390, type: 3}
-  - {fileID: 5096726041645110550, guid: 63a677ed02ffe8e4aaf6cfccf86cc8ef, type: 3}
-  - {fileID: 7898330491777577551, guid: 66db942855b50bf43adf7dbce9cec529, type: 3}
-  - {fileID: 329915111977999569, guid: 97ae1e832ec44e34d88aa3b9b15546c7, type: 3}
-  leftRooms:
-  - {fileID: 6838786075435331883, guid: e2cb17478a37784498b56977564ac3fa, type: 3}
-  - {fileID: 329915111977999569, guid: 97ae1e832ec44e34d88aa3b9b15546c7, type: 3}
-  - {fileID: 8901810183692381923, guid: 0ad7b7fcc0617d2419981e6dd1f8d73f, type: 3}
-  - {fileID: 637660359374288463, guid: 197a07a682c4a6a4ab823bf4b3d8e85c, type: 3}
-  rightRooms:
-  - {fileID: 1229541716422315698, guid: fa3b2fd936651684fa23c82042d5a63f, type: 3}
-  - {fileID: 5470755547064580173, guid: 5c9008a55af4e26469860cc07f26a042, type: 3}
-  - {fileID: 8901810183692381923, guid: 0ad7b7fcc0617d2419981e6dd1f8d73f, type: 3}
-  - {fileID: 5096726041645110550, guid: 63a677ed02ffe8e4aaf6cfccf86cc8ef, type: 3}
-  walls: {fileID: 1138345258895449283, guid: 6e0a8c7aba19eac4bb5024879865ef00, type: 3}
+  classrooms: []
+  libraries: []
 --- !u!4 &46672760
 Transform:
   m_ObjectHideFlags: 0
@@ -972,7 +953,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 770, y: 420}
+  m_AnchoredPosition: {x: 770, y: 465}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &352621928
@@ -2305,7 +2286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: -21}
+  m_AnchoredPosition: {x: 20, y: 30}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &871852565
@@ -2487,6 +2468,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2575,12 +2557,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d58ad9bbf078414a80b9cca5534aad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1665019268}
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f080e87475d7ca849beaf58000fab503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizLimit: 10
+  vertLimit: 10
+  horizOffset: 20
+  vertOffset: 20
+  cameraHeight: 15
 --- !u!1 &985550008
 GameObject:
   m_ObjectHideFlags: 0
