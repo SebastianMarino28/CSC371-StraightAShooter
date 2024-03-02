@@ -5,17 +5,16 @@ using UnityEngine;
 
 public class UpgradeBehaviour : MonoBehaviour
 {
+    private Animator anim;
 
-    public GameObject upgradeScreen;
-
-    void Awake() {
-        upgradeScreen = GameObject.FindGameObjectWithTag("UpgradeScreen");
+    public void Awake() {
+        anim = GameObject.FindGameObjectWithTag("UpgradeScreen").GetComponent<Animator>();
     }
     
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
-            upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingIn = true;
             Time.timeScale = 0.0000001f;
+            anim.Play("UpgradeFadeIn");
             Destroy(gameObject);
         }
     }
