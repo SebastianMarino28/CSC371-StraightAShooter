@@ -132,4 +132,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc98bf53aa643e42a0956f4afcceca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeScreen: {fileID: 0}
+  upgradeScreenFadeIn: {fileID: -103232641274912808, guid: fd290565ae309ed46aed2e685bf82512, type: 2}
