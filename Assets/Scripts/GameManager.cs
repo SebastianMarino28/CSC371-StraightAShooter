@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
             instance = this;
             AddRoom(0, 0, new bool[]{true, true, true, true});
             SetRoomSeen(0, 0);
+            roomsTotal -= 1;
         }
     }
 
