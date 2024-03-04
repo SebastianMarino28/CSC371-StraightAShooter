@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class RoomSpawner : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class RoomSpawner : MonoBehaviour
                 {
                     if (!configuration[i] && doors>0)
                     {
-                        bool putRoom = (Random.Range(0, 2) == 1);
+                        bool putRoom = (UnityEngine.Random.Range(0, 2) == 1);
                         if (putRoom)
                         {
                             doors--;
@@ -45,8 +46,9 @@ public class RoomSpawner : MonoBehaviour
                 }
             }
 
-
-            newRoom.ConfigureRoom(configuration);
+            int x = (int)Math.Floor(transform.position.x / 20);
+            int y = (int)Math.Floor(transform.position.z / 20);
+            newRoom.ConfigureRoom(x, y, configuration);
 
             spawned = true;
         }

@@ -14,6 +14,8 @@ public class RoomHandler : MonoBehaviour
     private bool enemiesSpawned = false;
     private bool upgradeSpawned = false;
     public GameObject upgrade;
+    public int mapX;
+    public int mapY;
     
 
     [Header("Doors and Blockers")]
@@ -31,7 +33,7 @@ public class RoomHandler : MonoBehaviour
     public GameObject bottomSpawnPoint;
 
 
-    public void ConfigureRoom(bool[] doorConfiguration)
+    public void ConfigureRoom(int x, int y, bool[] doorConfiguration)
     {
         doors = doorConfiguration;
 
@@ -51,7 +53,9 @@ public class RoomHandler : MonoBehaviour
         rightBlocker.SetActive(!doors[3]);
         rightSpawnPoint.SetActive(doors[3]);
 
-        GameManager.instance.roomsTotal += 1;
+        mapX = x;
+        mapY = y;
+        GameManager.instance.AddRoom(x, y, doorConfiguration);
     }
 
     public void ToggleDoors(bool closed)
@@ -111,7 +115,10 @@ public class RoomHandler : MonoBehaviour
             StartCoroutine(SpawnDelay());
             ToggleDoors(true);
             entered = true;
+            GameManager.instance.SetRoomSeen(mapX, mapY);
         }
+        GameManager.instance.mapX = mapX;
+        GameManager.instance.mapY = mapY;
     }
 
     IEnumerator SpawnDelay()
