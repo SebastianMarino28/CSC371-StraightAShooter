@@ -14,6 +14,8 @@ public class RoomSpawner : MonoBehaviour
 
     private bool[] configuration; // array of size 4 to store which doors are open (0 = top, 1 = bottom, 2 = left, 3 = right)
     private bool spawned = false;
+    int roomTypeCount = 2;
+
 
     void Start()
     {
@@ -24,7 +26,7 @@ public class RoomSpawner : MonoBehaviour
     void Spawn()
     {
         if (spawned == false) {
-            int randRoom = UnityEngine.Random.Range(1, 3);
+            int randRoom = UnityEngine.Random.Range(1, roomTypeCount + 1);
             GameObject prefab = (GameObject)Resources.Load("Prefabs/Room" + randRoom);
             RoomHandler newRoom = Instantiate(prefab, transform.position, transform.rotation).GetComponent<RoomHandler>();
             configuration = new bool[] { false, false, false, false };
