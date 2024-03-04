@@ -117,8 +117,6 @@ public class RoomHandler : MonoBehaviour
             entered = true;
             GameManager.instance.SetRoomSeen(mapX, mapY);
         }
-        GameManager.instance.mapX = mapX;
-        GameManager.instance.mapY = mapY;
     }
 
     IEnumerator SpawnDelay()
