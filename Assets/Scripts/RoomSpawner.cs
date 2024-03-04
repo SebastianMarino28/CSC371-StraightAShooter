@@ -24,7 +24,8 @@ public class RoomSpawner : MonoBehaviour
     void Spawn()
     {
         if (spawned == false) {
-            GameObject prefab = (GameObject)Resources.Load("Prefabs/Default Room");
+            int randRoom = UnityEngine.Random.Range(1, 3);
+            GameObject prefab = (GameObject)Resources.Load("Prefabs/Room" + randRoom);
             RoomHandler newRoom = Instantiate(prefab, transform.position, transform.rotation).GetComponent<RoomHandler>();
             configuration = new bool[] { false, false, false, false };
             configuration[openingDirection] = true;
