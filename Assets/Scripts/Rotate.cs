@@ -19,5 +19,8 @@ public class Rotate : MonoBehaviour
         transform.Rotate(spin);
     }
 
+    void OnInteract() {
+        spin = -spin;
+    }
 }
 

@@ -13,6 +13,7 @@ public class EnemyBehaviour : MonoBehaviour
     private GameObject target;
     public string targetTag;
     private Rigidbody rb;
+    public int minDistance;
     public float speed;
     private bool idling = true;
     private PlayerController playerScript;
@@ -38,7 +39,7 @@ public class EnemyBehaviour : MonoBehaviour
         transform.forward = lookDirection;
 
         // try to shoot
-        if (!idling)
+        if (Vector3.Distance(target.transform.position, transform.position) <= minDistance && !idling)
         {
             if (weaponHandler != null)
             {

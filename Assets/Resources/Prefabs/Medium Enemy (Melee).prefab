@@ -128,7 +128,7 @@ MonoBehaviour:
   weaponHandler: {fileID: 0}
   projectileType: 0
   targetTag: Player
-  minDistance: 50
+  minDistance: 10
   speed: 3
 --- !u!54 &5827464910131306047
 Rigidbody:

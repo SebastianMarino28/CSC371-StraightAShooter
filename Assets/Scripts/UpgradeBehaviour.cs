@@ -11,20 +11,13 @@ public class UpgradeBehaviour : MonoBehaviour
     void Awake() {
         upgradeScreen = GameObject.FindGameObjectWithTag("UpgradeScreen");
         sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
-=======
-    private Animator anim;
-
-    public void Awake() {
-        anim = GameObject.FindGameObjectWithTag("UpgradeScreen").GetComponent<Animator>();
     }
     
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
             sfxManager.playAha1();
             upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingIn = true;
-=======
             Time.timeScale = 0.0000001f;
-            anim.Play("UpgradeFadeIn");
             Destroy(gameObject);
         }
     }
