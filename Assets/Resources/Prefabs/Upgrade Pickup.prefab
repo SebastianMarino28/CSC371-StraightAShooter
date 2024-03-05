@@ -134,3 +134,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeScreen: {fileID: 0}
   sfxManager: {fileID: 0}
+=======
+  upgradeScreenFadeIn: {fileID: -103232641274912808, guid: fd290565ae309ed46aed2e685bf82512, type: 2}

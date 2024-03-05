@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Playables;
 
 
 public class PlayerController : MonoBehaviour
@@ -13,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public SFXManager sfxManager;
     private GameObject upgradeScreen;
     private GameObject gameOverScreen;
+=======
+    private Animator anim;
 
 
     [Header("Player Attributes")]
@@ -50,21 +53,22 @@ public class PlayerController : MonoBehaviour
     public float curHealth;
     public float maxHealth;
     private float baseProjectileDamage;
+    private float baseLaserDamage;
     private float baseMeleeDamage;
     private bool isInvincible;
 
 
     void Start()
     {
+        anim = GameObject.FindGameObjectWithTag("UpgradeScreen").GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();  
-        upgradeScreen = GameObject.FindGameObjectWithTag("UpgradeScreen");
-        gameOverScreen = GameObject.FindGameObjectWithTag("GameOverScreen");
         rollSpeed = rollDistance / rollTime;
         curHealth = 50f;
         maxHealth = 50f;
         healthBar = GameObject.Find("HealthBar").GetComponent<UnityEngine.UI.Image>();
         baseProjectileDamage = 5f;
         baseMeleeDamage = 6f;
+        baseLaserDamage = 5f;
         animator = GetComponent<Animator>();
         sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
     }
@@ -180,6 +184,10 @@ public class PlayerController : MonoBehaviour
             TakeDamage(baseProjectileDamage);
            
         }
+        if (other.gameObject.CompareTag("Laser") && !isRolling && !isInvincible) {
+            TakeDamage(baseLaserDamage);
+           
+        }
     }
 
 
@@ -218,8 +226,10 @@ public class PlayerController : MonoBehaviour
         if(curHealth <= 0) {
             gameOverScreen.GetComponent<GameOverBehaviour>().isFadingIn = true;
             sfxManager.playGameOver();
+=======
+            // do GameOver fade in
             Time.timeScale = 0.0000001f;
-           
+            GameObject.FindGameObjectWithTag("GameOverScreen").GetComponent<GameOverBehaviour>().isFadingIn = true;
             Debug.Log("You Lose!");
         }
     }
@@ -230,21 +240,21 @@ public class PlayerController : MonoBehaviour
         // implement max health increase
         maxHealth += 5;
         healthBar.fillAmount = curHealth / maxHealth;
-        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
+        anim.Play("UpgradeFadeOut");
         Time.timeScale = 1;
     }
     public void IncreaseSpeed()
     {
         // implement speed increase
         speed += 15;
-        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
+        anim.Play("UpgradeFadeOut");
         Time.timeScale = 1;
     }
     public void IncreaseDamage()
     {
         // implement damage increase
         damage += 0.75f;
-        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
+        anim.Play("UpgradeFadeOut");
         Time.timeScale = 1;
     }
     public void Heal(float healAmount)
@@ -262,7 +272,7 @@ public class PlayerController : MonoBehaviour
         healthBar.fillAmount = curHealth / maxHealth;
 
 
-        upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingOut = true;
+        anim.Play("UpgradeFadeOut");
         Time.timeScale = 1;
     }
 
@@ -270,7 +280,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator Invincibility()
     {
         isInvincible = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         isInvincible = false;
     }
 }

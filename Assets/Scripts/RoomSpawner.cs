@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class RoomSpawner : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class RoomSpawner : MonoBehaviour
 
     private bool[] configuration; // array of size 4 to store which doors are open (0 = top, 1 = bottom, 2 = left, 3 = right)
     private bool spawned = false;
+    int roomTypeCount = 3;
+
 
     void Start()
     {
@@ -23,7 +26,8 @@ public class RoomSpawner : MonoBehaviour
     void Spawn()
     {
         if (spawned == false) {
-            GameObject prefab = (GameObject)Resources.Load("Prefabs/Default Room");
+            int randRoom = UnityEngine.Random.Range(1, roomTypeCount + 1);
+            GameObject prefab = (GameObject)Resources.Load("Prefabs/Room" + randRoom);
             RoomHandler newRoom = Instantiate(prefab, transform.position, transform.rotation).GetComponent<RoomHandler>();
             configuration = new bool[] { false, false, false, false };
             configuration[openingDirection] = true;
@@ -35,7 +39,7 @@ public class RoomSpawner : MonoBehaviour
                 {
                     if (!configuration[i] && doors>0)
                     {
-                        bool putRoom = (Random.Range(0, 2) == 1);
+                        bool putRoom = (UnityEngine.Random.Range(0, 2) == 1);
                         if (putRoom)
                         {
                             doors--;
@@ -45,8 +49,9 @@ public class RoomSpawner : MonoBehaviour
                 }
             }
 
-
-            newRoom.ConfigureRoom(configuration);
+            int x = (int)Math.Floor(transform.position.x / 20);
+            int y = (int)Math.Floor(transform.position.z / 20);
+            newRoom.ConfigureRoom(x, y, configuration);
 
             spawned = true;
         }
