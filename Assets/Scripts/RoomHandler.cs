@@ -14,6 +14,7 @@ public class RoomHandler : MonoBehaviour
     private bool enemiesSpawned = false;
     private bool upgradeSpawned = false;
     public GameObject upgrade;
+    public SFXManager sfxManager;
     
 
     [Header("Doors and Blockers")]
@@ -30,6 +31,10 @@ public class RoomHandler : MonoBehaviour
     public GameObject topSpawnPoint;
     public GameObject bottomSpawnPoint;
 
+    private void Start()
+    {
+        sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
+    }
 
     public void ConfigureRoom(bool[] doorConfiguration)
     {
@@ -111,6 +116,7 @@ public class RoomHandler : MonoBehaviour
             StartCoroutine(SpawnDelay());
             ToggleDoors(true);
             entered = true;
+            sfxManager.playDoorLock();
         }
     }
 

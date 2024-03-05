@@ -6,16 +6,16 @@ using UnityEngine;
 public class UpgradeBehaviour : MonoBehaviour
 {
     public GameObject upgradeScreen;
+    public SFXManager sfxManager;
 
-    private AudioSource upgradeSound;
     void Awake() {
         upgradeScreen = GameObject.FindGameObjectWithTag("UpgradeScreen");
-        upgradeSound = gameObject.GetComponent<AudioSource>();
+        sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
     }
     
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
-            upgradeSound.Play();
+            sfxManager.playAha1();
             upgradeScreen.GetComponent<UpgradeScreenBehaviour>().isFadingIn = true;
             Time.timeScale = 0.0000001f;
             Destroy(gameObject);

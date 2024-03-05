@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Camera mainCamera;
     public LayerMask layerMask;
     public WeaponHandler wh;
+    public SFXManager sfxManager;
     private GameObject upgradeScreen;
     private GameObject gameOverScreen;
 
@@ -65,6 +66,7 @@ public class PlayerController : MonoBehaviour
         baseProjectileDamage = 5f;
         baseMeleeDamage = 6f;
         animator = GetComponent<Animator>();
+        sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
     }
 
 
@@ -215,6 +217,7 @@ public class PlayerController : MonoBehaviour
         }
         if(curHealth <= 0) {
             gameOverScreen.GetComponent<GameOverBehaviour>().isFadingIn = true;
+            sfxManager.playGameOver();
             Time.timeScale = 0.0000001f;
            
             Debug.Log("You Lose!");
