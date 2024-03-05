@@ -6818,7 +6818,7 @@ MonoBehaviour:
     m_Bits: 243
   wh: {fileID: 1665019276}
   speed: 350
-  damage: 10
+  damage: 1
   rollDistance: 275
   rollInvincibilityDelay: 0.2
   rollInvinicilityDuration: 0.25
