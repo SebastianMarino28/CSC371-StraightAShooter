@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class ProjectileHandler : MonoBehaviour
 {
-    public GameObject SFXManager;
+    public SFXManager SFXManager;
 
+    private void Start()
+    {
+        SFXManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
+    }
 
     void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Projectile"))
@@ -13,8 +17,7 @@ public class ProjectileHandler : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            AudioSource.volume =
-            AudioSource.PlayClipAtPoint(collisionSound, transform.position);
+            SFXManager.playBulletHit();
         }
     }
 
@@ -25,9 +28,9 @@ public class ProjectileHandler : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.gameObject.CompareTag("Enemy") && collisionSound != null)
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            AudioSource.PlayClipAtPoint(collisionSound, transform.position);
+            SFXManager.playBulletHit();
         }
     }
 }
