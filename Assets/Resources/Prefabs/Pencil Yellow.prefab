@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.3788338, y: -4.237667, z: -4.4521003}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 6, y: 3, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -112,7 +112,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &6362410492848497491
 MonoBehaviour:
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acefae9697b8a4f47bd84e8d816564c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionSound: {fileID: -5076828950747038239}
+  collisionSound: {fileID: 8300000, guid: ddfd7d2c873e83a4fa3ed981564b91ad, type: 3}
 --- !u!65 &-6507744707788541846
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -158,7 +158,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bb6f35f5220daca45bc676867c6fa7c7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ddfd7d2c873e83a4fa3ed981564b91ad, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -166,7 +166,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 87
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

@@ -23,10 +23,12 @@ public class BGMusicSelector : MonoBehaviour
             if (selector == 0)
             {
                 bgm1.Play();
+                bgm1.volume = .25f;
             }
             else if (selector == 1)
             {
                 bgm2.Play();
+                bgm2.volume = .25f;
             }
         }      
     }
