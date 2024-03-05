@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4828165650485688127}
   - component: {fileID: 8326480315504359401}
   - component: {fileID: 8185712436738385876}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hard Enemy (Melee)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
