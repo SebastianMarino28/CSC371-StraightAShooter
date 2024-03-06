@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6324824679819303041}
   - component: {fileID: 1167719974239258187}
   - component: {fileID: 5827464910131306047}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Medium Enemy (Melee)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -128,7 +128,6 @@ MonoBehaviour:
   weaponHandler: {fileID: 0}
   projectileType: 0
   targetTag: Player
-  minDistance: 50
   speed: 3
 --- !u!54 &5827464910131306047
 Rigidbody:
