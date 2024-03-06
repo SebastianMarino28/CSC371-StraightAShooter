@@ -939,7 +939,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play Again?
+  m_text: Another Study Sesh?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e28a8f264a564449a9fd74086dbdfd0, type: 2}
   m_sharedMaterial: {fileID: -295999552651575066, guid: 9e28a8f264a564449a9fd74086dbdfd0, type: 2}
@@ -966,8 +966,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1298,7 +1298,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1798970230677297380, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_text
-      value: Increase Speed
+      value: 'Drink a BlueBull
+
+        (+Move Speed)'
       objectReference: {fileID: 0}
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
@@ -1605,7 +1607,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Spend Your Knowledge
+  m_text: Take A Break
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e28a8f264a564449a9fd74086dbdfd0, type: 2}
   m_sharedMaterial: {fileID: -295999552651575066, guid: 9e28a8f264a564449a9fd74086dbdfd0, type: 2}
@@ -4154,7 +4156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play Again?
+  m_text: Another Study Sesh?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e28a8f264a564449a9fd74086dbdfd0, type: 2}
   m_sharedMaterial: {fileID: -295999552651575066, guid: 9e28a8f264a564449a9fd74086dbdfd0, type: 2}
@@ -4181,8 +4183,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5967,7 +5969,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1798970230677297380, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_text
-      value: 'Increase Maximum Health
+      value: 'Meditate
+
+        (+Mental Health)
 
 '
       objectReference: {fileID: 0}
@@ -6981,7 +6985,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1798970230677297380, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_text
-      value: Heal
+      value: 'Eat A Snack
+
+        (Heal)'
       objectReference: {fileID: 0}
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
@@ -9561,7 +9567,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GAME OVER
+  m_text: YOU FAILED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e28a8f264a564449a9fd74086dbdfd0, type: 2}
   m_sharedMaterial: {fileID: -295999552651575066, guid: 9e28a8f264a564449a9fd74086dbdfd0, type: 2}
@@ -11045,7 +11051,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1798970230677297380, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_text
-      value: Increase Damage
+      value: 'Study Your Notes
+
+        (+Damage)'
       objectReference: {fileID: 0}
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
