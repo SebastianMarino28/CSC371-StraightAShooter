@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PauseMenuBehaviour : MonoBehaviour
 {
     private Canvas pauseMenu;
-    private Boolean paused;
+    public Boolean paused;
     public Stack<Canvas> menuStack;
 
     void Awake() {
@@ -20,27 +20,34 @@ public class PauseMenuBehaviour : MonoBehaviour
     {
         if (pauseValue.isPressed)
         {
-            if(!paused) {
-                AddAndEnable(pauseMenu);  
-                if(menuStack.Count == 0) {
-                    Debug.Log("PAUSED");
-                    paused = true;
-                    Time.timeScale = 0f;
-                }
+            if(!paused)
+                PausePushPop(pauseMenu);
+            else
+                PausePushPop(null);
+        }
+    }
+
+    public void PausePushPop(Canvas canvas) {
+        if(canvas != null) {
+            if(menuStack.Count == 0) {
+                Debug.Log("PAUSED");
+                paused = true;
+                Time.timeScale = 0f;
             }
-            else {
-                PopAndDisable();
-                if(menuStack.Count == 0) {
-                    Debug.Log("UNPAUSED");
-                    paused = false;
-                    Time.timeScale = 1f;
-                }
+            AddAndEnable(canvas);  
+        }
+        else {
+            PopAndDisable();
+            if(menuStack.Count == 0) {
+                Debug.Log("UNPAUSED");
+                paused = false;
+                Time.timeScale = 1f;
             }
         }
     }
 
     // Disables the current canvas, then pushes and enables the chosen canvas
-    public void AddAndEnable(Canvas canvas) {
+    private void AddAndEnable(Canvas canvas) {
         if(menuStack.Count > 0) {
             Canvas tos = menuStack.Peek();
             tos.enabled = false;
@@ -51,7 +58,7 @@ public class PauseMenuBehaviour : MonoBehaviour
     }
 
     // Disables and pops the current canvas, then enables the next most recent canvas
-    public void PopAndDisable() {
+    private void PopAndDisable() {
         Canvas tos = menuStack.Peek();
         tos.enabled = false;
         menuStack.Pop();

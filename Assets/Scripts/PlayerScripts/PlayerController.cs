@@ -304,6 +304,8 @@ public class PlayerController : MonoBehaviour
         // implement max health increase
         sfxManager.playDeepBreath();
         maxHealth += 5;
+        //curHealth += 5;                           // increase cur health alongside max health and lengthen health bar
+        //healthBar.gameObject.transform.
         healthBar.fillAmount = curHealth / maxHealth;
         anim.Play("UpgradeFadeOut");
         Time.timeScale = 1;
