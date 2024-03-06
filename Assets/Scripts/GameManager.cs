@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         {
             // trigger win
             won = true;
-            GameObject.FindGameObjectWithTag("WinScreen").GetComponent<GameOverBehaviour>().isFadingIn = true;
+            GameObject.FindGameObjectWithTag("WinScreen").GetComponent<Animator>().Play("WinFadeIn");
             Time.timeScale = 0.0000001f;
         }
         UpdateMap(mapX, mapY);
