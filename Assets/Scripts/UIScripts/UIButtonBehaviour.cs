@@ -23,12 +23,12 @@ public class UIButtonBehaviour : MonoBehaviour
 
     public void OptionsButtonClick() {
         Canvas optCanvas = screens[4].GetComponent<Canvas>();
-        pauseMenuScript.AddAndEnable(optCanvas);                      // Note: unsafe and also breaks things. Need to find a better way to do this
+        pauseMenuScript.PausePushPop(optCanvas);
     }
 
     public void StatsButtonClick() {
         Canvas statsCanvas = screens[5].GetComponent<Canvas>();
-        pauseMenuScript.AddAndEnable(statsCanvas);                      // Note: unsafe and also breaks things. Need to find a better way to do this
+        pauseMenuScript.PausePushPop(statsCanvas);
     }
 
     public void ReturnHomeButton() {
@@ -36,7 +36,7 @@ public class UIButtonBehaviour : MonoBehaviour
     }
 
     public void BackButtonClick() {
-        pauseMenuScript.PopAndDisable();                      // Note: unsafe and also breaks things. Need to find a better way to do this
+        pauseMenuScript.PausePushPop(null);
     }
 
     public void FinalTPButtonClick() {
