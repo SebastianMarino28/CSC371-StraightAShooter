@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 151212793417936424}
   - component: {fileID: -6847136025427495160}
   - component: {fileID: 6520732115665719997}
-  m_Layer: 0
-  m_Name: Pencil yellow
-  m_TagString: Untagged
+  m_Layer: 6
+  m_Name: Pencil yellow 1
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
