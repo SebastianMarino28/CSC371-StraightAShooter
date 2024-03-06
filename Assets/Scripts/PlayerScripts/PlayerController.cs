@@ -205,8 +205,20 @@ public class PlayerController : MonoBehaviour
             TakeDamage(baseLaserDamage);
            
         }
+        if (other.gameObject.CompareTag("Bubble")) {
+           GameObject tp_final = GameObject.FindGameObjectWithTag("TPFinal");
+           tp_final.GetComponent<Canvas>().enabled = true;
+           tp_final.GetComponent<CanvasGroup>().alpha = 1f;
+        }
     }
 
+    void OnTriggerExit(Collider other) {
+        if (other.gameObject.CompareTag("Bubble")) {
+           GameObject tp_final = GameObject.FindGameObjectWithTag("TPFinal");
+           tp_final.GetComponent<Canvas>().enabled = false;
+           tp_final.GetComponent<CanvasGroup>().alpha = 0f;
+        }
+    }
 
     void OnRoll(InputValue rollValue)
     {
@@ -272,6 +284,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         if(curHealth > 0) {
+            sfxManager.playPain();
             curHealth -= damage;
             healthBar.fillAmount = curHealth / maxHealth;
             StartCoroutine(Invincibility());
@@ -289,6 +302,7 @@ public class PlayerController : MonoBehaviour
     public void IncreaseMaxHealth()
     {
         // implement max health increase
+        sfxManager.playDeepBreath();
         maxHealth += 5;
         healthBar.fillAmount = curHealth / maxHealth;
         anim.Play("UpgradeFadeOut");
@@ -297,6 +311,7 @@ public class PlayerController : MonoBehaviour
     public void IncreaseSpeed()
     {
         // implement speed increase
+        sfxManager.playDrink();
         speed += 15;
         anim.Play("UpgradeFadeOut");
         Time.timeScale = 1;
@@ -304,6 +319,7 @@ public class PlayerController : MonoBehaviour
     public void IncreaseDamage()
     {
         // implement damage increase
+        sfxManager.playScribble();
         damage += 0.75f;
         anim.Play("UpgradeFadeOut");
         Time.timeScale = 1;
@@ -319,7 +335,7 @@ public class PlayerController : MonoBehaviour
             curHealth = maxHealth;
         }
 
-
+        sfxManager.playMunch();
         healthBar.fillAmount = curHealth / maxHealth;
 
 
