@@ -277,7 +277,7 @@ public class PlayerController : MonoBehaviour
         if(curHealth <= 0) {
             // do GameOver fade in
             Time.timeScale = 0.0000001f;
-            GameObject.FindGameObjectWithTag("GameOverScreen").GetComponent<GameOverBehaviour>().isFadingIn = true;
+            GameObject.FindGameObjectWithTag("GameOverScreen").GetComponent<Animator>().Play("GameOverFade");
             Debug.Log("You Lose!");
         }
     }
