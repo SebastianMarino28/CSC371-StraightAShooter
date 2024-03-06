@@ -261,6 +261,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 183
   targetTag: Player
+  firepoint: {fileID: 4006499338220172417}
   maxHealth: 10
   healthAmount: 10
   healthBar: {fileID: 1885747154431510478}
@@ -317,6 +318,10 @@ PrefabInstance:
     - target: {fileID: 2532878395578464026, guid: 44b2b12ffb747a149b3b57ade71cf99b, type: 3}
       propertyPath: m_Name
       value: Laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 2532878395578464026, guid: 44b2b12ffb747a149b3b57ade71cf99b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

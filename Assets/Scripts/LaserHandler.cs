@@ -8,6 +8,7 @@ public class LaserHandler : MonoBehaviour
     public GameObject laser;
     public LayerMask layerMask;
     public string targetTag;
+    public GameObject firepoint;
     private GameObject target;
     private PlayerController playerScript;
     private Vector3 midpoint;
@@ -43,10 +44,10 @@ public class LaserHandler : MonoBehaviour
             
         }
 
-        if (isFiring && Physics.Raycast(transform.position, transform.forward, out hit, float.MaxValue, layerMask))
+        if (isFiring && Physics.Raycast(firepoint.transform.position, transform.forward, out hit, float.MaxValue, layerMask))
         {
             laser.SetActive(true);
-            midpoint = (transform.position + hit.point) / 2;
+            midpoint = (firepoint.transform.position + hit.point) / 2;
             laser.transform.position = midpoint;
             laser.transform.localScale = new Vector3(laser.transform.localScale.x, hit.distance/2, laser.transform.localScale.z);
         }

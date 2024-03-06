@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 151212793417936424}
   - component: {fileID: -6847136025427495160}
   - component: {fileID: 6520732115665719997}
+  - component: {fileID: -6010022460844183661}
   m_Layer: 6
   m_Name: Pencil yellow 1
   m_TagString: Projectile
@@ -146,3 +147,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acefae9697b8a4f47bd84e8d816564c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6010022460844183661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655137212806262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b13082721c6644eac4c9f53b2be3bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ttl: 2

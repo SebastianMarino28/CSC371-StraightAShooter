@@ -5,6 +5,7 @@ public class WeaponHandler : MonoBehaviour
 {
     public GameObject firePoint;
     public GameObject centerPoint;
+    public LayerMask layerMask;
     [Header("Bullet")]
     public GameObject bullet;
     public AudioSource bulletSound;
@@ -47,7 +48,7 @@ public class WeaponHandler : MonoBehaviour
             // calculate direction
             Vector3 forceDirection = centerPoint.transform.forward;
             RaycastHit hit;
-            if (Physics.Raycast(centerPoint.transform.position, centerPoint.transform.forward, out hit))
+            if (Physics.Raycast(centerPoint.transform.position, centerPoint.transform.forward, out hit, float.MaxValue, layerMask))
             {
                 forceDirection = (hit.point - firePoint.transform.position).normalized;
             }

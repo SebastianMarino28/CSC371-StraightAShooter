@@ -157,7 +157,6 @@ MonoBehaviour:
   weaponHandler: {fileID: 3014540526519328489}
   projectileType: 0
   targetTag: Player
-  minDistance: 50
   speed: 0
 --- !u!114 &3014540526519328489
 MonoBehaviour:
@@ -173,6 +172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 8866883891117255705}
   centerPoint: {fileID: 8866883891117255705}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
   bullet: {fileID: 8780001088802693424, guid: 134c5e4f7fa51a04c95b53b7db4e4155, type: 3}
   bulletSound: {fileID: 0}
   bulletSpeed: 8
