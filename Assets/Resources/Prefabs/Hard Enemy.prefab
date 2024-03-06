@@ -262,7 +262,7 @@ MonoBehaviour:
   weaponHandler: {fileID: 7009578685963517827}
   projectileType: 0
   targetTag: Player
-  minDistance: 10
+  minDistance: 50
   speed: 0
 --- !u!114 &7009578685963517827
 MonoBehaviour:

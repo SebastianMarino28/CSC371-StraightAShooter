@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     public float curHealth;
     public float maxHealth;
     private float baseProjectileDamage;
+    private float baseLaserDamage;
     private float baseMeleeDamage;
     private bool isInvincible;
 
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
         healthBar = GameObject.Find("HealthBar").GetComponent<UnityEngine.UI.Image>();
         baseProjectileDamage = 5f;
         baseMeleeDamage = 6f;
+        baseLaserDamage = 5f;
         animator = GetComponent<Animator>();
     }
 
@@ -175,6 +177,10 @@ public class PlayerController : MonoBehaviour
             TakeDamage(baseProjectileDamage);
            
         }
+        if (other.gameObject.CompareTag("Laser") && !isRolling && !isInvincible) {
+            TakeDamage(baseLaserDamage);
+           
+        }
     }
 
 
@@ -213,7 +219,7 @@ public class PlayerController : MonoBehaviour
         if(curHealth <= 0) {
             // do GameOver fade in
             Time.timeScale = 0.0000001f;
-           
+            GameObject.FindGameObjectWithTag("GameOverScreen").GetComponent<GameOverBehaviour>().isFadingIn = true;
             Debug.Log("You Lose!");
         }
     }
@@ -264,7 +270,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator Invincibility()
     {
         isInvincible = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         isInvincible = false;
     }
 }
