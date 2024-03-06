@@ -132,5 +132,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833e810874b12284abb9f36da84b1096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isShield: 0
+  isShield: 1
   isClear: 0
