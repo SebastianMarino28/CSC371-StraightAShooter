@@ -6,10 +6,12 @@ public class SFXManager : MonoBehaviour
 {
     public AudioSource bulletHit;
     public AudioSource doorLock;
-    public AudioSource gameOver;
+    public AudioSource gameOver1;
+    public AudioSource gameOver2;
     public AudioSource aha1;
     public AudioSource pain1;
     public AudioSource pain2;
+    public AudioSource pain3;
     public AudioSource drink;
     public AudioSource deepBreath;
     public AudioSource scribble;
@@ -27,7 +29,17 @@ public class SFXManager : MonoBehaviour
 
     public void playGameOver()
     {
-        gameOver.Play();
+        int rand = Random.Range(0, 2);
+
+        switch (rand)
+        {
+            case 0:
+                gameOver1.Play();
+                break;
+            case 1: 
+                gameOver2.Play(); 
+                break;
+        }
     }
 
     public void playAha()
@@ -37,7 +49,7 @@ public class SFXManager : MonoBehaviour
 
     public void playPain()
     {
-        int rand = Random.Range(0, 2);
+        int rand = Random.Range(0, 3);
 
         switch(rand)
         {
@@ -46,6 +58,9 @@ public class SFXManager : MonoBehaviour
                 break;
             case 1:
                 pain2.Play();
+                break;
+            case 2:
+                pain3.Play();
                 break;
         }
     }
