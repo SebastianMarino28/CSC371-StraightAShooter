@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask layerMask;
     public WeaponHandler wh;
     private Animator anim;
+    private SFXManager sfxManager;
 
 
     [Header("Movement Attributes")]
@@ -88,6 +89,7 @@ public class PlayerController : MonoBehaviour
         baseMeleeDamage = 6f;
         baseLaserDamage = 5f;
         animator = GetComponent<Animator>();
+        sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
     }
 
 
@@ -276,6 +278,7 @@ public class PlayerController : MonoBehaviour
         }
         if(curHealth <= 0) {
             // do GameOver fade in
+            sfxManager.playGameOver();
             Time.timeScale = 0.0000001f;
             GameObject.FindGameObjectWithTag("GameOverScreen").GetComponent<Animator>().Play("GameOverFadeIn");
             Debug.Log("You Lose!");

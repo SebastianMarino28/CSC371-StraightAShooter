@@ -16,6 +16,7 @@ public class RoomHandler : MonoBehaviour
     public GameObject upgrade;
     public int mapX;
     public int mapY;
+    private SFXManager sfxManager;
     
 
     [Header("Doors and Blockers")]
@@ -32,6 +33,11 @@ public class RoomHandler : MonoBehaviour
     public GameObject topSpawnPoint;
     public GameObject bottomSpawnPoint;
 
+
+    private void Start()
+    {
+        sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
+    }
 
     public void ConfigureRoom(int x, int y, bool[] doorConfiguration)
     {
@@ -116,6 +122,7 @@ public class RoomHandler : MonoBehaviour
             ToggleDoors(true);
             entered = true;
             GameManager.instance.SetRoomSeen(mapX, mapY);
+            sfxManager.playDoorLock();
         }
     }
 

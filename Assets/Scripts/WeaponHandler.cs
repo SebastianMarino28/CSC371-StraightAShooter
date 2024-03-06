@@ -19,23 +19,20 @@ public class WeaponHandler : MonoBehaviour
     public int numBurstProjectiles;
     private bool canFireBullet;
     private bool canFireBurst;
+
+    private Animator animator;
+
     public enum ProjectileType
     {
         bullet,
         burst
     }
 
-    // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         canFireBullet = true;
         canFireBurst = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void FireWeapon(ProjectileType ptype)
@@ -44,7 +41,7 @@ public class WeaponHandler : MonoBehaviour
         {
             if (bulletSound != null)
             {
-                Instantiate(bulletSound);
+                bulletSound.Play();
             }
 
             // calculate direction
@@ -61,11 +58,16 @@ public class WeaponHandler : MonoBehaviour
             StartCoroutine(ResetCooldown(ptype));
         }
 
+        if(animator != null)
+        {
+            animator.SetBool("isAttacking", true);
+        }
+
         if (ptype == ProjectileType.burst && canFireBurst)
         {
             if (burstSound != null)
             {
-                Instantiate(burstSound);
+                burstSound.Play();
             }
 
             float[] directions = GetBurstDirections(numBurstProjectiles);
@@ -104,6 +106,12 @@ public class WeaponHandler : MonoBehaviour
         if (ptype == ProjectileType.bullet)
         {
             yield return new WaitForSeconds(bulletCooldown);
+
+            if (animator != null)
+            {
+                animator.SetBool("isAttacking", false);
+            }
+
             canFireBullet = true;
         }
 

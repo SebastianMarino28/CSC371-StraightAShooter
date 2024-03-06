@@ -2,10 +2,21 @@ using UnityEngine;
 
 public class ProjectileHandler : MonoBehaviour
 {
+    private SFXManager sfxManager;
+
+    private void Start()
+    {
+        sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
+    }
     void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            sfxManager.playBulletHit();
         }
     }
 
@@ -14,6 +25,11 @@ public class ProjectileHandler : MonoBehaviour
         if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            sfxManager.playBulletHit();
         }
     }
 }
