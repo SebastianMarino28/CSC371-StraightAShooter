@@ -4,6 +4,8 @@ using UnityEngine.UIElements;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Playables;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 
 
 public class PlayerController : MonoBehaviour
@@ -53,6 +55,25 @@ public class PlayerController : MonoBehaviour
     private float baseMeleeDamage;
     private bool isInvincible;
 
+    // powerup vars
+    public enum PowerupType
+    {
+        roll,
+        shield,
+        clear
+    }
+
+    private List<PowerupType> powerups = new List<PowerupType>();
+    private int powerupIndex = 0;
+    private bool canUsePowerup = true;
+
+    // shield vars
+    public GameObject shield;  
+    public float shieldCooldown;
+    private bool hasShield = false;
+    private bool shieldActive = false;
+
+
 
     void Start()
     {
@@ -62,6 +83,7 @@ public class PlayerController : MonoBehaviour
         curHealth = 50f;
         maxHealth = 50f;
         healthBar = GameObject.Find("HealthBar").GetComponent<UnityEngine.UI.Image>();
+        powerups.Add(PowerupType.roll);
         baseProjectileDamage = 5f;
         baseMeleeDamage = 6f;
         baseLaserDamage = 5f;
@@ -86,7 +108,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        rollCooldownRemaining -= Time.deltaTime;
+        //rollCooldownRemaining -= Time.deltaTime;
     }
 
 
@@ -116,10 +138,10 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isRolling", false);
                 isRolling = false;
                 rb.velocity = Vector3.zero;
-
+                StartCoroutine(Cooldown(rollCooldown));
 
                 //start roll cooldown timer
-                rollCooldownRemaining = rollCooldown;
+                //rollCooldownRemaining = rollCooldown;
             }          
         }
     }
@@ -186,7 +208,22 @@ public class PlayerController : MonoBehaviour
 
     void OnRoll(InputValue rollValue)
     {
-        if (Time.timeScale > 0.0000001f && !isRolling && rollCooldownRemaining  <= 0)
+        if (canUsePowerup)
+        {
+            if (powerups[powerupIndex] == PowerupType.roll)
+            {
+                Roll();
+            }
+            if (powerups[powerupIndex] == PowerupType.shield)
+            {
+                Shield();
+            }
+        }
+    }
+
+    void Roll()
+    {
+        if (Time.timeScale > 0.0000001f && !isRolling) //&& rollCooldownRemaining  <= 0)
         {
             isRolling = true;
             animator.SetBool("isRolling", true);
@@ -196,6 +233,7 @@ public class PlayerController : MonoBehaviour
 
 
             rollStartTime = Time.time;
+            canUsePowerup = false;
             //roll in moving direction if moving, or in facing direction (towards cursor) if stationary
             if (isMoving)
             {
@@ -206,6 +244,26 @@ public class PlayerController : MonoBehaviour
                 rollDirection = transform.forward;
             }
         }
+    }
+
+    void Shield()
+    {
+        GameObject newShield = Instantiate(shield);
+        newShield.transform.position = transform.position;
+        StartCoroutine(Cooldown(shieldCooldown));
+    }
+
+    void OnSwitch()
+    {
+        if (powerups.Count > 1)
+        {
+            powerupIndex++;
+            if (powerupIndex == powerups.Count)
+            {
+                powerupIndex = 0;
+            }
+        }
+        Debug.Log(powerups[powerupIndex]);
     }
 
 
@@ -266,7 +324,19 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void UnlockShield()
+    {
+        hasShield = true;
+        powerups.Add(PowerupType.shield);
+    }
 
+
+    IEnumerator Cooldown(float cooldowntime)
+    {
+        canUsePowerup = false;
+        yield return new WaitForSeconds(cooldowntime);
+        canUsePowerup = true;
+    }
     IEnumerator Invincibility()
     {
         isInvincible = true;

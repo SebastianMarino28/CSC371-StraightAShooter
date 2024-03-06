@@ -19,7 +19,6 @@ public class LaserHandler : MonoBehaviour
     public float rotationSpeed = 45.0f; // Rotation speed in degrees per second
     private float rotationTime;
     public float laserCooldown;
-    private bool idling = true;
     Vector3 spin = new Vector3(0, 1, 0);
 
     void Start()
@@ -95,9 +94,7 @@ public class LaserHandler : MonoBehaviour
 
     IEnumerator Idle()
     {
-        idling = true;
         yield return new WaitForSeconds(0.5f);
-        idling = false;
         StartCoroutine(Rotate());
     }
 }

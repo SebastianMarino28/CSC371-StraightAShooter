@@ -6900,6 +6900,8 @@ MonoBehaviour:
   rollCooldown: 0.5
   curHealth: 0
   maxHealth: 0
+  shield: {fileID: 6033236994343307611, guid: c24878040702ff94ea3430d05fce5075, type: 3}
+  shieldCooldown: 15
 --- !u!114 &1665019276
 MonoBehaviour:
   m_ObjectHideFlags: 0
