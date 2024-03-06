@@ -205,8 +205,20 @@ public class PlayerController : MonoBehaviour
             TakeDamage(baseLaserDamage);
            
         }
+        if (other.gameObject.CompareTag("Bubble")) {
+           GameObject tp_final = GameObject.FindGameObjectWithTag("TPFinal");
+           tp_final.GetComponent<Canvas>().enabled = true;
+           tp_final.GetComponent<CanvasGroup>().alpha = 1f;
+        }
     }
 
+    void OnTriggerExit(Collider other) {
+        if (other.gameObject.CompareTag("Bubble")) {
+           GameObject tp_final = GameObject.FindGameObjectWithTag("TPFinal");
+           tp_final.GetComponent<Canvas>().enabled = false;
+           tp_final.GetComponent<CanvasGroup>().alpha = 0f;
+        }
+    }
 
     void OnRoll(InputValue rollValue)
     {

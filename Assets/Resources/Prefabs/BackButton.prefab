@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+  m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 0.54509807}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -155,8 +155,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 78, y: 0}
-  m_SizeDelta: {x: 75, y: -40}
+  m_AnchoredPosition: {x: 82.795, y: 0.17290115}
+  m_SizeDelta: {x: 112.47, y: -14.0533}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8552678996736204695
 CanvasRenderer:
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 679a4ef5d6f187e4bbdfd3d3d2abbbe5, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -203,7 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4611764463755147738}
   m_Layer: 0
-  m_Name: ReturnButton
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

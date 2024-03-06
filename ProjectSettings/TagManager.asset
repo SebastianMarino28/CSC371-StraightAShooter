@@ -17,6 +17,10 @@ TagManager:
   - WinScreen
   - PauseScreen
   - Laser
+  - Bubble
+  - TPFinal
+  - HUD
+  - FinalTPScreen
   layers:
   - Default
   - TransparentFX
