@@ -15,6 +15,7 @@ TagManager:
   - GameOverScreen
   - Boundary
   - WinScreen
+  - PauseScreen
   layers:
   - Default
   - TransparentFX
