@@ -14,6 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     public string targetTag;
     private Rigidbody rb;
     public float speed;
+    public float rotationSpeed;
     private bool idling = true;
     private PlayerController playerScript;
 
@@ -35,7 +36,12 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
         lookDirection = (target.transform.position - transform.position).normalized;
-        transform.forward = lookDirection;
+
+        lookDirection.y = 0;
+
+        Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+
+        rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
 
         // try to shoot
         if (!idling)

@@ -10,6 +10,7 @@ using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
+    public PauseMenuBehaviour pauseMenu;
     public Camera mainCamera;
     public LayerMask layerMask;
     public WeaponHandler wh;
@@ -195,6 +196,11 @@ public class PlayerController : MonoBehaviour
             isFiring = false;
         }
        
+    }
+
+    void OnPause(InputValue pauseValue)
+    {
+        pauseMenu.Pause(pauseValue);
     }
 
 
@@ -386,11 +392,20 @@ public class PlayerController : MonoBehaviour
     {
         canUsePowerup = false;
 
-        for(int i = 0; i <= 100; i++)
+        float totalTime = 0.0f; // Total time elapsed
+        float duration = cooldowntime; // Total duration of the cooldown
+
+        while (totalTime < duration)
         {
-            yield return new WaitForSeconds(cooldowntime / 100.0f);
-            abilityCharge.fillAmount = (float)(i) / 100.0f;
+            float progress = totalTime / duration; // Calculate progress based on elapsed time
+            abilityCharge.fillAmount = progress; // Update the fill amount
+
+            totalTime += Time.deltaTime; // Increment total time based on frame time
+            yield return null; // Wait for the next frame
         }
+
+        // Ensure the fill amount is exactly 1.0 at the end
+        abilityCharge.fillAmount = 1.0f;
 
         canUsePowerup = true;
     }

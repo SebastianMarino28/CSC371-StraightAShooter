@@ -261,6 +261,7 @@ MonoBehaviour:
   projectileType: 1
   targetTag: Player
   speed: 0
+  rotationSpeed: 1000
 --- !u!114 &8290132544903795359
 MonoBehaviour:
   m_ObjectHideFlags: 0

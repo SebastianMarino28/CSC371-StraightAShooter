@@ -9,12 +9,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1504981713932161579, guid: 45565251077e14d4180ee5c2bb5b896d, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 45565251077e14d4180ee5c2bb5b896d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 30b92673b9b7ef44c9c11a474d9910c9, type: 2}
     - target: {fileID: 100000, guid: 45565251077e14d4180ee5c2bb5b896d, type: 3}
       propertyPath: m_Name
-      value: board2_1
+      value: Board1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 45565251077e14d4180ee5c2bb5b896d, type: 3}
       propertyPath: m_LocalScale.x

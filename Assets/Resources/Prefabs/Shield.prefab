@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8730f87b22e8a154f8b7225f8a102f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curHealth: 20
-  maxHealth: 20
+  curHealth: 25
+  maxHealth: 25
   shieldTime: 8
   baseProjectileDamage: 1

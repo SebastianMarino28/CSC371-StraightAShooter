@@ -40,8 +40,7 @@ public class EnemyStrafe : MonoBehaviour
         }
 
         Vector3 movement = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.fixedDeltaTime);
-        //rb.MovePosition(movement);
-        transform.position = movement;
+        rb.MovePosition(movement);
     }
 
     IEnumerator StrafeTimer()

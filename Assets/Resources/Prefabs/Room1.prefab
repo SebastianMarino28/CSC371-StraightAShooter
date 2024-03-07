@@ -4894,10 +4894,12 @@ MonoBehaviour:
   - {fileID: 479444273255196516, guid: 007bb090562109648a4a3fda3c9247bc, type: 3}
   - {fileID: 8304554779994692838, guid: c64006302abd5974c976697dc6adde68, type: 3}
   - {fileID: 8882850868557472372, guid: bb525e3a19284714aa6dc6ade69d451c, type: 3}
+  - {fileID: 5374519339354799096, guid: 45131db60f54b744f9674b64d4f7d8cc, type: 3}
   enemiesPoolHard:
   - {fileID: 4458680785795908983, guid: ef57ba92e68c25c4498a6164b6fba508, type: 3}
   - {fileID: 896765756978013790, guid: d6f435ef55cb2eb49b2483aae1c42936, type: 3}
   - {fileID: 296750618256999584, guid: 004fe341ff5c9bb4a82cab6be63fe8e8, type: 3}
+  - {fileID: 5374519339354799096, guid: 45131db60f54b744f9674b64d4f7d8cc, type: 3}
   upgrade: {fileID: 3256593905201065530, guid: 64a36eaddc8bd134392a6bcaa7b99d29, type: 3}
   mapX: 0
   mapY: 0

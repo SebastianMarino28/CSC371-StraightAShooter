@@ -14,7 +14,7 @@ public class ProjectileHandler : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.gameObject.CompareTag("Enemy"))
+        if (gameObject.CompareTag("Projectile") && other.gameObject.CompareTag("Enemy"))
         {
             sfxManager.playBulletHit();
         }
@@ -27,7 +27,7 @@ public class ProjectileHandler : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.gameObject.CompareTag("Enemy"))
+        if (gameObject.CompareTag("Projectile") && other.gameObject.CompareTag("Enemy"))
         {
             sfxManager.playBulletHit();
         }

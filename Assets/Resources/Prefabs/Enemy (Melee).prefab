@@ -129,6 +129,7 @@ MonoBehaviour:
   projectileType: 0
   targetTag: Player
   speed: 3
+  rotationSpeed: 1000
 --- !u!54 &2325407256646438485
 Rigidbody:
   m_ObjectHideFlags: 0
