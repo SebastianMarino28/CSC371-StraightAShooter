@@ -10,7 +10,7 @@ public class RoomSpawner : MonoBehaviour
     // 3 --> need right door
     private RoomTemplates templates;
     public GameObject room; // this will be an array of room templates later
-    private int roomCutoff = 15;
+    private int roomCutoff = 25;
 
     private bool[] configuration; // array of size 4 to store which doors are open (0 = top, 1 = bottom, 2 = left, 3 = right)
     private bool spawned = false;
