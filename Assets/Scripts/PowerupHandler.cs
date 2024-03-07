@@ -18,7 +18,10 @@ public class PowerupHandler : MonoBehaviour
         }
     }
 
-    public void doDeskFloorChange() {
-
+    public void doDeskFloorChange(int powerupsCollected) {
+        // change prefab instance of the floor under the desk, each color indicating difficulty of the boss
+        //  1 = red floor
+        //  2 = orange floor
+        //  3 = yellow floor
     }
 }

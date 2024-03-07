@@ -354,6 +354,8 @@ public class PlayerController : MonoBehaviour
     {
         hasShield = true;
         powerups.Add(PowerupType.shield);
+        // remove LockedAbility #1 inside Stats screen
+        // instantiate DeployableShield_Info prefab inside Stats screen
     }
 
 
