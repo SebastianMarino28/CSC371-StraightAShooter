@@ -21,6 +21,8 @@ TagManager:
   - TPFinal
   - HUD
   - FinalTPScreen
+  - OptionsScreen
+  - StatsScreen
   layers:
   - Default
   - TransparentFX

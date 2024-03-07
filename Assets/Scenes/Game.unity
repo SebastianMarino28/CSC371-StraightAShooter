@@ -3129,7 +3129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &372791507
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6567,6 +6567,10 @@ MonoBehaviour:
   - {fileID: 1927975410}
   - {fileID: 1286893883}
   - {fileID: 409597956}
+  player: {fileID: 1665019268}
+  homePoint: {x: 0, y: 0, z: 0}
+  cam: {fileID: 963194225}
+  cameraPoint: {x: 0, y: 15, z: -7}
 --- !u!1 &783305345
 GameObject:
   m_ObjectHideFlags: 0
@@ -8368,12 +8372,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReturnHomeButton
       objectReference: {fileID: 0}
+    - target: {fileID: 6956943201507418991, guid: e1b19c2869adfbe4c9d5969ef5399455, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8251267792760499180, guid: e1b19c2869adfbe4c9d5969ef5399455, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8251267792760499180, guid: e1b19c2869adfbe4c9d5969ef5399455, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251267792760499180, guid: e1b19c2869adfbe4c9d5969ef5399455, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8251267792760499180, guid: e1b19c2869adfbe4c9d5969ef5399455, type: 3}
@@ -8385,11 +8397,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8251267792760499180, guid: e1b19c2869adfbe4c9d5969ef5399455, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251267792760499180, guid: e1b19c2869adfbe4c9d5969ef5399455, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReturnHomeButton
       objectReference: {fileID: 0}
     - target: {fileID: 8251267792760499180, guid: e1b19c2869adfbe4c9d5969ef5399455, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIButtonBehaviour, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251267792760499180, guid: e1b19c2869adfbe4c9d5969ef5399455, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UIButtonBehaviour, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8251267792760499180, guid: e1b19c2869adfbe4c9d5969ef5399455, type: 3}
@@ -10899,7 +10919,7 @@ GameObject:
   - component: {fileID: 1286893885}
   m_Layer: 0
   m_Name: StatsScreen
-  m_TagString: Untagged
+  m_TagString: StatsScreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16249,7 +16269,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 910dd80d61fd10347947accd315e5730, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.505
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -16345,7 +16365,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 16b76517c39beaf47b063fce30e77640, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.485
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -17370,7 +17390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 300}
+  m_AnchoredPosition: {x: -3, y: 300}
   m_SizeDelta: {x: 941.7621, y: 320.1528}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1857443321
@@ -17393,7 +17413,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PAUSE SCREEEEEN
+  m_text: Paused
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e28a8f264a564449a9fd74086dbdfd0, type: 2}
   m_sharedMaterial: {fileID: -295999552651575066, guid: 9e28a8f264a564449a9fd74086dbdfd0, type: 2}
@@ -17420,8 +17440,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 120
+  m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -17666,7 +17686,7 @@ GameObject:
   - component: {fileID: 1927975412}
   m_Layer: 0
   m_Name: OptionsScreen
-  m_TagString: Untagged
+  m_TagString: OptionsScreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

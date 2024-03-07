@@ -290,7 +290,6 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Invincibility());
         }
         if(curHealth <= 0) {
-            // do GameOver fade in
             sfxManager.playGameOver();
             Time.timeScale = 0.0000001f;
             GameObject.FindGameObjectWithTag("GameOverScreen").GetComponent<Animator>().Play("GameOverFadeIn");
