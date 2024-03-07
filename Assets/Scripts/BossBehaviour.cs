@@ -53,13 +53,6 @@ public class BossBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (healthAmount <= 0)
-        {
-            GameManager.instance.beatBoss = true;
-            GameManager.instance.enemiesDestroyed += 1;
-            Destroy(gameObject);
-        }
-
         if (currentState == Phase.laser)
         {
             if (canRotate)
@@ -141,6 +134,7 @@ public class BossBehaviour : MonoBehaviour
         healthAmount -= damage;
         healthBar.fillAmount = healthAmount / maxHealth;
         if(healthAmount <= 0) {
+            GameManager.instance.enemiesDestroyed += 1;
             // play game win sound?
             Time.timeScale = 0f;
             inputAction.action.Disable();

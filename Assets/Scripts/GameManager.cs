@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     public int roomsTotal = 0;
     public int roomsCleared = 0;
     public int enemiesDestroyed = 0;
-    private bool won;
     public bool beatBoss;
     public static GameManager instance;
     private MapComponent[,] map = new MapComponent[100, 100];
@@ -56,14 +55,6 @@ public class GameManager : MonoBehaviour
         float elapsedTime = Time.timeSinceLevelLoad;
         string formattedTime = FormatTime(elapsedTime);
         timerText.text = formattedTime;
-
-        if (!won && beatBoss)
-        {
-            // trigger win
-            won = true;
-            GameObject.FindGameObjectWithTag("WinScreen").GetComponent<Animator>().Play("WinFadeIn");
-            Time.timeScale = 0.0000001f;
-        }
         UpdateMap(mapX, mapY);
     }
 
