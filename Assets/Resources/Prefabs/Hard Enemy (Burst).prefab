@@ -155,7 +155,6 @@ MonoBehaviour:
   weaponHandler: {fileID: 4511437913766516607}
   projectileType: 1
   targetTag: Player
-  minDistance: 50
   speed: 0
 --- !u!114 &4511437913766516607
 MonoBehaviour:
@@ -171,15 +170,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 8737641987446605828}
   centerPoint: {fileID: 8737641987446605828}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   bullet: {fileID: 8780001088802693424, guid: 134c5e4f7fa51a04c95b53b7db4e4155, type: 3}
   bulletSound: {fileID: 0}
   bulletSpeed: 10
-  bulletCooldown: 2
+  bulletCooldown: 0.5
   burst: {fileID: 8780001088802693424, guid: 134c5e4f7fa51a04c95b53b7db4e4155, type: 3}
   burstSound: {fileID: 0}
-  burstSpeed: 5
-  burstCooldown: 3
-  numBurstProjectiles: 16
+  burstSpeed: 7
+  burstCooldown: 1
+  numBurstProjectiles: 18
 --- !u!1 &8737641987446605828
 GameObject:
   m_ObjectHideFlags: 0

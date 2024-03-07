@@ -15632,14 +15632,17 @@ MonoBehaviour:
     m_Bits: 115
   wh: {fileID: 1665019276}
   inputAction: {fileID: -7375924617140235432, guid: 1c93cb92a73497d4680337245cac7ed8, type: 3}
-  speed: 350
-  damage: 1
   rollDistance: 275
   rollInvincibilityDelay: 0.2
   rollInvinicilityDuration: 0.25
   rollCooldown: 0.5
+  speed: 350
+  damage: 1.5
   curHealth: 0
-  maxHealth: 0
+  maxHealth: 25
+  healthUpgradeAmt: 5
+  damageUpgradeAmt: 0.25
+  speedUpgradeAmt: 15
   shield: {fileID: 6033236994343307611, guid: c24878040702ff94ea3430d05fce5075, type: 3}
   shieldCooldown: 15
 --- !u!114 &1665019276
@@ -17775,7 +17778,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927975410}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}

@@ -18,7 +18,7 @@ public class LaserHandler : MonoBehaviour
     private bool isFiring = false;
     private bool canRotate = false;
     public float rotationSpeed = 45.0f; // Rotation speed in degrees per second
-    private float rotationTime;
+    public float rotationTime;
     public float laserCooldown;
     Vector3 spin = new Vector3(0, 1, 0);
 
@@ -79,7 +79,7 @@ public class LaserHandler : MonoBehaviour
             rotationSpeed = -rotationSpeed;
         }
         canRotate = true;
-        rotationTime = Random.Range(1f, 6f);
+        //rotationTime = Random.Range(1f, 6f);
         yield return new WaitForSeconds(rotationTime);
         canRotate = false;
         isFiring = false;

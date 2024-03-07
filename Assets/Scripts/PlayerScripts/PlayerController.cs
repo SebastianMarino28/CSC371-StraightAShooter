@@ -18,9 +18,7 @@ public class PlayerController : MonoBehaviour
     public InputActionReference inputAction;            // set to the Pause input (ESC key)
 
 
-    [Header("Movement Attributes")]
-    public int speed;
-    public float damage;
+    [Header("Roll Attributes")]
     public float rollDistance;
     public float rollInvincibilityDelay;
     public float rollInvinicilityDuration;
@@ -50,12 +48,22 @@ public class PlayerController : MonoBehaviour
    
     // health vars
     private UnityEngine.UI.Image healthBar;
-    public float curHealth;
-    public float maxHealth;
     private float baseProjectileDamage;
     private float baseLaserDamage;
     private float baseMeleeDamage;
     private bool isInvincible;
+
+    [Header("Stats")]
+    public int speed;
+    public float damage;
+    public float curHealth;
+    public float maxHealth;
+
+    // upgrade amounts
+    [Header("Upgrade Values")]
+    public float healthUpgradeAmt;
+    public float damageUpgradeAmt;
+    public int speedUpgradeAmt;
 
     // powerup vars
     public enum PowerupType
@@ -82,8 +90,7 @@ public class PlayerController : MonoBehaviour
         anim = GameObject.FindGameObjectWithTag("UpgradeScreen").GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();  
         rollSpeed = rollDistance / rollTime;
-        curHealth = 50f;
-        maxHealth = 50f;
+        curHealth = maxHealth;
         healthBar = GameObject.Find("HealthBar").GetComponent<UnityEngine.UI.Image>();
         powerups.Add(PowerupType.roll);
         baseProjectileDamage = 5f;
@@ -304,7 +311,7 @@ public class PlayerController : MonoBehaviour
     {
         // implement max health increase
         sfxManager.playDeepBreath();
-        maxHealth += 5;
+        maxHealth += healthUpgradeAmt;
         //curHealth += 5;                           // increase cur health alongside max health and lengthen health bar
         //healthBar.gameObject.transform.
         healthBar.fillAmount = curHealth / maxHealth;
@@ -316,7 +323,7 @@ public class PlayerController : MonoBehaviour
     {
         // implement speed increase
         sfxManager.playDrink();
-        speed += 15;
+        speed += speedUpgradeAmt;
         anim.Play("UpgradeFadeOut");
         inputAction.action.Enable();
         Time.timeScale = 1;
@@ -325,7 +332,7 @@ public class PlayerController : MonoBehaviour
     {
         // implement damage increase
         sfxManager.playScribble();
-        damage += 0.75f;
+        damage += damageUpgradeAmt;
         anim.Play("UpgradeFadeOut");
         inputAction.action.Enable();
         Time.timeScale = 1;

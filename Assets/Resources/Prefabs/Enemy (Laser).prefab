@@ -265,8 +265,9 @@ MonoBehaviour:
   maxHealth: 10
   healthAmount: 10
   healthBar: {fileID: 1885747154431510478}
-  rotationSpeed: 45
-  laserCooldown: 3
+  rotationSpeed: 120
+  rotationTime: 9999
+  laserCooldown: 0
 --- !u!1001 &3930365104343606958
 PrefabInstance:
   m_ObjectHideFlags: 0

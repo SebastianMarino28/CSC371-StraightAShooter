@@ -283,7 +283,7 @@ MonoBehaviour:
   bullet: {fileID: 8780001088802693424, guid: 134c5e4f7fa51a04c95b53b7db4e4155, type: 3}
   bulletSound: {fileID: 0}
   bulletSpeed: 8
-  bulletCooldown: 1.5
+  bulletCooldown: 0.35
   burst: {fileID: 0}
   burstSound: {fileID: 0}
   burstSpeed: 0
