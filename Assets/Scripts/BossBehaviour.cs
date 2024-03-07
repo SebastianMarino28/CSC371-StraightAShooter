@@ -137,6 +137,12 @@ public class BossBehaviour : MonoBehaviour
     {
         healthAmount -= damage;
         healthBar.fillAmount = healthAmount / maxHealth;
+        if(healthAmount <= 0) {
+            // play game win sound?
+            Time.timeScale = 0f;
+            GameObject.FindGameObjectWithTag("WinScreen").GetComponent<Animator>().Play("WinFadeIn");
+            Debug.Log("You WIN!");
+        }
     }
 
     public void Move(Vector3 destination)

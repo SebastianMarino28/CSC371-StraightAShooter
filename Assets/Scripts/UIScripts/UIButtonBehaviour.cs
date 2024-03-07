@@ -14,6 +14,10 @@ public class UIButtonBehaviour : MonoBehaviour
     // [4] = OptionsScreen
     // [5] = StatsScreen
     // [6] = FinalTPScreen
+    public GameObject player;
+    public Vector3 homePoint;
+    public GameObject cam;
+    public Vector3 cameraPoint;
     
     private PauseMenuBehaviour pauseMenuScript;
 
@@ -32,7 +36,9 @@ public class UIButtonBehaviour : MonoBehaviour
     }
 
     public void ReturnHomeButton() {
-        Debug.Log("Go home buton idk");
+        //player.transform.position = homePoint;
+        //cam.transform.position = cameraPoint;
+        //pauseMenuScript.PausePushPop(null);       // disable pause screen
     }
 
     public void BackButtonClick() {

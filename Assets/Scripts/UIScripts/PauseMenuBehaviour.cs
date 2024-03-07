@@ -16,6 +16,7 @@ public class PauseMenuBehaviour : MonoBehaviour
         menuStack = new Stack<Canvas>();
         paused = false;
     }
+
     void OnPause(InputValue pauseValue)
     {
         if (pauseValue.isPressed)
@@ -30,7 +31,6 @@ public class PauseMenuBehaviour : MonoBehaviour
     public void PausePushPop(Canvas canvas) {
         if(canvas != null) {
             if(menuStack.Count == 0) {
-                Debug.Log("PAUSED");
                 paused = true;
                 Time.timeScale = 0f;
             }
@@ -39,7 +39,6 @@ public class PauseMenuBehaviour : MonoBehaviour
         else {
             PopAndDisable();
             if(menuStack.Count == 0) {
-                Debug.Log("UNPAUSED");
                 paused = false;
                 Time.timeScale = 1f;
             }
@@ -54,7 +53,6 @@ public class PauseMenuBehaviour : MonoBehaviour
         }
         menuStack.Push(canvas);
         canvas.enabled = true;
-        Debug.Log(menuStack.Count);
     }
 
     // Disables and pops the current canvas, then enables the next most recent canvas
@@ -64,8 +62,7 @@ public class PauseMenuBehaviour : MonoBehaviour
         menuStack.Pop();
         if(menuStack.Count > 0) {
             Canvas next = menuStack.Peek();
-            tos.enabled = true;
+            next.enabled = true;
         }
-        Debug.Log(menuStack.Count);
     }
 }
