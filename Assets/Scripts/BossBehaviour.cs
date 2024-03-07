@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class BossBehaviour : MonoBehaviour
@@ -39,6 +40,7 @@ public class BossBehaviour : MonoBehaviour
     public float laserTime;
     public float perimeterTime;
     public float burstTime;
+    public InputActionReference inputAction;            // set to the Pause input (ESC key)
 
     void Start()
     {
@@ -140,6 +142,7 @@ public class BossBehaviour : MonoBehaviour
         if(healthAmount <= 0) {
             // play game win sound?
             Time.timeScale = 0f;
+            inputAction.action.Disable();
             GameObject.FindGameObjectWithTag("WinScreen").GetComponent<Animator>().Play("WinFadeIn");
             Debug.Log("You WIN!");
         }
