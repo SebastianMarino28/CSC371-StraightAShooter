@@ -285,7 +285,7 @@ MonoBehaviour:
   burst: {fileID: 8780001088802693424, guid: 134c5e4f7fa51a04c95b53b7db4e4155, type: 3}
   burstSound: {fileID: 0}
   burstSpeed: 6
-  burstCooldown: 1.5
+  burstCooldown: 2.5
   numBurstProjectiles: 16
 --- !u!1001 &5386443882119636847
 PrefabInstance:

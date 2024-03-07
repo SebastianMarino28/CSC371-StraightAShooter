@@ -128,7 +128,7 @@ MonoBehaviour:
   weaponHandler: {fileID: 0}
   projectileType: 0
   targetTag: Player
-  speed: 5
+  speed: 4
 --- !u!54 &5827464910131306047
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -326,6 +326,7 @@ public class PlayerController : MonoBehaviour
         // implement max health increase
         sfxManager.playDeepBreath();
         maxHealth += healthUpgradeAmt;
+        curHealth += healthUpgradeAmt;
         //curHealth += 5;                           // increase cur health alongside max health and lengthen health bar
         //healthBar.gameObject.transform.
         healthBar.fillAmount = curHealth / maxHealth;

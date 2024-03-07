@@ -11656,7 +11656,7 @@ MonoBehaviour:
   bulletHit: {fileID: 1290663547}
   doorLock: {fileID: 1290663545}
   gameOver1: {fileID: 1290663558}
-  gameOver2: {fileID: 1290663557}
+  gameOver2: {fileID: 1290663558}
   aha1: {fileID: 1290663544}
   pain1: {fileID: 1290663556}
   pain2: {fileID: 1290663555}
@@ -15835,7 +15835,7 @@ MonoBehaviour:
   speed: 350
   damage: 1.5
   curHealth: 0
-  maxHealth: 25
+  maxHealth: 30
   healthUpgradeAmt: 5
   damageUpgradeAmt: 0.25
   speedUpgradeAmt: 15
@@ -15863,7 +15863,7 @@ MonoBehaviour:
     m_Bits: 129
   bullet: {fileID: 1655137212806262, guid: 928e4410d4ce8ae4c91bf1e5ff903db8, type: 3}
   bulletSound: {fileID: 1290663550}
-  bulletSpeed: 10
+  bulletSpeed: 12
   bulletCooldown: 0.5
   burst: {fileID: 0}
   burstSound: {fileID: 0}

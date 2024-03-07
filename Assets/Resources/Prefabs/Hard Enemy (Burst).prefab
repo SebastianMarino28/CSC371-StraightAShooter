@@ -180,7 +180,7 @@ MonoBehaviour:
   burst: {fileID: 8780001088802693424, guid: 134c5e4f7fa51a04c95b53b7db4e4155, type: 3}
   burstSound: {fileID: 0}
   burstSpeed: 7
-  burstCooldown: 1
+  burstCooldown: 2
   numBurstProjectiles: 18
 --- !u!1 &8737641987446605828
 GameObject:
