@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public WeaponHandler wh;
     private Animator anim;
     private SFXManager sfxManager;
+    public InputActionReference inputAction;            // set to the Pause input (ESC key)
 
 
     [Header("Movement Attributes")]
@@ -290,10 +291,11 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Invincibility());
         }
         if(curHealth <= 0) {
-            sfxManager.playGameOver();
-            Time.timeScale = 0.0000001f;
+            Time.timeScale = 0f;
+            inputAction.action.Disable();
             GameObject.FindGameObjectWithTag("GameOverScreen").GetComponent<Animator>().Play("GameOverFadeIn");
             Debug.Log("You Lose!");
+            sfxManager.playGameOver();
         }
     }
 
@@ -307,6 +309,7 @@ public class PlayerController : MonoBehaviour
         //healthBar.gameObject.transform.
         healthBar.fillAmount = curHealth / maxHealth;
         anim.Play("UpgradeFadeOut");
+        inputAction.action.Enable();
         Time.timeScale = 1;
     }
     public void IncreaseSpeed()
@@ -315,6 +318,7 @@ public class PlayerController : MonoBehaviour
         sfxManager.playDrink();
         speed += 15;
         anim.Play("UpgradeFadeOut");
+        inputAction.action.Enable();
         Time.timeScale = 1;
     }
     public void IncreaseDamage()
@@ -323,6 +327,7 @@ public class PlayerController : MonoBehaviour
         sfxManager.playScribble();
         damage += 0.75f;
         anim.Play("UpgradeFadeOut");
+        inputAction.action.Enable();
         Time.timeScale = 1;
     }
     public void Heal(float healAmount)
@@ -341,6 +346,7 @@ public class PlayerController : MonoBehaviour
 
 
         anim.Play("UpgradeFadeOut");
+        inputAction.action.Enable();
         Time.timeScale = 1;
     }
 

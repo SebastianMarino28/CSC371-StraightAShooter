@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UpgradeBehaviour : MonoBehaviour
 {
     private Animator anim;
     private SFXManager sfxManager;
+    public InputActionReference inputAction;
 
     public void Awake() {
         anim = GameObject.FindGameObjectWithTag("UpgradeScreen").GetComponent<Animator>();
@@ -16,7 +18,8 @@ public class UpgradeBehaviour : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
             sfxManager.playAha();
-            Time.timeScale = 0.0000001f;
+            Time.timeScale = 0f;
+            inputAction.action.Disable();
             anim.Play("UpgradeFadeIn");
             Destroy(gameObject);
         }
