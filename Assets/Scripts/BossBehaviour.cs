@@ -53,6 +53,7 @@ public class BossBehaviour : MonoBehaviour
     {
         if (healthAmount <= 0)
         {
+            GameManager.instance.beatBoss = true;
             GameManager.instance.enemiesDestroyed += 1;
             Destroy(gameObject);
         }

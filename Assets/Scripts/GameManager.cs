@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int roomsCleared = 0;
     public int enemiesDestroyed = 0;
     private bool won;
+    public bool beatBoss;
     public static GameManager instance;
     private MapComponent[,] map = new MapComponent[100, 100];
 
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
         string formattedTime = FormatTime(elapsedTime);
         timerText.text = formattedTime;
 
-        if (!won && roomsTotal > 0 && roomsTotal == roomsCleared)
+        if (!won && beatBoss)
         {
             // trigger win
             won = true;

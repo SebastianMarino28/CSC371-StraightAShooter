@@ -77,16 +77,28 @@ public class RoomHandler : MonoBehaviour
         if (enemiesPool.Count > 0)
         {
             enemiesSpawned = true;
-            int rand = Random.Range(0, 4);
-            for (int i = 0; i <= rand; i++)
+
+            if(GameManager.instance.roomsCleared < enemiesPool.Count)
             {
-                GameObject randomEnemy = enemiesPool[Random.Range(0, enemiesPool.Count)];
-                int randomX = Random.Range(-8, 9);
-                int randomZ = Random.Range(-8, 9);
-                Vector3 enemyPosition = transform.position + new Vector3(randomX, 1.0f, randomZ);
+                GameObject randomEnemy = enemiesPool[GameManager.instance.roomsCleared];
+                Vector3 enemyPosition = transform.position + new Vector3(0f, 1.0f, 0f);
                 GameObject enemy = Instantiate(randomEnemy, enemyPosition, transform.rotation);
                 enemies.Add(enemy);
+
+            } else
+            {
+                int rand = Random.Range(1, 4);
+                for (int i = 0; i <= rand; i++)
+                {
+                    GameObject randomEnemy = enemiesPool[Random.Range(0, enemiesPool.Count)];
+                    int randomX = Random.Range(-8, 9);
+                    int randomZ = Random.Range(-8, 9);
+                    Vector3 enemyPosition = transform.position + new Vector3(randomX, 1.0f, randomZ);
+                    GameObject enemy = Instantiate(randomEnemy, enemyPosition, transform.rotation);
+                    enemies.Add(enemy);
+                }
             }
+            
         }
     }
 

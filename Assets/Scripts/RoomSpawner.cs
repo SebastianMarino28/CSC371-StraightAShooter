@@ -34,7 +34,7 @@ public class RoomSpawner : MonoBehaviour
 
             if (GameManager.instance.roomsTotal < roomCutoff)
             {
-                int doors = 2;
+                int doors = 3;
                 for (int i = 0; i < 4; i++)
                 {
                     if (!configuration[i] && doors>0)
