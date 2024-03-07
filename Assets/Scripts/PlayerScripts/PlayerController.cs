@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
     [Header("Upgrade Values")]
     public float healthUpgradeAmt;
     public float damageUpgradeAmt;
-    public int speedUpgradeAmt;
+    public float speedUpgradeAmt;
 
     // powerup vars
     public enum PowerupType
@@ -338,7 +338,8 @@ public class PlayerController : MonoBehaviour
     {
         // implement speed increase
         sfxManager.playDrink();
-        speed += speedUpgradeAmt;
+        wh.bulletSpeed += speedUpgradeAmt;
+        //speed += speedUpgradeAmt;
         anim.Play("UpgradeFadeOut");
         inputAction.action.Enable();
         Time.timeScale = 1;

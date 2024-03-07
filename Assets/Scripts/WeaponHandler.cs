@@ -9,7 +9,7 @@ public class WeaponHandler : MonoBehaviour
     [Header("Bullet")]
     public GameObject bullet;
     public AudioSource bulletSound;
-    public int bulletSpeed;
+    public float bulletSpeed;
     public float bulletCooldown;
 
     [Header("Burst")]
