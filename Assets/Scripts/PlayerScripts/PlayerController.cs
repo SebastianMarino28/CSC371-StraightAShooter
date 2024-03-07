@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     private SFXManager sfxManager;
     public InputActionReference inputAction;            // set to the Pause input (ESC key)
 
-
     [Header("Roll Attributes")]
     public float rollDistance;
     public float rollInvincibilityDelay;
@@ -76,6 +75,11 @@ public class PlayerController : MonoBehaviour
     private List<PowerupType> powerups = new List<PowerupType>();
     private int powerupIndex = 0;
     private bool canUsePowerup = true;
+
+    public GameObject dodgeIcon;
+    public GameObject shieldIcon;
+    public UnityEngine.UI.Image abilityCharge;
+
 
     // shield vars
     public GameObject shield;  
@@ -285,6 +289,16 @@ public class PlayerController : MonoBehaviour
                 powerupIndex = 0;
             }
         }
+        dodgeIcon.SetActive(false);
+        shieldIcon.SetActive(false);
+        if (powerups[powerupIndex] == PowerupType.roll)
+        {
+            dodgeIcon.SetActive(true);
+        }
+        if (powerups[powerupIndex] == PowerupType.shield)
+        {
+            shieldIcon.SetActive(true);
+        }
         Debug.Log(powerups[powerupIndex]);
     }
 
@@ -369,7 +383,13 @@ public class PlayerController : MonoBehaviour
     IEnumerator Cooldown(float cooldowntime)
     {
         canUsePowerup = false;
-        yield return new WaitForSeconds(cooldowntime);
+
+        for(int i = 0; i <= 100; i++)
+        {
+            yield return new WaitForSeconds(cooldowntime / 100.0f);
+            abilityCharge.fillAmount = (float)(i) / 100.0f;
+        }
+
         canUsePowerup = true;
     }
     IEnumerator Invincibility()
