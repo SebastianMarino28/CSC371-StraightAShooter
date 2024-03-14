@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public InputActionReference inputAction;            // set to the Pause input (ESC key)
 
     [Header("Roll Attributes")]
-    public float rollDistance;
+    public float rollMultiplier;
     public float rollInvincibilityDelay;
     public float rollInvinicilityDuration;
     public float rollCooldown;
@@ -41,10 +41,8 @@ public class PlayerController : MonoBehaviour
 
     // roll vars
     private const float rollTime = 0.6f; // this number comes from the animation time (1.2s) conducted at double speed (1.2s / 2 = 0.6s)
-    private float rollSpeed;
     private float rollStartTime;
     private float rollCooldownRemaining = 0;
-    private Vector3 rollDirection;
    
     // health vars
     private UnityEngine.UI.Image healthBar;
@@ -88,13 +86,10 @@ public class PlayerController : MonoBehaviour
     private bool hasShield = false;
     private bool shieldActive = false;
 
-
-
     void Start()
     {
         anim = GameObject.FindGameObjectWithTag("UpgradeScreen").GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();  
-        rollSpeed = rollDistance / rollTime;
         curHealth = maxHealth;
         healthBar = GameObject.Find("HealthBar").GetComponent<UnityEngine.UI.Image>();
         powerups.Add(PowerupType.roll);
@@ -145,18 +140,14 @@ public class PlayerController : MonoBehaviour
 
             if(elapsedTime < rollTime)
             {
-                rb.velocity = rollDirection * rollSpeed * Time.fixedDeltaTime;
+                rb.velocity = (speed * rollMultiplier) * Time.fixedDeltaTime * movement;
             }
             // roll complete
             else
             {
                 animator.SetBool("isRolling", false);
                 isRolling = false;
-                rb.velocity = Vector3.zero;
                 StartCoroutine(Cooldown(rollCooldown));
-
-                //start roll cooldown timer
-                //rollCooldownRemaining = rollCooldown;
             }          
         }
     }
@@ -266,15 +257,6 @@ public class PlayerController : MonoBehaviour
 
             rollStartTime = Time.time;
             canUsePowerup = false;
-            //roll in moving direction if moving, or in facing direction (towards cursor) if stationary
-            if (isMoving)
-            {
-                rollDirection = new Vector3(movementX, 0, movementZ).normalized;
-            }
-            else
-            {
-                rollDirection = transform.forward;
-            }
         }
     }
 

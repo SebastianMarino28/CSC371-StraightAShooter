@@ -15798,7 +15798,7 @@ MonoBehaviour:
     m_Bits: 115
   wh: {fileID: 1665019276}
   inputAction: {fileID: -7375924617140235432, guid: 1c93cb92a73497d4680337245cac7ed8, type: 3}
-  rollDistance: 275
+  rollMultiplier: 1.7
   rollInvincibilityDelay: 0.2
   rollInvinicilityDuration: 0.25
   rollCooldown: 0.5
