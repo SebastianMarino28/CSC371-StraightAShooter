@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &935098549637703634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3231858355650778375}
+  - component: {fileID: 1543626743319746986}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3231858355650778375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935098549637703634}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4, y: 1, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1543626743319746986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935098549637703634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac8d6e36c23546b0895b1a5d0c9df56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesPoolIntro:
+  - {fileID: 8607678815973297485, guid: af89017843460c04cb88e6d259265f0a, type: 3}
+  - {fileID: 7852532136789000798, guid: 28931c74c189e7f4690be7b4d1b4343a, type: 3}
+  - {fileID: 5374519339354799096, guid: 45131db60f54b744f9674b64d4f7d8cc, type: 3}
+  - {fileID: 3731514416077172870, guid: 92be001b5a54147bb9774429f386f038, type: 3}
+  enemiesPoolEasy: []
+  enemiesPoolMedium: []
+  enemiesPoolHard: []
+  spawnEffect: {fileID: 3280519133390621004, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
+  spawnedEnemy: {fileID: 0}

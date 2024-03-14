@@ -160,6 +160,7 @@ MonoBehaviour:
   targetTag: Player
   speed: 0
   rotationSpeed: 1000
+  deathEffect: {fileID: 0}
 --- !u!114 &3014540526519328489
 MonoBehaviour:
   m_ObjectHideFlags: 0

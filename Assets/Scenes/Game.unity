@@ -16716,6 +16716,7 @@ MonoBehaviour:
   inputAction: {fileID: -7375924617140235432, guid: 1c93cb92a73497d4680337245cac7ed8, type: 3}
   pauseMenu: {fileID: 734569421}
   rollDistance: 275
+  rollMultiplier: 1.7
   rollInvincibilityDelay: 0.2
   rollInvinicilityDuration: 0.25
   rollCooldown: 0.5
@@ -16751,7 +16752,7 @@ MonoBehaviour:
     m_Bits: 129
   bullet: {fileID: 1655137212806262, guid: 928e4410d4ce8ae4c91bf1e5ff903db8, type: 3}
   bulletSound: {fileID: 1290663550}
-  bulletSpeed: 12
+  bulletSpeed: 35
   bulletCooldown: 0.5
   burst: {fileID: 0}
   burstSound: {fileID: 0}
