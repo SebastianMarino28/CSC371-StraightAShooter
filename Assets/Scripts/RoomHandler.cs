@@ -6,9 +6,9 @@ public class RoomHandler : MonoBehaviour
 {
     // 4 doors: 0 = top, 1 = bottom, 2 = left, 3 = right. If true, door in that location. Else, blocker.
     private bool[] doors;
-    public List<GameObject> enemiesPoolEasy = new List<GameObject>();
-    public List<GameObject> enemiesPoolMedium = new List<GameObject>();
-    public List<GameObject> enemiesPoolHard = new List<GameObject>();
+    
+    public List<GameObject> spawnLocations = new List<GameObject>();
+
     private List<GameObject> enemies = new List<GameObject>();
     private bool entered = false;
     private bool enemiesSpawned = false;
@@ -32,7 +32,6 @@ public class RoomHandler : MonoBehaviour
     public GameObject leftSpawnPoint;
     public GameObject topSpawnPoint;
     public GameObject bottomSpawnPoint;
-
 
     private void Start()
     {
@@ -72,33 +71,43 @@ public class RoomHandler : MonoBehaviour
         if (doors[3]) { rightDoor.SetActive(closed); }
     }
 
-    public void SpawnEnemies(List<GameObject> enemiesPool)
+    public void SpawnEnemies(Difficulty difficulty)
     {
-        if (enemiesPool.Count > 0)
+        if (spawnLocations.Count > 0)
         {
-            enemiesSpawned = true;
-
-            if(GameManager.instance.roomsCleared < enemiesPool.Count)
+            int enemyCount = 0;
+            switch (difficulty)
             {
-                GameObject randomEnemy = enemiesPool[GameManager.instance.roomsCleared];
-                Vector3 enemyPosition = transform.position + new Vector3(0f, 1.0f, 0f);
-                GameObject enemy = Instantiate(randomEnemy, enemyPosition, transform.rotation);
-                enemies.Add(enemy);
-
-            } else
+                case Difficulty.intro:
+                    enemyCount = 1;
+                    break;
+                case Difficulty.easy:
+                    enemyCount = 2;
+                    break;
+                case Difficulty.medium:
+                    enemyCount = Random.Range(2, spawnLocations.Count);
+                    break;
+                case Difficulty.hard:
+                    enemyCount = Random.Range(2, spawnLocations.Count + 1);
+                    break;
+            }
+            List<int> spawnLocationIds = new List<int>();
+            while (spawnLocationIds.Count < enemyCount)
             {
-                int rand = Random.Range(1, 4);
-                for (int i = 0; i <= rand; i++)
+                int rand = Random.Range(0, 4);
+                if (!spawnLocationIds.Contains(rand))
                 {
-                    GameObject randomEnemy = enemiesPool[Random.Range(0, enemiesPool.Count)];
-                    int randomX = Random.Range(-8, 9);
-                    int randomZ = Random.Range(-8, 9);
-                    Vector3 enemyPosition = transform.position + new Vector3(randomX, 1.0f, randomZ);
-                    GameObject enemy = Instantiate(randomEnemy, enemyPosition, transform.rotation);
-                    enemies.Add(enemy);
+                    spawnLocationIds.Add(rand);
                 }
             }
+            for (int i = 0; i < spawnLocationIds.Count; i++)
+            { 
+                EnemySpawner enemySpawner = spawnLocations[spawnLocationIds[i]].GetComponent<EnemySpawner>();
+                StartCoroutine(enemySpawner.SpawnEnemy(difficulty));
+                enemies.Add(enemySpawner.spawnedEnemy);
+            }
             
+            enemiesSpawned = true;
         }
     }
 
@@ -130,28 +139,26 @@ public class RoomHandler : MonoBehaviour
     {
         if (!entered)
         {
-            StartCoroutine(SpawnDelay());
+            if (GameManager.instance.roomsCleared < 4)
+            {
+                SpawnEnemies(Difficulty.intro);
+            }
+            else if (GameManager.instance.roomsCleared <= GameManager.instance.roomsTotal / 3)
+            {
+                SpawnEnemies(Difficulty.easy);
+            }
+            else if (GameManager.instance.roomsCleared > GameManager.instance.roomsTotal / 3 && GameManager.instance.roomsCleared <= 2 * GameManager.instance.roomsTotal / 3)
+            {
+                SpawnEnemies(Difficulty.medium);
+            }
+            else if (GameManager.instance.roomsCleared > 2 * GameManager.instance.roomsTotal / 3 && GameManager.instance.roomsCleared <= GameManager.instance.roomsTotal)
+            {
+                SpawnEnemies(Difficulty.hard);
+            }
             ToggleDoors(true);
             entered = true;
             GameManager.instance.SetRoomSeen(mapX, mapY);
             sfxManager.playDoorLock();
-        }
-    }
-
-    IEnumerator SpawnDelay()
-    {
-        yield return new WaitForSeconds(1f);
-        if (GameManager.instance.roomsCleared <= GameManager.instance.roomsTotal/3)
-        {
-            SpawnEnemies(enemiesPoolEasy);
-        }
-        else if (GameManager.instance.roomsCleared > GameManager.instance.roomsTotal/3 && GameManager.instance.roomsCleared <= 2*GameManager.instance.roomsTotal/3)
-        {
-            SpawnEnemies(enemiesPoolMedium);
-        }
-        else if (GameManager.instance.roomsCleared > 2*GameManager.instance.roomsTotal/3 && GameManager.instance.roomsCleared <= GameManager.instance.roomsTotal)
-        {
-            SpawnEnemies(enemiesPoolHard);
         }
     }
 }
