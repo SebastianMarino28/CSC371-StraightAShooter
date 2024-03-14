@@ -94,7 +94,7 @@ public class RoomHandler : MonoBehaviour
             List<int> spawnLocationIds = new List<int>();
             while (spawnLocationIds.Count < enemyCount)
             {
-                int rand = Random.Range(0, 4);
+                int rand = Random.Range(0, spawnLocations.Count);
                 if (!spawnLocationIds.Contains(rand))
                 {
                     spawnLocationIds.Add(rand);
@@ -147,11 +147,11 @@ public class RoomHandler : MonoBehaviour
             {
                 SpawnEnemies(Difficulty.easy);
             }
-            else if (GameManager.instance.roomsCleared > GameManager.instance.roomsTotal / 3 && GameManager.instance.roomsCleared <= 2 * GameManager.instance.roomsTotal / 3)
+            else if (GameManager.instance.roomsCleared <= 2 * GameManager.instance.roomsTotal / 3)
             {
                 SpawnEnemies(Difficulty.medium);
             }
-            else if (GameManager.instance.roomsCleared > 2 * GameManager.instance.roomsTotal / 3 && GameManager.instance.roomsCleared <= GameManager.instance.roomsTotal)
+            else if (GameManager.instance.roomsCleared <= GameManager.instance.roomsTotal)
             {
                 SpawnEnemies(Difficulty.hard);
             }
