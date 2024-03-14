@@ -17,12 +17,13 @@ TagManager:
   - WinScreen
   - PauseScreen
   - Laser
-  - Bubble
   - TPFinal
   - HUD
   - FinalTPScreen
   - OptionsScreen
   - StatsScreen
+  - TPBubbleTrigger
+  - BedBubbleTrigger
   layers:
   - Default
   - TransparentFX
