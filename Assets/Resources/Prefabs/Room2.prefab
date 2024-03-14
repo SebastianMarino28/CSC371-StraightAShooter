@@ -6549,7 +6549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1543626743319746986, guid: 063c03bb548394600a80a985807b5141, type: 3}
       propertyPath: enemiesPoolEasy.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1543626743319746986, guid: 063c03bb548394600a80a985807b5141, type: 3}
       propertyPath: enemiesPoolHard.Array.size
@@ -6562,7 +6562,11 @@ PrefabInstance:
     - target: {fileID: 1543626743319746986, guid: 063c03bb548394600a80a985807b5141, type: 3}
       propertyPath: enemiesPoolEasy.Array.data[0]
       value: 
-      objectReference: {fileID: 296750618256999584, guid: 004fe341ff5c9bb4a82cab6be63fe8e8, type: 3}
+      objectReference: {fileID: 8607678815973297485, guid: af89017843460c04cb88e6d259265f0a, type: 3}
+    - target: {fileID: 1543626743319746986, guid: 063c03bb548394600a80a985807b5141, type: 3}
+      propertyPath: enemiesPoolEasy.Array.data[1]
+      value: 
+      objectReference: {fileID: 3731514416077172870, guid: 92be001b5a54147bb9774429f386f038, type: 3}
     - target: {fileID: 1543626743319746986, guid: 063c03bb548394600a80a985807b5141, type: 3}
       propertyPath: enemiesPoolHard.Array.data[0]
       value: 
