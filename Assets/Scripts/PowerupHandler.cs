@@ -29,8 +29,9 @@ public class PowerupHandler : MonoBehaviour
             currentFloor = Instantiate(orange_carpet, dorm_object.transform);
         }
         if(powerupsCollected == 3) {
+            Destroy(currentFloor);
             GameObject yellow_carpet = (GameObject)Resources.Load("Prefabs/DifficultyFloor/YellowFloor");
-            Instantiate(yellow_carpet, dorm_object.transform);
+            currentFloor = Instantiate(yellow_carpet, dorm_object.transform);
         }
         // change prefab instance of the floor under the desk, each color indicating difficulty of the boss
         //  1 = red floor
