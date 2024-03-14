@@ -10,13 +10,16 @@ using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
-    public PauseMenuBehaviour pauseMenu;
     public Camera mainCamera;
     public LayerMask layerMask;
     public WeaponHandler wh;
     private Animator anim;
     private SFXManager sfxManager;
     public InputActionReference inputAction;            // set to the Pause input (ESC key)
+
+    // UI
+    public PauseMenuBehaviour pauseMenu;
+
 
     [Header("Roll Attributes")]
     public float rollMultiplier;
@@ -45,7 +48,7 @@ public class PlayerController : MonoBehaviour
     private float rollCooldownRemaining = 0;
    
     // health vars
-    private UnityEngine.UI.Image healthBar;
+    public UnityEngine.UI.Image healthBar;
     private float baseProjectileDamage;
     private float baseLaserDamage;
     private float baseMeleeDamage;
@@ -91,7 +94,6 @@ public class PlayerController : MonoBehaviour
         anim = GameObject.FindGameObjectWithTag("UpgradeScreen").GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();  
         curHealth = maxHealth;
-        healthBar = GameObject.Find("HealthBar").GetComponent<UnityEngine.UI.Image>();
         powerups.Add(PowerupType.roll);
         baseProjectileDamage = 5f;
         baseMeleeDamage = 6f;
@@ -214,7 +216,7 @@ public class PlayerController : MonoBehaviour
             TakeDamage(baseLaserDamage);
            
         }
-        if (other.gameObject.CompareTag("Bubble")) {
+        if (other.gameObject.CompareTag("TPBubbleTrigger")) {
            GameObject tp_final = GameObject.FindGameObjectWithTag("TPFinal");
            tp_final.GetComponent<Canvas>().enabled = true;
            tp_final.GetComponent<CanvasGroup>().alpha = 1f;
@@ -222,7 +224,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnTriggerExit(Collider other) {
-        if (other.gameObject.CompareTag("Bubble")) {
+        if (other.gameObject.CompareTag("TPBubbleTrigger")) {
            GameObject tp_final = GameObject.FindGameObjectWithTag("TPFinal");
            tp_final.GetComponent<Canvas>().enabled = false;
            tp_final.GetComponent<CanvasGroup>().alpha = 0f;
@@ -365,8 +367,13 @@ public class PlayerController : MonoBehaviour
     {
         hasShield = true;
         powerups.Add(PowerupType.shield);
-        // remove LockedAbility #1 inside Stats screen
-        // instantiate DeployableShield_Info prefab inside Stats screen
+
+        GameObject statScreen = GameObject.FindGameObjectWithTag("StatsScreen");
+        GameObject shieldInfoPrefab = (GameObject)Resources.Load("Prefabs/AbilityInfo/Shield_Info");
+        Destroy(GameObject.Find("LockedShieldInfo"));
+        Instantiate(shieldInfoPrefab, statScreen.transform);
+
+        // do floor change
     }
 
 
