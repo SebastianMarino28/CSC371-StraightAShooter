@@ -17,17 +17,6 @@ public class PauseMenuBehaviour : MonoBehaviour
         paused = false;
     }
 
-    /*void OnPause(InputValue pauseValue)
-    {
-        if (pauseValue.isPressed)
-        {
-            if(!paused)
-                PausePushPop(pauseMenu);
-            else
-                PausePushPop(null);
-        }
-    }*/
-
     public void Pause(InputValue pauseValue)
     {
         if (pauseValue.isPressed)

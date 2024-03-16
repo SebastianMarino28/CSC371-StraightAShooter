@@ -12,8 +12,9 @@ public class UIButtonBehaviour : MonoBehaviour
     // [2] = WinScreen
     // [3] = PauseScreen
     // [4] = OptionsScreen
-    // [5] = StatsScreen
+    // [5] = StatsScreen (inventory/backpack)
     // [6] = FinalTPScreen
+    // [7] = HowToPlayScreen (Not implemented yet)
     public GameObject player;
     public Vector3 homePoint;
     public GameObject cam;
@@ -30,7 +31,7 @@ public class UIButtonBehaviour : MonoBehaviour
         pauseMenuScript.PausePushPop(optCanvas);
     }
 
-    public void StatsButtonClick() {
+    public void BackpackClick() {
         Canvas statsCanvas = screens[5].GetComponent<Canvas>();
         pauseMenuScript.PausePushPop(statsCanvas);
     }

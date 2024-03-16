@@ -16,6 +16,8 @@ public class SFXManager : MonoBehaviour
     public AudioSource deepBreath;
     public AudioSource scribble;
     public AudioSource munch;
+    public AudioSource backpackZip1;
+    public AudioSource backpackZip2;
 
     public void playBulletHit()
     {
@@ -83,5 +85,21 @@ public class SFXManager : MonoBehaviour
     public void playMunch()
     {
         munch.Play();
+    }
+    
+
+    public void playBackpackZip()
+    {
+        int rand = Random.Range(0, 2);
+
+        switch(rand)
+        {
+            case 0:
+                backpackZip1.Play();
+                break;
+            case 1:
+                backpackZip2.Play();
+                break;
+        }
     }
 }
