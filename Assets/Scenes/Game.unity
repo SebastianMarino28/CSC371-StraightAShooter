@@ -2425,7 +2425,7 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Drink a BlueBull
 
-        (+Projectile Speed)'
+        (+Fire Rate)'
       objectReference: {fileID: 0}
     - target: {fileID: 4330759148126323798, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_Name
@@ -10258,7 +10258,7 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Meditate
 
-        (+Mental Health)
+        (+Defense)
 
 '
       objectReference: {fileID: 0}
@@ -10292,7 +10292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: IncreaseMaxHealth
+      value: IncreaseDefense
       objectReference: {fileID: 0}
     - target: {fileID: 8377136010411112905, guid: cb0fa923acb936747b0e0933ec159ca0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -16978,9 +16978,10 @@ MonoBehaviour:
   damage: 1.5
   curHealth: 0
   maxHealth: 30
-  healthUpgradeAmt: 5
+  defenseLevel: 0
+  defenseUpgradeAmount: 0.06
   damageUpgradeAmt: 0.25
-  speedUpgradeAmt: 0.5
+  speedUpgradeAmt: 0.03
   dodgeIcon: {fileID: 149031632}
   shieldIcon: {fileID: 99311507}
   abilityCharge: {fileID: 874406704}
@@ -17006,7 +17007,7 @@ MonoBehaviour:
   bullet: {fileID: 1655137212806262, guid: 928e4410d4ce8ae4c91bf1e5ff903db8, type: 3}
   bulletSound: {fileID: 1290663550}
   bulletSpeed: 35
-  bulletCooldown: 0.5
+  bulletCooldown: 0.7
   burst: {fileID: 0}
   burstSound: {fileID: 0}
   burstSpeed: 0

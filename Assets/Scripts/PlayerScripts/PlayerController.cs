@@ -59,10 +59,11 @@ public class PlayerController : MonoBehaviour
     public float damage;
     public float curHealth;
     public float maxHealth;
+    public int defenseLevel;
 
     // upgrade amounts
     [Header("Upgrade Values")]
-    public float healthUpgradeAmt;
+    public float defenseUpgradeAmount;
     public float damageUpgradeAmt;
     public float speedUpgradeAmt;
 
@@ -297,7 +298,7 @@ public class PlayerController : MonoBehaviour
     {
         if(curHealth > 0) {
             sfxManager.playPain();
-            curHealth -= damage;
+            curHealth -= (damage - (damage * (defenseUpgradeAmount * defenseLevel))); // 10 defense will result in a 60% damage reduction 
             healthBar.fillAmount = curHealth / maxHealth;
             StartCoroutine(Invincibility());
         }
@@ -311,15 +312,11 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void IncreaseMaxHealth()
+    public void IncreaseDefense()
     {
         // implement max health increase
         sfxManager.playDeepBreath();
-        maxHealth += healthUpgradeAmt;
-        curHealth += healthUpgradeAmt;
-        //curHealth += 5;                           // increase cur health alongside max health and lengthen health bar
-        //healthBar.gameObject.transform.
-        healthBar.fillAmount = curHealth / maxHealth;
+        defenseLevel += 1;
         anim.Play("UpgradeFadeOut");
         inputAction.action.Enable();
         Time.timeScale = 1;
@@ -328,7 +325,7 @@ public class PlayerController : MonoBehaviour
     {
         // implement speed increase
         sfxManager.playDrink();
-        wh.bulletSpeed += speedUpgradeAmt;
+        wh.bulletCooldown -= speedUpgradeAmt;
         //speed += speedUpgradeAmt;
         anim.Play("UpgradeFadeOut");
         inputAction.action.Enable();
