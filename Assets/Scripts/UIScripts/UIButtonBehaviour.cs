@@ -44,6 +44,11 @@ public class UIButtonBehaviour : MonoBehaviour
         speedUpgradeAmt = .03f;
     }
 
+    public void HowToPlayButtonClick() {
+        Canvas howToPlayCanvas = screens[7].GetComponent<Canvas>();
+        pauseMenuScript.PausePushPop(howToPlayCanvas);
+    }
+
     public void OptionsButtonClick() {
         Canvas optCanvas = screens[4].GetComponent<Canvas>();
         pauseMenuScript.PausePushPop(optCanvas);
