@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: -174}
-  m_SizeDelta: {x: 330.3131, y: 68.9183}
+  m_AnchoredPosition: {x: 0.000015259, y: -192.88132}
+  m_SizeDelta: {x: 330.3131, y: 106.6809}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5511724550851320072
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The shield lasts for [10 seconds] or 10 hits, whichever expires first.
+  m_text: The shield lasts for 8 seconds and blocks hits at the cost of durability.
     Only blocks projectiles.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e28a8f264a564449a9fd74086dbdfd0, type: 2}
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8e9ea6ac7f53a48c981279b3dbe4a922, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
