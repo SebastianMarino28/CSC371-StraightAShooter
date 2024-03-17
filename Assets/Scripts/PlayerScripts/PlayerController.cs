@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
     // roll vars
     private const float rollTime = 0.6f; // this number comes from the animation time (1.2s) conducted at double speed (1.2s / 2 = 0.6s)
     private float rollStartTime;
-    private float rollCooldownRemaining = 0;
    
     // health vars
     public UnityEngine.UI.Image healthBar;
@@ -73,18 +72,17 @@ public class PlayerController : MonoBehaviour
 
     private List<PowerupType> powerups = new List<PowerupType>();
     private int powerupIndex = 0;
-    private bool canUsePowerup = true;
+    private bool canUsePowerupRoll = true;
+    private bool canUsePowerupShield = true;
 
     public GameObject dodgeIcon;
     public GameObject shieldIcon;
-    public UnityEngine.UI.Image abilityCharge;
-
+    public UnityEngine.UI.Image abilityChargeRoll;
+    public UnityEngine.UI.Image abilityChargeShield;
 
     // shield vars
     public GameObject shield;  
     public float shieldCooldown;
-    private bool hasShield = false;
-    private bool shieldActive = false;
 
     void Start()
     {
@@ -97,6 +95,8 @@ public class PlayerController : MonoBehaviour
         baseLaserDamage = 5f;
         animator = GetComponent<Animator>();
         sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
+        abilityChargeRoll.enabled = true;
+        abilityChargeShield.enabled = false;
     }
 
 
@@ -111,13 +111,10 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (isFiring)
+        if (isFiring && !isRolling)
         {
             wh.FireWeapon(WeaponHandler.ProjectileType.bullet);
         }
-
-
-        //rollCooldownRemaining -= Time.deltaTime;
     }
 
 
@@ -146,7 +143,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("isRolling", false);
                 isRolling = false;
-                StartCoroutine(Cooldown(rollCooldown));
+                StartCoroutine(Cooldown(rollCooldown, "roll", abilityChargeRoll));
             }          
         }
     }
@@ -177,15 +174,15 @@ public class PlayerController : MonoBehaviour
 
     void OnFire(InputValue fireValue)
     {
-        if (Time.timeScale > 0.0000001f && fireValue.isPressed && !isRolling)
+        if (Time.timeScale > 0.0000001f && fireValue.isPressed)
         {
             isFiring = true;
         }
         else
         {
             isFiring = false;
-        }
-       
+            Debug.Log("stopped firing");
+        } 
     }
 
     void OnPause(InputValue pauseValue)
@@ -245,34 +242,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnRoll(InputValue rollValue)
+    void OnAbility(InputValue rollValue)
     {
-        if (canUsePowerup)
+        if (powerups[powerupIndex] == PowerupType.roll && canUsePowerupRoll)
         {
-            if (powerups[powerupIndex] == PowerupType.roll)
-            {
-                Roll();
-            }
-            if (powerups[powerupIndex] == PowerupType.shield)
-            {
-                Shield();
-            }
+            Roll();
         }
+        if (powerups[powerupIndex] == PowerupType.shield && canUsePowerupShield)
+        {
+            Shield();
+        }
+
     }
 
     void Roll()
     {
-        if (Time.timeScale > 0.0000001f && !isRolling) //&& rollCooldownRemaining  <= 0)
+        if (Time.timeScale > 0.0000001f && !isRolling)
         {
             isRolling = true;
             animator.SetBool("isRolling", true);
 
-
-            isFiring = false;  // this stops shooting if the player was holding down shoot when they try to roll
-
-
             rollStartTime = Time.time;
-            canUsePowerup = false;
+            canUsePowerupRoll = false;
         }
     }
 
@@ -280,7 +271,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject newShield = Instantiate(shield);
         newShield.transform.position = transform.position;
-        StartCoroutine(Cooldown(shieldCooldown));
+        StartCoroutine(Cooldown(shieldCooldown, "shield", abilityChargeShield));
     }
 
     void OnSwitch()
@@ -295,13 +286,17 @@ public class PlayerController : MonoBehaviour
         }
         dodgeIcon.SetActive(false);
         shieldIcon.SetActive(false);
+        abilityChargeRoll.enabled = false;
+        abilityChargeShield.enabled = false;
         if (powerups[powerupIndex] == PowerupType.roll)
         {
             dodgeIcon.SetActive(true);
+            abilityChargeRoll.enabled = true;
         }
         if (powerups[powerupIndex] == PowerupType.shield)
         {
             shieldIcon.SetActive(true);
+            abilityChargeShield.enabled = true;
         }
         Debug.Log(powerups[powerupIndex]);
     }
@@ -326,7 +321,6 @@ public class PlayerController : MonoBehaviour
 
     public void UnlockShield()
     {
-        hasShield = true;
         powerups.Add(PowerupType.shield);
 
         GameObject statScreen = GameObject.FindGameObjectWithTag("StatsScreen");
@@ -336,9 +330,19 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    IEnumerator Cooldown(float cooldowntime)
+    IEnumerator Cooldown(float cooldowntime, string type, UnityEngine.UI.Image abilityCharge)
     {
-        canUsePowerup = false;
+        switch(type)
+        {
+            case "roll":
+                canUsePowerupRoll = false;
+                break;
+            case "shield":
+                canUsePowerupShield = false;
+                break;
+            default:
+                break;
+        }
 
         float totalTime = 0.0f; // Total time elapsed
         float duration = cooldowntime; // Total duration of the cooldown
@@ -355,7 +359,17 @@ public class PlayerController : MonoBehaviour
         // Ensure the fill amount is exactly 1.0 at the end
         abilityCharge.fillAmount = 1.0f;
 
-        canUsePowerup = true;
+        switch(type)
+        {
+            case "roll":
+                canUsePowerupRoll = true;
+                break;
+            case "shield":
+                canUsePowerupShield = true;
+                break;
+            default:
+                break;
+        }
     }
     IEnumerator Invincibility()
     {
