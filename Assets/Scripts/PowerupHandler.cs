@@ -21,6 +21,10 @@ public class PowerupHandler : MonoBehaviour
         }
     }
 
+        /* changes prefab instance of the floor under the desk, each color indicating difficulty of the boss
+            1 = red floor
+            2 = orange floor
+            3 = yellow floor */
     public void doDeskFloorChange() {
         GameObject dorm_object = GameObject.Find("DormRoomTeleporter");
         if(powerupsCollected == 2) {
@@ -33,9 +37,5 @@ public class PowerupHandler : MonoBehaviour
             GameObject yellow_carpet = (GameObject)Resources.Load("Prefabs/DifficultyFloor/YellowFloor");
             currentFloor = Instantiate(yellow_carpet, dorm_object.transform);
         }
-        // change prefab instance of the floor under the desk, each color indicating difficulty of the boss
-        //  1 = red floor
-        //  2 = orange floor
-        //  3 = yellow floor
     }
 }

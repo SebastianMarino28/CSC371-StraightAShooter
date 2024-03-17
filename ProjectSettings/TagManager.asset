@@ -23,7 +23,7 @@ TagManager:
   - OptionsScreen
   - StatsScreen
   - TPBubbleTrigger
-  - BedBubbleTrigger
+  - HowToPlayScreen
   layers:
   - Default
   - TransparentFX

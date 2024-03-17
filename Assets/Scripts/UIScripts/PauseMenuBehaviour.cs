@@ -24,7 +24,12 @@ public class PauseMenuBehaviour : MonoBehaviour
             if(!paused)
                 PausePushPop(pauseMenu);
             else
-                PausePushPop(null);
+                if(menuStack.Count == 1 && menuStack.Peek().name == "StatsScreen") {
+                    PausePushPop(null);
+                    PausePushPop(pauseMenu);
+                }
+                else 
+                    PausePushPop(null);
         }
     }
 

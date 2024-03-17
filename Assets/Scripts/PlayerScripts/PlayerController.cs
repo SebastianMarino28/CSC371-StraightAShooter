@@ -6,6 +6,7 @@ using System.Collections;
 using UnityEngine.Playables;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System;
 
 
 public class PlayerController : MonoBehaviour
@@ -15,10 +16,11 @@ public class PlayerController : MonoBehaviour
     public WeaponHandler wh;
     private Animator anim;
     private SFXManager sfxManager;
-    public InputActionReference inputAction;            // set to the Pause input (ESC key)
+    //public InputAction pauseAction;            // set to the Pause input (ESC/P key)
 
     // UI
     public PauseMenuBehaviour pauseMenu;
+    public UIButtonBehaviour ui_buttons;
 
 
     [Header("Roll Attributes")]
@@ -60,12 +62,6 @@ public class PlayerController : MonoBehaviour
     public float curHealth;
     public float maxHealth;
     public int defenseLevel;
-
-    // upgrade amounts
-    [Header("Upgrade Values")]
-    public float defenseUpgradeAmount;
-    public float damageUpgradeAmt;
-    public float speedUpgradeAmt;
 
     // powerup vars
     public enum PowerupType
@@ -197,6 +193,23 @@ public class PlayerController : MonoBehaviour
         pauseMenu.Pause(pauseValue);
     }
 
+    void OnBackpack(InputValue inputValue)
+    {
+        if (inputValue.isPressed)
+        {
+            if(!pauseMenu.paused)
+                ui_buttons.BackpackClick();
+            else
+                if(pauseMenu.menuStack.Count == 1 && pauseMenu.menuStack.Peek().name == "PauseScreen") {
+                    pauseMenu.PausePushPop(null);
+                    ui_buttons.BackpackClick();
+                }
+                else 
+                    pauseMenu.PausePushPop(null);
+
+        }
+    }
+
 
     void OnCollisionEnter(Collision collision)
     {
@@ -298,66 +311,17 @@ public class PlayerController : MonoBehaviour
     {
         if(curHealth > 0) {
             sfxManager.playPain();
-            curHealth -= (damage - (damage * (defenseUpgradeAmount * defenseLevel))); // 10 defense will result in a 60% damage reduction 
+            curHealth -= damage - (damage * (UIButtonBehaviour.defenseUpgradeAmount * defenseLevel)); // 10 defense will result in a 60% damage reduction 
             healthBar.fillAmount = curHealth / maxHealth;
             StartCoroutine(Invincibility());
         }
         if(curHealth <= 0) {
             Time.timeScale = 0f;
-            inputAction.action.Disable();
+            //pauseAction.action.Disable();
             GameObject.FindGameObjectWithTag("GameOverScreen").GetComponent<Animator>().Play("GameOverFadeIn");
             Debug.Log("You Lose!");
             sfxManager.playGameOver();
         }
-    }
-
-
-    public void IncreaseDefense()
-    {
-        // implement max health increase
-        sfxManager.playDeepBreath();
-        defenseLevel += 1;
-        anim.Play("UpgradeFadeOut");
-        inputAction.action.Enable();
-        Time.timeScale = 1;
-    }
-    public void IncreaseSpeed()
-    {
-        // implement speed increase
-        sfxManager.playDrink();
-        wh.bulletCooldown -= speedUpgradeAmt;
-        //speed += speedUpgradeAmt;
-        anim.Play("UpgradeFadeOut");
-        inputAction.action.Enable();
-        Time.timeScale = 1;
-    }
-    public void IncreaseDamage()
-    {
-        // implement damage increase
-        sfxManager.playScribble();
-        damage += damageUpgradeAmt;
-        anim.Play("UpgradeFadeOut");
-        inputAction.action.Enable();
-        Time.timeScale = 1;
-    }
-    public void Heal(float healAmount)
-    {
-        if (curHealth < maxHealth)
-        {
-            curHealth += healAmount;
-        }
-        if (curHealth > maxHealth)
-        {
-            curHealth = maxHealth;
-        }
-
-        sfxManager.playMunch();
-        healthBar.fillAmount = curHealth / maxHealth;
-
-
-        anim.Play("UpgradeFadeOut");
-        inputAction.action.Enable();
-        Time.timeScale = 1;
     }
 
     public void UnlockShield()
@@ -369,8 +333,6 @@ public class PlayerController : MonoBehaviour
         GameObject shieldInfoPrefab = (GameObject)Resources.Load("Prefabs/AbilityInfo/Shield_Info");
         Destroy(GameObject.Find("LockedShieldInfo"));
         Instantiate(shieldInfoPrefab, statScreen.transform);
-
-        // do floor change
     }
 
 
