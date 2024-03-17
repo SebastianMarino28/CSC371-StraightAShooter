@@ -67,22 +67,29 @@ public class PlayerController : MonoBehaviour
     {
         roll,
         shield,
-        clear
+        eraser
     }
 
     private List<PowerupType> powerups = new List<PowerupType>();
     private int powerupIndex = 0;
     private bool canUsePowerupRoll = true;
     private bool canUsePowerupShield = true;
+    private bool canUsePowerupEraser = true;
 
     public GameObject dodgeIcon;
     public GameObject shieldIcon;
+    public GameObject eraserIcon;
     public UnityEngine.UI.Image abilityChargeRoll;
     public UnityEngine.UI.Image abilityChargeShield;
+    public UnityEngine.UI.Image abilityChargeEraser;
 
     // shield vars
     public GameObject shield;  
     public float shieldCooldown;
+
+    // eraser vars
+    public GameObject eraser;
+    public float eraserCooldown;
 
     void Start()
     {
@@ -97,6 +104,7 @@ public class PlayerController : MonoBehaviour
         sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
         abilityChargeRoll.enabled = true;
         abilityChargeShield.enabled = false;
+        abilityChargeEraser.enabled = false;
     }
 
 
@@ -181,7 +189,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             isFiring = false;
-            Debug.Log("stopped firing");
         } 
     }
 
@@ -252,6 +259,10 @@ public class PlayerController : MonoBehaviour
         {
             Shield();
         }
+        if (powerups[powerupIndex] == PowerupType.eraser && canUsePowerupEraser)
+        {
+            Eraser();
+        }
 
     }
 
@@ -274,6 +285,13 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(Cooldown(shieldCooldown, "shield", abilityChargeShield));
     }
 
+    void Eraser()
+    {
+        GameObject newEraser = Instantiate(eraser);
+        newEraser.transform.position = transform.position;
+        StartCoroutine(Cooldown(eraserCooldown, "eraser", abilityChargeEraser));
+    }
+
     void OnSwitch()
     {
         if (powerups.Count > 1)
@@ -286,8 +304,10 @@ public class PlayerController : MonoBehaviour
         }
         dodgeIcon.SetActive(false);
         shieldIcon.SetActive(false);
+        eraserIcon.SetActive(false);
         abilityChargeRoll.enabled = false;
         abilityChargeShield.enabled = false;
+        abilityChargeEraser.enabled = false;
         if (powerups[powerupIndex] == PowerupType.roll)
         {
             dodgeIcon.SetActive(true);
@@ -297,6 +317,11 @@ public class PlayerController : MonoBehaviour
         {
             shieldIcon.SetActive(true);
             abilityChargeShield.enabled = true;
+        }
+        if (powerups[powerupIndex] == PowerupType.eraser)
+        {
+            eraserIcon.SetActive(true);
+            abilityChargeEraser.enabled = true;
         }
         Debug.Log(powerups[powerupIndex]);
     }
@@ -328,6 +353,10 @@ public class PlayerController : MonoBehaviour
         Destroy(GameObject.Find("LockedShieldInfo"));
         Instantiate(shieldInfoPrefab, statScreen.transform);
     }
+    public void UnlockEraser()
+    {
+        powerups.Add(PowerupType.eraser);
+    }
 
 
     IEnumerator Cooldown(float cooldowntime, string type, UnityEngine.UI.Image abilityCharge)
@@ -339,6 +368,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case "shield":
                 canUsePowerupShield = false;
+                break;
+            case "eraser":
+                canUsePowerupEraser = false;
                 break;
             default:
                 break;
@@ -366,6 +398,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case "shield":
                 canUsePowerupShield = true;
+                break;
+            case "eraser":
+                canUsePowerupEraser = true;
                 break;
             default:
                 break;

@@ -3,7 +3,7 @@ using UnityEngine;
 public class PowerupHandler : MonoBehaviour
 {
     public bool isShield;
-    public bool isClear;
+    public bool isEraser;
     private int powerupsCollected;    
     private GameObject currentFloor;
 
@@ -15,6 +15,12 @@ public class PowerupHandler : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player") && isShield) {
             other.gameObject.GetComponent<PlayerController>().UnlockShield();
+            Destroy(gameObject);
+            powerupsCollected++;
+            doDeskFloorChange();
+        }
+        if (other.gameObject.CompareTag("Player") && isEraser) {
+            other.gameObject.GetComponent<PlayerController>().UnlockEraser();
             Destroy(gameObject);
             powerupsCollected++;
             doDeskFloorChange();
