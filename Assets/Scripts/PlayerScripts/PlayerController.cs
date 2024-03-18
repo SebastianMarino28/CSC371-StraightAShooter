@@ -58,8 +58,11 @@ public class PlayerController : MonoBehaviour
     [Header("Stats")]
     public int speed;
     public float damage;
+    public float defense;
     public float curHealth;
     public float maxHealth;
+    public int speedLevel;
+    public int damageLevel;
     public int defenseLevel;
 
     // powerup vars
@@ -331,7 +334,7 @@ public class PlayerController : MonoBehaviour
     {
         if(curHealth > 0) {
             sfxManager.playPain();
-            curHealth -= damage - (damage * (UIButtonBehaviour.defenseUpgradeAmount * defenseLevel)); // 10 defense will result in a 60% damage reduction 
+            curHealth -= damage - (damage * defense); // 10 defense will result in a 60% damage reduction 
             healthBar.fillAmount = curHealth / maxHealth;
             StartCoroutine(Invincibility());
         }
