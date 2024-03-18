@@ -22227,6 +22227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577a4073ed1c8714f968e775b11eb9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hit: {fileID: 8586373897609548515, guid: 0401d8371bc8cb14f9a1edcb1b0cd052, type: 3}
   mainCamera: {fileID: 963194227}
   layerMask:
     serializedVersion: 2

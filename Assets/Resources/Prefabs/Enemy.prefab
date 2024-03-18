@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4750c74b8a84afa41844f7c9e4109db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sparks: {fileID: 7730445632461567514, guid: 669e9b86b6b1dd449bbdb94f1343fd71, type: 3}
+  explosion: {fileID: 6508338058922746024, guid: 4d956821d97ef574d8799ba76a5e3235, type: 3}
+  hit: {fileID: 5085346455073005709, guid: 58d7d42c04f3cd04e994ec2820d4020e, type: 3}
   maxHealth: 10
   healthAmount: 10
   healthBar: {fileID: 8464007888956762365}
@@ -160,7 +163,7 @@ MonoBehaviour:
   targetTag: Player
   speed: 0
   rotationSpeed: 1000
-  deathEffect: {fileID: 0}
+  idleTime: 0.5
 --- !u!114 &3014540526519328489
 MonoBehaviour:
   m_ObjectHideFlags: 0

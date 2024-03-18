@@ -24,6 +24,9 @@ TagManager:
   - StatsScreen
   - TPBubbleTrigger
   - HowToPlayScreen
+  - BedBubbleTrigger
+  - FxTemporaire
+  - Eraser
   layers:
   - Default
   - TransparentFX

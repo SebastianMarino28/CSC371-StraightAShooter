@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class BossBehaviour : MonoBehaviour
 {
+    public GameObject hitP;
     private RaycastHit hit;
     private Rigidbody rb;
     public WeaponHandler weaponHandler;
@@ -124,6 +125,8 @@ public class BossBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
+            GameObject effect = Instantiate(hitP);
+            effect.transform.position = other.transform.position;
             TakeDamage(playerScript.damage);
         }
     }
@@ -188,7 +191,7 @@ public class BossBehaviour : MonoBehaviour
 
     IEnumerator Idle()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         StartCoroutine(PhaseTimer());
     }
 

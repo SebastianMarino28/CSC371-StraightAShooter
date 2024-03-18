@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6033236994343307611}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -118,6 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8730f87b22e8a154f8b7225f8a102f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impact: {fileID: 1116753769435892203, guid: b8dbb3f5310020b488815f84bbeb0c83, type: 3}
+  finalColor: {r: 0.8037735, g: 0.03488065, b: 0.03488065, a: 0.5529412}
+  speed: 0.12
   curHealth: 25
   maxHealth: 25
   shieldTime: 8

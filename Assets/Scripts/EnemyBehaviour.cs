@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    public GameObject sparks;
+    public GameObject explosion;
+    public GameObject hit;
     public float maxHealth = 10f;
     public float healthAmount = 10f;
     public Image healthBar;
@@ -16,6 +19,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float speed;
     public float rotationSpeed;
     private bool idling = true;
+    public float idleTime = 0.5f;
     private PlayerController playerScript;
 
     private Vector3 lookDirection;
@@ -24,7 +28,7 @@ public class EnemyBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag(targetTag);
         playerScript = target.GetComponent<PlayerController>();
-        StartCoroutine(Idle());
+        StartCoroutine(Idle(idleTime));
     }
 
     void FixedUpdate()
@@ -32,6 +36,8 @@ public class EnemyBehaviour : MonoBehaviour
         if (healthAmount <= 0)
         {
             GameManager.instance.enemiesDestroyed += 1;
+            GameObject effect = Instantiate(explosion);
+            effect.transform.position = transform.position;
             Destroy(gameObject);
         }
 
@@ -64,7 +70,19 @@ public class EnemyBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
+            GameObject effect = Instantiate(hit);
+            effect.transform.position = transform.position;
             TakeDamage(playerScript.damage);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Eraser"))
+        {
+            StartCoroutine(Idle(2));
+            GameObject effect = Instantiate(sparks);
+            effect.transform.position = transform.position;
         }
     }
 
@@ -74,10 +92,10 @@ public class EnemyBehaviour : MonoBehaviour
         healthBar.fillAmount = healthAmount / maxHealth;
     }
 
-    IEnumerator Idle()
+    IEnumerator Idle(float time)
     {
         idling = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(time);
         idling = false;
     }
 }

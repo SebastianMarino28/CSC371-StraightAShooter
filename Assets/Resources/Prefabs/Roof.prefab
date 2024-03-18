@@ -410,7 +410,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3481130545728063989, guid: 17a4c17971a844f50bea114dd69578ae, type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6164357170695322952, guid: 17a4c17971a844f50bea114dd69578ae, type: 3}
       propertyPath: m_Name
@@ -476,7 +476,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3481130545728063989, guid: 17a4c17971a844f50bea114dd69578ae, type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6164357170695322952, guid: 17a4c17971a844f50bea114dd69578ae, type: 3}
       propertyPath: m_Name

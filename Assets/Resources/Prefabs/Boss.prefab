@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35ab4154b578444f95b83caf50a679f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitP: {fileID: 5085346455073005709, guid: 58d7d42c04f3cd04e994ec2820d4020e, type: 3}
   weaponHandler: {fileID: 2955007358803383285}
   projectileType: 0
   laser: {fileID: 7852236268275187336}
@@ -272,10 +273,9 @@ MonoBehaviour:
   healthAmount: 800
   healthBar: {fileID: 8798897683185936442}
   moveSpeed: 5
-  rotationSpeed: 80
+  rotationSpeed: 100
   rotationTime: 5
   laserCooldown: 1
-  inputAction: {fileID: -7375924617140235432, guid: 1c93cb92a73497d4680337245cac7ed8, type: 3}
   currentState: 0
   laserTime: 10
   perimeterTime: 20

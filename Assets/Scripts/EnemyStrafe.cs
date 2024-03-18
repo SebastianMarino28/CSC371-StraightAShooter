@@ -11,6 +11,7 @@ public class EnemyStrafe : MonoBehaviour
     private Vector3 destination;
     private Vector3 horizVector = new(1, 0, 0);
     private Vector3 vertVector = new(0, 0, 1);
+    private bool idling;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class EnemyStrafe : MonoBehaviour
         {
             vertical = true;
         }
-
+        StartCoroutine(Idle(0.5f));
         StartCoroutine(StrafeTimer());
     }
 
@@ -39,8 +40,20 @@ public class EnemyStrafe : MonoBehaviour
             destination = transform.position + vertVector;
         }
 
-        Vector3 movement = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.fixedDeltaTime);
-        rb.MovePosition(movement);
+        if (!idling)
+        {
+            Vector3 movement = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(movement);
+        }
+        
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Eraser"))
+        {
+            StartCoroutine(Idle(2));
+        }
     }
 
     IEnumerator StrafeTimer()
@@ -49,5 +62,12 @@ public class EnemyStrafe : MonoBehaviour
         horizVector = -horizVector;
         vertVector = -vertVector;
         StartCoroutine(StrafeTimer());
+    }
+
+    IEnumerator Idle(float time)
+    {
+        idling = true;
+        yield return new WaitForSeconds(time);
+        idling = false;
     }
 }

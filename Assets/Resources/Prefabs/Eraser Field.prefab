@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -900506446896618118}
   m_Layer: 2
   m_Name: Eraser Field
-  m_TagString: Untagged
+  m_TagString: Eraser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

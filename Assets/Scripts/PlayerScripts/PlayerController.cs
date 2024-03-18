@@ -11,6 +11,7 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject hit;
     public Camera mainCamera;
     public LayerMask layerMask;
     public WeaponHandler wh;
@@ -334,6 +335,8 @@ public class PlayerController : MonoBehaviour
     {
         if(curHealth > 0) {
             sfxManager.playPain();
+            GameObject effect = Instantiate(hit);
+            effect.transform.position = transform.position;
             curHealth -= damage - (damage * defense); // 10 defense will result in a 60% damage reduction 
             healthBar.fillAmount = curHealth / maxHealth;
             StartCoroutine(Invincibility());
@@ -359,6 +362,11 @@ public class PlayerController : MonoBehaviour
     public void UnlockEraser()
     {
         powerups.Add(PowerupType.eraser);
+
+        GameObject statScreen = GameObject.FindGameObjectWithTag("StatsScreen");
+        GameObject eraserInfoPrefab = (GameObject)Resources.Load("Prefabs/AbilityInfo/Eraser_Info");
+        Destroy(GameObject.Find("LockedEraserInfo"));
+        Instantiate(eraserInfoPrefab, statScreen.transform);
     }
 
 
