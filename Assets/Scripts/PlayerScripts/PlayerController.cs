@@ -274,6 +274,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.timeScale > 0.0000001f && !isRolling)
         {
+            sfxManager.playRoll();
             isRolling = true;
             animator.SetBool("isRolling", true);
 
@@ -286,6 +287,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject newShield = Instantiate(shield);
         newShield.transform.position = transform.position;
+        sfxManager.playShield();
         StartCoroutine(Cooldown(shieldCooldown, "shield", abilityChargeShield));
     }
 
@@ -293,6 +295,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject newEraser = Instantiate(eraser);
         newEraser.transform.position = transform.position;
+        sfxManager.playEraser();
         StartCoroutine(Cooldown(eraserCooldown, "eraser", abilityChargeEraser));
     }
 

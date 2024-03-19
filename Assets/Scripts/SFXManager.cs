@@ -18,6 +18,9 @@ public class SFXManager : MonoBehaviour
     public AudioSource munch;
     public AudioSource backpackZip1;
     public AudioSource backpackZip2;
+    public AudioSource roll;
+    public AudioSource shield;
+    public AudioSource eraser;
 
     public void playBulletHit()
     {
@@ -27,6 +30,21 @@ public class SFXManager : MonoBehaviour
     public void playDoorLock()
     {
         doorLock.Play();
+    }
+
+    public void playRoll()
+    {
+        roll.Play();
+    }
+
+    public void playShield()
+    {
+        shield.Play();
+    }
+
+    public void playEraser()
+    {
+        eraser.Play();
     }
 
     public void playGameOver()
