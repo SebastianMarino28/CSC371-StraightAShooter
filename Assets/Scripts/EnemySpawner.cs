@@ -7,7 +7,9 @@ public enum Difficulty
     intro,
     easy,
     medium,
-    hard
+    hard,
+    midterm1,
+    midterm2
 }
 
 public class EnemySpawner : MonoBehaviour
@@ -19,6 +21,8 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> enemiesPoolEasy = new List<GameObject>();
     public List<GameObject> enemiesPoolMedium = new List<GameObject>();
     public List<GameObject> enemiesPoolHard = new List<GameObject>();
+    public List<GameObject> enemiesPoolMidterm1 = new List<GameObject>();
+    public List<GameObject> enemiesPoolMidterm2 = new List<GameObject>();
 
     public ParticleSystem spawnEffect;
 
@@ -43,6 +47,14 @@ public class EnemySpawner : MonoBehaviour
                 break;
             case Difficulty.hard:
                 enemy = enemiesPoolHard[Random.Range(0, enemiesPoolHard.Count)];
+                spawnedEnemy = Instantiate(enemy, transform.position, transform.rotation);
+                break;
+            case Difficulty.midterm1:
+                enemy = enemiesPoolMidterm1[Random.Range(0, enemiesPoolMidterm1.Count)];
+                spawnedEnemy = Instantiate(enemy, transform.position, transform.rotation);
+                break;
+            case Difficulty.midterm2:
+                enemy = enemiesPoolMidterm2[Random.Range(0, enemiesPoolMidterm2.Count)];
                 spawnedEnemy = Instantiate(enemy, transform.position, transform.rotation);
                 break;
             default:

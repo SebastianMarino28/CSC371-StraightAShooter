@@ -10,10 +10,18 @@ public class RoomHandler : MonoBehaviour
     public List<GameObject> spawnLocations = new List<GameObject>();
 
     private List<GameObject> enemies = new List<GameObject>();
+    private PlayerController player;
     private bool entered = false;
     private bool enemiesSpawned = false;
     private bool upgradeSpawned = false;
+    private bool passedMidterm1 = false;
+    private bool passedMidterm2 = false;
+    private bool spawnedShield = false;
+    private bool spawnedEraser = false;
+    private bool needToSpawnAbility = false;
     public GameObject upgrade;
+    public GameObject shield;
+    public GameObject eraser;
     public int mapX;
     public int mapY;
     private SFXManager sfxManager;
@@ -36,6 +44,7 @@ public class RoomHandler : MonoBehaviour
     private void Start()
     {
         sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     public void ConfigureRoom(int x, int y, bool[] doorConfiguration)
@@ -90,6 +99,12 @@ public class RoomHandler : MonoBehaviour
                 case Difficulty.hard:
                     enemyCount = Random.Range(2, spawnLocations.Count + 1);
                     break;
+                case Difficulty.midterm1:
+                    enemyCount = spawnLocations.Count;
+                    break;
+                case Difficulty.midterm2:
+                    enemyCount = spawnLocations.Count;
+                    break;
             }
             List<int> spawnLocationIds = new List<int>();
             while (spawnLocationIds.Count < enemyCount)
@@ -126,8 +141,42 @@ public class RoomHandler : MonoBehaviour
 
             if (!upgradeSpawned)
             {
+                GameObject newUpgrade;
+                if (needToSpawnAbility)
+                {
+                    if (!spawnedEraser && !spawnedShield)
+                    {
+                        if (Random.Range(0,2) == 0)
+                        {
+                            spawnedShield = true;
+                            newUpgrade = Instantiate(shield);
+                        }
+                        else
+                        {
+                            spawnedEraser = true;
+                            newUpgrade = Instantiate(eraser);
+                        }
+                        
+                    }
+                    else if (spawnedEraser)
+                    {
+                        spawnedShield = true;
+                        newUpgrade = Instantiate(shield);
+                    }
+                    else
+                    {
+                        spawnedEraser = true;
+                        newUpgrade = Instantiate(eraser);
+                    }
+                    needToSpawnAbility = false;
+                }
+                else
+                {
+                    newUpgrade = Instantiate(upgrade);    
+                }
+
+                player.inCombat = false;
                 GameManager.instance.roomsCleared += 1;
-                GameObject newUpgrade = Instantiate(upgrade);
                 newUpgrade.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
                 upgradeSpawned = true;
             }
@@ -143,6 +192,18 @@ public class RoomHandler : MonoBehaviour
             {
                 SpawnEnemies(Difficulty.intro);
             }
+            else if (GameManager.instance.roomsCleared == GameManager.instance.roomsTotal / 3 && !passedMidterm1)
+            {
+                SpawnEnemies(Difficulty.midterm1);
+                passedMidterm1 = true;
+                needToSpawnAbility = true;
+            }
+            else if (GameManager.instance.roomsCleared == 2 * GameManager.instance.roomsTotal / 3 && !passedMidterm2)
+            {
+                SpawnEnemies(Difficulty.midterm2);
+                passedMidterm2 = true;
+                needToSpawnAbility = true;
+            }
             else if (GameManager.instance.roomsCleared <= GameManager.instance.roomsTotal / 3)
             {
                 SpawnEnemies(Difficulty.easy);
@@ -157,6 +218,7 @@ public class RoomHandler : MonoBehaviour
             }
             ToggleDoors(true);
             entered = true;
+            player.inCombat = true;
             GameManager.instance.SetRoomSeen(mapX, mapY);
             sfxManager.playDoorLock();
         }

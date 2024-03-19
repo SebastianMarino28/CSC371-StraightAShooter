@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
     public int speedLevel;
     public int damageLevel;
     public int defenseLevel;
+    public bool inCombat = false;
 
     // powerup vars
     public enum PowerupType

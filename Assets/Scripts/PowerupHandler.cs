@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class PowerupHandler : MonoBehaviour
 {
+    private UIButtonBehaviour ui_buttons;
     public bool isShield;
     public bool isEraser;
     private int powerupsCollected;    
     private GameObject currentFloor;
 
     void Awake() {
+        ui_buttons = GameObject.Find("PauseScreen").GetComponent<UIButtonBehaviour>();
         powerupsCollected = 1;
         currentFloor = GameObject.Find("RedFloor");
     }
@@ -18,12 +20,14 @@ public class PowerupHandler : MonoBehaviour
             Destroy(gameObject);
             powerupsCollected++;
             doDeskFloorChange();
+            ui_buttons.BackpackClick();
         }
         if (other.gameObject.CompareTag("Player") && isEraser) {
             other.gameObject.GetComponent<PlayerController>().UnlockEraser();
             Destroy(gameObject);
             powerupsCollected++;
             doDeskFloorChange();
+            ui_buttons.BackpackClick();
         }
     }
 

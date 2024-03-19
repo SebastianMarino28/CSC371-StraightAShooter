@@ -69,9 +69,12 @@ public class UIButtonBehaviour : MonoBehaviour
     }
 
     public void ReturnHomeButton() {
-        //player.transform.position = homePoint;
-        //cam.transform.position = cameraPoint;
-        //pauseMenuScript.PausePushPop(null);       // disable pause screen
+        if (!player.inCombat)
+        {
+            player.transform.position = homePoint;
+            cam.transform.position = cameraPoint;
+            pauseMenuScript.PausePushPop(null);       // disable pause screen
+        }    
     }
 
     public void BackButtonClick() {

@@ -13,6 +13,7 @@ public class BossRoomTeleporter : MonoBehaviour
     public void Teleport()
     {
         player.transform.position = playerPoint;
+        player.GetComponent<PlayerController>().inCombat = true;
         cam.GetComponent<CameraHandler>().enabled = false;
         cam.transform.position = cameraPoint;
         GameObject newBoss = Instantiate(boss);

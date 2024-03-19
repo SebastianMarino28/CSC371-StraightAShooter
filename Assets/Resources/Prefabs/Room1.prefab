@@ -4895,6 +4895,8 @@ MonoBehaviour:
   - {fileID: 7365869403836766282}
   - {fileID: 7293194258923772924}
   upgrade: {fileID: 3256593905201065530, guid: 64a36eaddc8bd134392a6bcaa7b99d29, type: 3}
+  shield: {fileID: 7805103808820797962, guid: 0a1482fb46c06434398cf365dd2ec0f8, type: 3}
+  eraser: {fileID: 4264669062308883885, guid: efb2e2a7bf7ec18479fa9b1108c5a606, type: 3}
   mapX: 0
   mapY: 0
   rightDoor: {fileID: 6956584847254205038}

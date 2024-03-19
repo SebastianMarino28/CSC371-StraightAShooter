@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class RoomSpawner : MonoBehaviour
 {
@@ -34,7 +35,14 @@ public class RoomSpawner : MonoBehaviour
 
             if (GameManager.instance.roomsTotal < roomCutoff)
             {
-                int doors = 3;
+                // guarantee rooms will have at least 2 doors until cutoff
+                List<int> possibleDoors = new() {0, 1, 2, 3};
+                possibleDoors.Remove(openingDirection);
+                int guaranteedDoor = possibleDoors[UnityEngine.Random.Range(0, 3)];
+                configuration[guaranteedDoor] = true;
+
+
+                int doors = 1;
                 for (int i = 0; i < 4; i++)
                 {
                     if (!configuration[i] && doors>0)
