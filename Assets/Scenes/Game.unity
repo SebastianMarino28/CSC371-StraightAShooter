@@ -5118,6 +5118,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 142331618346828851, guid: 7979b5040cf9f4653abc3f3d3f97cd12, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 142331618346828851, guid: 7979b5040cf9f4653abc3f3d3f97cd12, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 593714242072204434, guid: 7979b5040cf9f4653abc3f3d3f97cd12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
