@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     private float baseProjectileDamage;
     private float baseLaserDamage;
     private float baseMeleeDamage;
-    private bool isInvincible;
+    public bool isInvincible;
 
     [Header("Stats")]
     public int speed;
@@ -232,10 +232,12 @@ public class PlayerController : MonoBehaviour
 
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Projectile") && !isRolling && !isInvincible) {
+        if (other.gameObject.CompareTag("Projectile") && !isRolling) {
             Destroy(other.gameObject);
-            TakeDamage(baseProjectileDamage);
-           
+            if (!isInvincible)
+            {
+                TakeDamage(baseProjectileDamage);
+            }          
         }
         if (other.gameObject.CompareTag("Laser") && !isRolling && !isInvincible) {
             TakeDamage(baseLaserDamage);
