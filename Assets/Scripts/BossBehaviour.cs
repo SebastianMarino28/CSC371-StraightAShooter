@@ -140,7 +140,7 @@ public class BossBehaviour : MonoBehaviour
             // play game win sound?
             Time.timeScale = 0f;
             GameObject.FindGameObjectWithTag("WinScreen").GetComponent<Animator>().Play("WinFadeIn");
-            Debug.Log("You WIN!");
+            GameManager.instance.CalculateGrade();
             Destroy(gameObject);
         }
     }

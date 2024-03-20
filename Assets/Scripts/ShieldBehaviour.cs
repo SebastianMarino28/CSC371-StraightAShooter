@@ -49,6 +49,17 @@ public class ShieldBehaviour : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision other) {
+        if (other.gameObject.CompareTag("Projectile")) {
+            Destroy(other.gameObject);
+            TakeDamage(baseProjectileDamage);
+        }
+        if (other.gameObject.CompareTag("Laser")) {
+            Destroy(gameObject);
+           
+        }
+    }
+
     public void TakeDamage(float damage)
     {
         if(curHealth > 0) {

@@ -16,8 +16,6 @@ public class RoomHandler : MonoBehaviour
     private bool upgradeSpawned = false;
     private bool passedMidterm1 = false;
     private bool passedMidterm2 = false;
-    private bool spawnedShield = false;
-    private bool spawnedEraser = false;
     private bool needToSpawnAbility = false;
     public GameObject upgrade;
     public GameObject shield;
@@ -144,28 +142,32 @@ public class RoomHandler : MonoBehaviour
                 GameObject newUpgrade;
                 if (needToSpawnAbility)
                 {
-                    if (!spawnedEraser && !spawnedShield)
+                    if (!player.hasEraser && !player.hasShield)
                     {
                         if (Random.Range(0,2) == 0)
                         {
-                            spawnedShield = true;
+                            player.hasShield = true;
                             newUpgrade = Instantiate(shield);
                         }
                         else
                         {
-                            spawnedEraser = true;
+                            player.hasEraser = true;
                             newUpgrade = Instantiate(eraser);
                         }
                         
                     }
-                    else if (spawnedEraser)
+                    else if (player.hasEraser && player.hasShield)
                     {
-                        spawnedShield = true;
+                        newUpgrade = Instantiate(upgrade);
+                    }
+                    else if (player.hasEraser)
+                    {
+                        player.hasShield = true;
                         newUpgrade = Instantiate(shield);
                     }
                     else
                     {
-                        spawnedEraser = true;
+                        player.hasEraser = true;
                         newUpgrade = Instantiate(eraser);
                     }
                     needToSpawnAbility = false;

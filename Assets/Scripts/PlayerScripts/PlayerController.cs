@@ -91,10 +91,12 @@ public class PlayerController : MonoBehaviour
     // shield vars
     public GameObject shield;  
     public float shieldCooldown;
+    public bool hasShield;
 
     // eraser vars
     public GameObject eraser;
     public float eraserCooldown;
+    public bool hasEraser;
 
     void Start()
     {
@@ -343,6 +345,12 @@ public class PlayerController : MonoBehaviour
             effect.transform.position = transform.position;
             curHealth -= damage - (damage * defense); // 10 defense will result in a 60% damage reduction 
             healthBar.fillAmount = curHealth / maxHealth;
+            GameManager.instance.timesHit++;
+            if (GameManager.instance.healthPercentage > 0)
+            {
+                GameManager.instance.healthPercentage -= 5;
+            }
+            
             StartCoroutine(Invincibility());
         }
         if(curHealth <= 0) {
@@ -357,7 +365,7 @@ public class PlayerController : MonoBehaviour
     public void UnlockShield()
     {
         powerups.Add(PowerupType.shield);
-
+        hasShield = true;
         GameObject statScreen = GameObject.FindGameObjectWithTag("StatsScreen");
         GameObject shieldInfoPrefab = (GameObject)Resources.Load("Prefabs/AbilityInfo/Shield_Info");
         Destroy(GameObject.Find("LockedShieldInfo"));
@@ -366,7 +374,7 @@ public class PlayerController : MonoBehaviour
     public void UnlockEraser()
     {
         powerups.Add(PowerupType.eraser);
-
+        hasEraser = true;
         GameObject statScreen = GameObject.FindGameObjectWithTag("StatsScreen");
         GameObject eraserInfoPrefab = (GameObject)Resources.Load("Prefabs/AbilityInfo/Eraser_Info");
         Destroy(GameObject.Find("LockedEraserInfo"));
