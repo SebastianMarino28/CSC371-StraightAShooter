@@ -14706,6 +14706,7 @@ MonoBehaviour:
   slider: {fileID: 1030750672}
   musicSource1: {fileID: 1723477790}
   musicSource2: {fileID: 1723477789}
+  musicSource3: {fileID: 1723477791}
 --- !u!1 &1033130414
 GameObject:
   m_ObjectHideFlags: 0
@@ -25252,6 +25253,7 @@ MonoBehaviour:
   damageLevel: 0
   defenseLevel: 0
   inCombat: 0
+  canPause: 1
   dodgeIcon: {fileID: 149031632}
   shieldIcon: {fileID: 99311507}
   eraserIcon: {fileID: 1859295438}
@@ -26322,13 +26324,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 74bd574a4ae90ad4c935b8a43fac6e90, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 69
+  Priority: 15
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -27233,6 +27235,7 @@ MonoBehaviour:
   slider: {fileID: 1753405562}
   musicSource1: {fileID: 0}
   musicSource2: {fileID: 0}
+  musicSource3: {fileID: 0}
 --- !u!1 &1769510255
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
     public int damageLevel;
     public int defenseLevel;
     public bool inCombat = false;
+    public bool canPause = true;
 
     // powerup vars
     public enum PowerupType
@@ -201,12 +202,16 @@ public class PlayerController : MonoBehaviour
 
     void OnPause(InputValue pauseValue)
     {
-        pauseMenu.Pause(pauseValue);
+        if (canPause)
+        {
+            pauseMenu.Pause(pauseValue);
+        }
+        
     }
 
     void OnBackpack(InputValue inputValue)
     {
-        if (inputValue.isPressed)
+        if (inputValue.isPressed && canPause)
         {
             if(!pauseMenu.paused)
                 ui_buttons.BackpackClick();
@@ -357,6 +362,7 @@ public class PlayerController : MonoBehaviour
         }
         if(curHealth <= 0) {
             Time.timeScale = 0f;
+            canPause = false;
             //pauseAction.action.Disable();
             GameObject.FindGameObjectWithTag("GameOverScreen").GetComponent<Animator>().Play("GameOverFadeIn");
             Debug.Log("You Lose!");
