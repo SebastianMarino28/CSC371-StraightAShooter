@@ -16,7 +16,8 @@ public class UIButtonBehaviour : MonoBehaviour
     // [4] = OptionsScreen
     // [5] = StatsScreen (inventory/backpack)
     // [6] = FinalTPScreen
-    // [7] = HowToPlayScreen (Not implemented yet)
+    // [7] = HowToPlayScreen
+    // [8] = HaungsMode
     private Animator anim;
     private SFXManager sfxManager;
 
@@ -51,6 +52,12 @@ public class UIButtonBehaviour : MonoBehaviour
         defenseUpgradeAmount = .06f;
         damageUpgradeAmt = .25f;
         speedUpgradeAmt = .04f;
+    }
+
+    public void HaungsModeClick()
+    {
+        Canvas haungsCanvas = screens[8].GetComponent<Canvas>();
+        pauseMenuScript.PausePushPop(haungsCanvas);
     }
 
     public void HowToPlayButtonClick() {
