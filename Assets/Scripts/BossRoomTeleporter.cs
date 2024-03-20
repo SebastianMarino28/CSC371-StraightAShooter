@@ -9,9 +9,11 @@ public class BossRoomTeleporter : MonoBehaviour
     public GameObject cam;
     public GameObject boss;
     public GameObject minimap;
+    public BGMusicSelector bgMusic;
 
     public void Teleport()
     {
+        bgMusic.StartBossMusic();
         player.transform.position = playerPoint;
         player.GetComponent<PlayerController>().inCombat = true;
         cam.GetComponent<CameraHandler>().enabled = false;

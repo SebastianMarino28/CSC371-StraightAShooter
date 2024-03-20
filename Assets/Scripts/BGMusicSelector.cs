@@ -6,6 +6,8 @@ public class BGMusicSelector : MonoBehaviour
 {
     public AudioSource bgm1;
     public AudioSource bgm2;
+    public AudioSource bossMusic;
+    public bool bossFight = false;
 
     private int selector;
 
@@ -15,7 +17,7 @@ public class BGMusicSelector : MonoBehaviour
     }
     void Update()
     {
-        if(!bgm1.isPlaying && !bgm2.isPlaying)
+        if(!bgm1.isPlaying && !bgm2.isPlaying && !bossFight)
         {
             selector++;
             selector %= 2;
@@ -29,5 +31,19 @@ public class BGMusicSelector : MonoBehaviour
                 bgm2.Play();
             }
         }      
+    }
+
+    public void StartBossMusic()
+    {
+        bossFight = true;
+        if (bgm1.isPlaying)
+        {
+            bgm1.Stop();
+        }
+        if (bgm2.isPlaying)
+        {
+            bgm2.Stop();
+        }
+        bossMusic.Play();
     }
 }
