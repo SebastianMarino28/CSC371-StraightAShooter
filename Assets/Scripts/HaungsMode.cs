@@ -18,6 +18,12 @@ public class HaungsMode : MonoBehaviour
         player.isInvincible = !player.isInvincible;
     }
 
+    public void UnlockAbilities()
+    {
+        player.UnlockShield();
+        player.UnlockEraser();
+    }
+
     public void ModifyDamage(float value)
     {
         player.damage = value; 
