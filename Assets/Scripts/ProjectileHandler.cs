@@ -7,16 +7,25 @@ public class ProjectileHandler : MonoBehaviour
     private void Start()
     {
         sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
+        if (gameObject.layer == 6 && gameObject.CompareTag("Projectile"))
+        {
+            GameManager.instance.projectilesFired++;
+        }
     }
     void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
+            if (gameObject.layer == 6 && gameObject.CompareTag("Projectile"))
+            {
+                GameManager.instance.projectilesOnTarget++;
+            }
         }
 
         if (gameObject.CompareTag("Projectile") && other.gameObject.CompareTag("Enemy"))
         {
             sfxManager.playBulletHit();
+            GameManager.instance.projectilesOnTarget++;
         }
     }
 
@@ -25,11 +34,16 @@ public class ProjectileHandler : MonoBehaviour
         if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
+            if (gameObject.layer == 6 && gameObject.CompareTag("Projectile"))
+            {
+                GameManager.instance.projectilesOnTarget++;
+            }
         }
 
         if (gameObject.CompareTag("Projectile") && other.gameObject.CompareTag("Enemy"))
         {
             sfxManager.playBulletHit();
+            GameManager.instance.projectilesOnTarget++;
         }
     }
 }

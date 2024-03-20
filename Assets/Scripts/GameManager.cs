@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,10 +6,23 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI gradeText;
+    public TextMeshProUGUI hitText;
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI accuracyText;
     public int roomsTotal = 0;
     public int roomsCleared = 0;
     public int enemiesDestroyed = 0;
+    public int timesHit = 0;
+    public float projectilesFired = 0;
+    public float projectilesOnTarget = 0;
+    public float timePercentage = 100;
+    public float healthPercentage = 100;
+    public float accuracyPercentage = 100;
+    public float extraCredit = 0;
     public bool beatBoss;
+    
+
     public static GameManager instance;
     private MapComponent[,] map = new MapComponent[100, 100];
 
@@ -48,6 +62,7 @@ public class GameManager : MonoBehaviour
             SetRoomSeen(0, 0);
             roomsTotal -= 1;
         }
+        StartCoroutine(RoomCheck());
     }
 
     void Update()
@@ -76,6 +91,55 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Game");
+    }
+
+    public void CalculateGrade()
+    {
+        if (roomsCleared >= roomsTotal)
+        {
+            extraCredit += 10;
+        }
+        float elapsedTime = Time.timeSinceLevelLoad;
+        if (elapsedTime > 300f) // If time is over 5 minutes (300 seconds)
+        {
+            // Linearly decrease the score from 100% to 0% over the next 10 minutes (from 5 to 15 minutes)
+            float percentage = Mathf.Clamp01((elapsedTime - 300f) / 600f);
+            timePercentage = Mathf.Lerp(100f, 0f, percentage);
+        }
+        accuracyPercentage = 100 * (projectilesOnTarget / projectilesFired);
+        float grade = ((healthPercentage + timePercentage + accuracyPercentage) / 3.0f) + extraCredit;
+        string letter;
+        if (grade >= 90)
+        {
+            letter = "A";
+        }
+        else if (grade >= 80)
+        {
+            letter = "B";
+        }
+        else if (grade >= 70)
+        {
+            letter = "C";
+        }
+        else 
+        {
+            letter = "D";
+        }
+        gradeText.text = letter;
+        hitText.text = timesHit.ToString();
+        accuracyText.text = ((int)accuracyPercentage).ToString() + "%";
+        timeText.text = FormatTime(Time.timeSinceLevelLoad);
+        Debug.Log("Grade: " + grade + "%");
+
+    }
+
+    IEnumerator RoomCheck()
+    {
+        yield return new WaitForSeconds(1);
+        if (roomsTotal < 25)
+        {
+            RestartGame();
+        }
     }
 
     public void AddRoom(int x, int y, bool[] configuration)
