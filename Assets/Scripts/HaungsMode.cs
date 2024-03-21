@@ -20,8 +20,14 @@ public class HaungsMode : MonoBehaviour
 
     public void UnlockAbilities()
     {
-        player.UnlockShield();
-        player.UnlockEraser();
+        if (!player.hasShield)
+        {
+            player.UnlockShield();
+        }
+        if (!player.hasEraser)
+        {
+            player.UnlockEraser();
+        }
     }
 
     public void ModifyDamage(float value)

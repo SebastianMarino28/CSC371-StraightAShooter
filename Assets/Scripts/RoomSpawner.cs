@@ -15,7 +15,7 @@ public class RoomSpawner : MonoBehaviour
 
     private bool[] configuration; // array of size 4 to store which doors are open (0 = top, 1 = bottom, 2 = left, 3 = right)
     private bool spawned = false;
-    int roomTypeCount = 3;
+    int roomTypeCount = 5;
 
 
     void Start()

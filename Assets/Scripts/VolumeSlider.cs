@@ -13,12 +13,14 @@ public class VolumeSlider : MonoBehaviour
     public Slider slider;
     public AudioSource musicSource1;
     public AudioSource musicSource2;
+    public AudioSource musicSource3;
 
     public void OnChangeMusicVolume() {
         text.text = (slider.value * 1000).ToString("0");
         text.text += "%";
         editMusicSourceValue(musicSource1);
         editMusicSourceValue(musicSource2);
+        editMusicSourceValue(musicSource3);
     }
 
     private void editMusicSourceValue(AudioSource source) {

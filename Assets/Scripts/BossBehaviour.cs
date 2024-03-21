@@ -138,6 +138,7 @@ public class BossBehaviour : MonoBehaviour
         if(healthAmount <= 0) {
             GameManager.instance.enemiesDestroyed += 1;
             // play game win sound?
+            playerScript.canPause = false;
             Time.timeScale = 0f;
             GameObject.FindGameObjectWithTag("WinScreen").GetComponent<Animator>().Play("WinFadeIn");
             GameManager.instance.CalculateGrade();

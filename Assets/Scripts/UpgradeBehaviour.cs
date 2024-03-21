@@ -8,6 +8,7 @@ public class UpgradeBehaviour : MonoBehaviour
 {
     private Animator anim;
     private SFXManager sfxManager;
+    private PlayerController player;
     public InputActionReference pauseAction;
 
     [Header("Float behaviour")]
@@ -18,6 +19,7 @@ public class UpgradeBehaviour : MonoBehaviour
     public void Awake() {
         anim = GameObject.FindGameObjectWithTag("UpgradeScreen").GetComponent<Animator>();
         sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -34,6 +36,7 @@ public class UpgradeBehaviour : MonoBehaviour
             sfxManager.playAha();
             Time.timeScale = 0f;
             //pauseAction.action.Disable();
+            player.canPause = false;
             anim.Play("UpgradeFadeIn");
             Destroy(gameObject);
         }
