@@ -28,6 +28,7 @@ TagManager:
   - FxTemporaire
   - Eraser
   - GameManager
+  - BeginningScreen
   layers:
   - Default
   - TransparentFX

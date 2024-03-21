@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     public GameObject doorUIGH;
     public GameObject doorUIHI;
 
-
+    public Animator statsAnim;
 
     private void Awake()
     {
@@ -71,6 +71,9 @@ public class GameManager : MonoBehaviour
         string formattedTime = FormatTime(elapsedTime);
         timerText.text = formattedTime;
         UpdateMap(mapX, mapY);
+        if(roomsCleared == 3) {
+            statsAnim.Play("CheckStatsFade");
+        }
     }
 
     //used chatGPT for this function

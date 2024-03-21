@@ -108,7 +108,6 @@ public class UIButtonBehaviour : MonoBehaviour
             player.defense += defenseUpgradeAmount;
             defenseBar.fillAmount = player.defenseLevel / 10f;
             anim.Play("UpgradeFadeOut");
-            //pauseAction.action.Enable();
             Time.timeScale = 1;
             if (player.defenseLevel >= 10) { defenseUpgrade.SetActive(false); }
         }
@@ -124,7 +123,6 @@ public class UIButtonBehaviour : MonoBehaviour
             speedBar.fillAmount = player.speedLevel / 10f;
             //speed += speedUpgradeAmt;
             anim.Play("UpgradeFadeOut");
-            //pauseAction.action.Enable();
             Time.timeScale = 1;
             if (player.speedLevel >= 10) { speedUpgrade.SetActive(false); }
         }
@@ -139,7 +137,6 @@ public class UIButtonBehaviour : MonoBehaviour
             player.damageLevel += 1;
             damageBar.fillAmount = player.damageLevel / 10f;
             anim.Play("UpgradeFadeOut");
-            //pauseAction.action.Enable();
             Time.timeScale = 1;
             if (player.damageLevel >= 10) { damageUpgrade.SetActive(false); }
         }
@@ -160,7 +157,6 @@ public class UIButtonBehaviour : MonoBehaviour
 
 
         anim.Play("UpgradeFadeOut");
-        //pauseAction.action.Enable();
         Time.timeScale = 1;
     }
 
