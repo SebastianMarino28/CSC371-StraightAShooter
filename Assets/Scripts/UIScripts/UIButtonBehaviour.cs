@@ -32,6 +32,12 @@ public class UIButtonBehaviour : MonoBehaviour
     public GameObject defenseUpgrade;
     public GameObject damageUpgrade;
     public GameObject speedUpgrade;
+    public Slider sliderMusic;
+    public Slider sliderSounds;
+    public Slider sliderDamage;
+    public Slider sliderSpeed;
+    public Toggle invincibilityToggle;
+    public Button abilityButton;
 
     [Header("Upgrade Values")]
     public static float defenseUpgradeAmount;   // 0.06 as of commit 421b5f0
@@ -57,6 +63,10 @@ public class UIButtonBehaviour : MonoBehaviour
     public void HaungsModeClick()
     {
         Canvas haungsCanvas = screens[8].GetComponent<Canvas>();
+        sliderDamage.interactable = true;
+        sliderSpeed.interactable = true;
+        invincibilityToggle.interactable = true;
+        abilityButton.interactable = true;
         pauseMenuScript.PausePushPop(haungsCanvas);
     }
 
@@ -67,6 +77,8 @@ public class UIButtonBehaviour : MonoBehaviour
 
     public void OptionsButtonClick() {
         Canvas optCanvas = screens[4].GetComponent<Canvas>();
+        sliderSounds.interactable = true;
+        sliderMusic.interactable = true;
         pauseMenuScript.PausePushPop(optCanvas);
     }
 

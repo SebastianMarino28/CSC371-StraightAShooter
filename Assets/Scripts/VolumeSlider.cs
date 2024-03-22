@@ -18,12 +18,12 @@ public class VolumeSlider : MonoBehaviour
     public void OnChangeMusicVolume() {
         text.text = (slider.value * 1000).ToString("0");
         text.text += "%";
-        editMusicSourceValue(musicSource1);
-        editMusicSourceValue(musicSource2);
-        editMusicSourceValue(musicSource3);
+        EditMusicSourceValue(musicSource1);
+        EditMusicSourceValue(musicSource2);
+        EditMusicSourceValue(musicSource3);
     }
 
-    private void editMusicSourceValue(AudioSource source) {
+    private void EditMusicSourceValue(AudioSource source) {
         source.volume = slider.value;
     }
 
@@ -32,7 +32,7 @@ public class VolumeSlider : MonoBehaviour
         text.text += "%";
     }
 
-    public void editSoundSourceValue(AudioSource source) {
+    public void EditSoundSourceValue(AudioSource source) {
         source.volume = slider.value;
     }
 }

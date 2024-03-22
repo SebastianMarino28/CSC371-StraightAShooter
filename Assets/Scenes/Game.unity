@@ -2729,7 +2729,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 755497545}
   toggleTransition: 1
   graphic: {fileID: 943094475}
@@ -4056,7 +4056,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 456170395}
   m_FillRect: {fileID: 1456065665}
   m_HandleRect: {fileID: 456170394}
@@ -10749,6 +10749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paused: 0
+  buttons: {fileID: 734569422}
 --- !u!114 &734569422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10778,6 +10779,12 @@ MonoBehaviour:
   defenseUpgrade: {fileID: 1051934306}
   damageUpgrade: {fileID: 707803370}
   speedUpgrade: {fileID: 203443235}
+  sliderMusic: {fileID: 1030750672}
+  sliderSounds: {fileID: 1753405562}
+  sliderDamage: {fileID: 1585019821}
+  sliderSpeed: {fileID: 311523302}
+  invincibilityToggle: {fileID: 223584237}
+  abilityButton: {fileID: 1531193379}
   homePoint: {x: 0, y: 0, z: 0}
   cam: {fileID: 963194225}
   cameraPoint: {x: 0, y: 15, z: -7}
@@ -14876,7 +14883,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1220025279}
   m_FillRect: {fileID: 336715484}
   m_HandleRect: {fileID: 1220025278}
@@ -22500,7 +22507,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1531193380}
   m_OnClick:
     m_PersistentCalls:
@@ -24071,7 +24078,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1017143680}
   m_FillRect: {fileID: 297610634}
   m_HandleRect: {fileID: 1017143679}
@@ -27313,7 +27320,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1290894380}
   m_FillRect: {fileID: 1653814087}
   m_HandleRect: {fileID: 1290894379}
@@ -27339,7 +27346,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663547}
@@ -27351,7 +27358,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663545}
@@ -27363,7 +27370,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663544}
@@ -27375,7 +27382,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663550}
@@ -27387,7 +27394,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663556}
@@ -27399,7 +27406,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663555}
@@ -27411,7 +27418,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663553}
@@ -27423,7 +27430,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663552}
@@ -27435,7 +27442,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663551}
@@ -27447,7 +27454,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663559}
@@ -27459,7 +27466,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663559}
@@ -27471,7 +27478,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663558}
@@ -27483,7 +27490,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663557}
@@ -27495,7 +27502,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663561}
@@ -27507,7 +27514,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663560}
@@ -27519,7 +27526,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663562}
@@ -27531,7 +27538,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663563}
@@ -27543,7 +27550,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1753405563}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: editSoundSourceValue
+        m_MethodName: EditSoundSourceValue
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1290663564}

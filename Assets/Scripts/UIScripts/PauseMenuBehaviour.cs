@@ -10,6 +10,7 @@ public class PauseMenuBehaviour : MonoBehaviour
     private Canvas pauseMenu;
     public Boolean paused;
     public Stack<Canvas> menuStack;
+    public UIButtonBehaviour buttons;
 
     void Awake() {
         pauseMenu = GameObject.FindGameObjectWithTag("PauseScreen").GetComponent<Canvas>();
@@ -28,8 +29,11 @@ public class PauseMenuBehaviour : MonoBehaviour
                     PausePushPop(null);
                     PausePushPop(pauseMenu);
                 }
-                else 
+                else
+                {
                     PausePushPop(null);
+                }    
+                          
         }
     }
 
@@ -42,6 +46,12 @@ public class PauseMenuBehaviour : MonoBehaviour
             AddAndEnable(canvas);  
         }
         else {
+            buttons.abilityButton.interactable = false;
+            buttons.sliderDamage.interactable = false;
+            buttons.sliderSpeed.interactable = false;
+            buttons.sliderMusic.interactable = false;
+            buttons.sliderSounds.interactable = false;
+            buttons.invincibilityToggle.interactable = false;
             PopAndDisable();
             if(menuStack.Count == 0) {
                 paused = false;
